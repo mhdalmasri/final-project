@@ -68,7 +68,7 @@ router.get("/:userID", verify, async (req, res) => {
 //delete toys
 router.delete("/del/:id", verify, (req, res) => {
   var id = req.params.id;
-  Toy.findOneAndRemove({ _id: id }, function(err,toy) {
+  Toy.findOneAndRemove({ _id: id }, function(err, toy) {
     if (err) {
       console.log("err");
       return res.status(500).send("something went wrong");
@@ -113,7 +113,7 @@ router.put("/update/:id", verify, (req, res) => {
           res.status(500).send();
         } else {
           res.status(200).send(toy);
-          console.log(user.name + " updated");
+          console.log(toy.name + " updated");
         }
       });
     }

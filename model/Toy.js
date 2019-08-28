@@ -17,6 +17,9 @@ const toySchema = new mongoose.Schema({
     min: 6,
     max: 255
   },
+  url: {
+    type: String
+  },
   condition: {
     type: String,
     required: true
@@ -36,7 +39,8 @@ const toySchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
-  },status: {
+  },
+  status: {
     type: String,
     required: true
   },
