@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
+import "./App.css";
 
-import './App.css';
-import Users from './components/Users';
+import Landing from "./pages/Landing";
 
 function App() {
   return (
     <div className="App">
-     <Users/>
+      <Landing />
     </div>
   );
 }

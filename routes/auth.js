@@ -3,8 +3,9 @@ const User = require("../model/User");
 const { registerValidation, loginValidation } = require("../validation");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const verify = require("./verifyToken");
 
-//register
+//register user
 router.post("/register", async (req, res) => {
   // validate data b4 create user
   const { error } = registerValidation(req.body);
@@ -33,7 +34,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-//login
+//login user
 router.post("/login", async (req, res) => {
   // validate data b4 login
   const { error } = loginValidation(req.body);
@@ -44,18 +45,64 @@ router.post("/login", async (req, res) => {
   //check if password is correct
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.status(400).send("Password is wrong");
-  else console.log(user.name + " has logged in",user._id + " ur ID");
+  else console.log(user.name + " has logged in ///", user._id + " ur ID");
   //creat and assign a token
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
   res.header("token", token).send(token);
 });
 
-//all users
-router.get("/all", (req, res) => {
-  User.find({}).exec(function(err, users) {
-    if (err) console.log(err);
-    else res.send(users);
+//delete user
+router.delete("/del/:id", verify, (req, res) => {
+  var id = req.params.id;
+  User.findOneAndRemove({ _id: id }, function(err, user) {
+    if (err) {
+      console.log("err");
+      return res.status(500).send("something went wrong");
+    } else {
+      console.log(user.name + " removed");
+      return res.status(200).send("user deleted");
+    }
   });
 });
 
+//update user
+router.put("/update/:id", verify, async (req, res) => {
+  var id = req.params.id;
+  await User.findOne({ _id: id }, async function(err, user) {
+    if (err) {
+      console.log("err");
+      res.status(500).send("something went wrong");
+    } else if (!user) {
+      res.status(404).send();
+    } else {
+      if (req.body.name) {
+        user.name = req.body.name;
+      }
+      if (req.body.email) {
+        user.email = req.body.email;
+      }
+      if (req.body.password) {
+        const salt = await bcrypt.genSalt(10);
+        const hashPassword = await bcrypt.hash(req.body.password, salt);
+        user.password = hashPassword;
+      }
+      user.save((err, user) => {
+        if (err) {
+          console.log(err);
+          res.status(500).send();
+        } else {
+          res.status(200).send(user);
+          console.log(user.name + " updated");
+        }
+      });
+    }
+  });
+});
+// //all users
+// router.get("/all", (req, res) => {
+//   User.find({}).exec(function(err, users) {
+//     if (err) console.log(err);
+//     else res.send(users);
+//   });
+// });
 module.exports = router;
