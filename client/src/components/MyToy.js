@@ -1,22 +1,22 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import logo from "../img/images.jpeg";
 
-export default class ToyModal extends Component {
+export default class MyToy extends Component {
   render() {
     return (
       <div>
-        <button
+          <button
           type="button"
           class="btn btn-primary"
           data-toggle="modal"
-          data-target="#toyModal"
+          data-target="#myToyModal"
         >
-          Toy modal
+          myToy modal
         </button>
 
         <div
           className="modal fade"
-          id="toyModal"
+          id="myToyModal"
           tabindex="-1"
           role="dialog"
           aria-labelledby="exampleModalCenterTitle"
@@ -44,7 +44,10 @@ export default class ToyModal extends Component {
                     <div className="d-flex flex-column col-md-4">
                       <img src={logo} className="card-img" alt="..." />
                       <button type="button" className="btn btn-primary">
-                        Request
+                        Update
+                      </button>
+                      <button type="button" className="btn btn-danger">
+                        Delete
                       </button>
                     </div>
 
@@ -92,6 +95,6 @@ export default class ToyModal extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }

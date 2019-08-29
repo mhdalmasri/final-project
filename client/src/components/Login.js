@@ -31,7 +31,7 @@ export default class Login extends Component {
               required
             />
           </div>
-          <input type="submit" value="login" />
+          <input className="btn btn-primary" type="submit" value="Login" />
         </form>
       </div>
     );
