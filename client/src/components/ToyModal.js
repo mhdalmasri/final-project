@@ -7,7 +7,7 @@ export default class ToyModal extends Component {
       <div>
         <button
           type="button"
-          class="btn btn-primary"
+          className="btn btn-primary"
           data-toggle="modal"
           data-target="#toyModal"
         >
@@ -17,7 +17,7 @@ export default class ToyModal extends Component {
         <div
           className="modal fade"
           id="toyModal"
-          tabindex="-1"
+          tabIndex="-1"
           role="dialog"
           aria-labelledby="exampleModalCenterTitle"
           aria-hidden="true"
@@ -41,7 +41,7 @@ export default class ToyModal extends Component {
               <div className="modal-body">
                 <div className="card mb-3">
                   <div className="row no-gutters">
-                    <div className="d-flex flex-column col-md-4">
+                    <div className="d-flex flex-column justify-content-between col-md-4">
                       <img src={logo} className="card-img" alt="..." />
                       <button type="button" className="btn btn-primary">
                         Request

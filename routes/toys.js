@@ -43,7 +43,7 @@ router.get("/all", verify, async (req, res) => {
 });
 
 //my toys
-router.get("/my", verify, async (req, res) => {
+router.get("/my", async (req, res) => {
   await Toy.find({ userID: req.user._id }, function(err, toy) {
     if (err) {
       res.status(400).send("something went wrong");

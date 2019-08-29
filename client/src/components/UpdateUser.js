@@ -6,7 +6,7 @@ export default class UpdateUser extends Component {
       <div>
         <button
           type="button"
-          class="btn btn-primary"
+          className="btn btn-primary"
           data-toggle="modal"
           data-target="#updateUserModal"
         >
@@ -16,7 +16,7 @@ export default class UpdateUser extends Component {
         <div
           className="modal fade"
           id="updateUserModal"
-          tabindex="-1"
+          tabIndex="-1"
           role="dialog"
           aria-labelledby="exampleModalCenterTitle"
           aria-hidden="true"
@@ -25,7 +25,7 @@ export default class UpdateUser extends Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalCenterTitle">
-                  Edit User
+                  Update User
                 </h5>
 
                 <button
@@ -78,12 +78,13 @@ export default class UpdateUser extends Component {
                       required
                     />
                   </div>
+                  <div className="d-flex flex-row justify-content-between">
                   <input
                     className="btn btn-primary"
                     type="submit"
                     value="Update"
                   />
-                  <input className="btn btn-danger" value="Delete Account" />
+                  <input className="btn btn-danger" value="Delete Account" /></div>
                 </form>
               </div>
             </div>

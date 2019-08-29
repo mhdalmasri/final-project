@@ -16,7 +16,7 @@ export default class AddToy extends Component {
         <div
           className="modal fade"
           id="addToyModal"
-          tabindex="-1"
+          tabIndex="-1"
           role="dialog"
           aria-labelledby="exampleModalCenterTitle"
           aria-hidden="true"
@@ -42,7 +42,7 @@ export default class AddToy extends Component {
                     <label htmlFor="exampleFormControlInput1">Name:</label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="exampleFormControlInput1"
                       placeholder="enter name"
                     />
@@ -53,13 +53,13 @@ export default class AddToy extends Component {
                       Description:
                     </label>
                     <textarea
-                      class="form-control"
+                      className="form-control"
                       id="exampleFormControlTextarea1"
                       rows="3"
                       placeholder="describe your toy"
                     ></textarea>
                   </div>
-                  <label for="condition">Condition:</label>
+                  <label htmlFor="condition">Condition:</label>
                   <br></br>
                   <div className="custom-control custom-radio custom-control-inline">
                     <input
@@ -68,7 +68,7 @@ export default class AddToy extends Component {
                       name="great"
                       className="custom-control-input"
                     />
-                    <label class="custom-control-label" for="conditon1">
+                    <label className="custom-control-label" htmlFor="conditon1">
                       Great
                     </label>
                   </div>
@@ -79,7 +79,7 @@ export default class AddToy extends Component {
                       name="good"
                       className="custom-control-input"
                     />
-                    <label className="custom-control-label" for="conditon2">
+                    <label className="custom-control-label" htmlFor="conditon2">
                       Good
                     </label>
                   </div>
@@ -90,7 +90,7 @@ export default class AddToy extends Component {
                       name="fine"
                       className="custom-control-input"
                     />
-                    <label className="custom-control-label" for="conditon3">
+                    <label className="custom-control-label" htmlFor="conditon3">
                       Fine
                     </label>
                   </div>
@@ -138,7 +138,7 @@ export default class AddToy extends Component {
                         className="custom-file-input"
                         id="customFile"
                       />
-                      <label className="custom-file-label" for="customFile">
+                      <label className="custom-file-label" htmlFor="customFile">
                         Choose file
                       </label>
                     </div>
@@ -149,9 +149,9 @@ export default class AddToy extends Component {
                         type="radio"
                         id="status1"
                         name="swap"
-                        class="custom-control-input"
+                        className="custom-control-input"
                       />
-                      <label className="custom-control-label" for="status1">
+                      <label className="custom-control-label" htmlFor="status1">
                         To Swap
                       </label>
                     </div>
@@ -160,9 +160,9 @@ export default class AddToy extends Component {
                         type="radio"
                         id="status2"
                         name="get"
-                        class="custom-control-input"
+                        className="custom-control-input"
                       />
-                      <label className="custom-control-label" for="status2">
+                      <label className="custom-control-label" htmlFor="status2">
                         To Get
                       </label>
                     </div>
