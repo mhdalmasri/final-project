@@ -1,6 +1,14 @@
 import React, { Component } from "react";
-
+const axios = require('axios');
 export default class Login extends Component {
+  constructor(props){
+    super(props)
+    this.state = { toys: [] }
+  }
+  componentDidMount(){
+    axios.get('http://localhost:5000/api/toys/my')
+    .then(res => console.log(res.data))
+  }
   render() {
     return (
       <div>
@@ -31,7 +39,7 @@ export default class Login extends Component {
               required
             />
           </div>
-          <input type="submit" value="login" />
+          <input className="btn btn-primary" type="submit" value="Login" />
         </form>
       </div>
     );
