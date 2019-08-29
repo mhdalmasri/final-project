@@ -20,7 +20,8 @@ router.post("/new", verify, async (req, res) => {
     age: req.body.age,
     location: req.body.location,
     category: req.body.category,
-    status: req.body.status
+    status: req.body.status,
+    url: "https://picsum.photos/300/300"
   });
   try {
     const savedToy = await toy.save();
@@ -32,7 +33,7 @@ router.post("/new", verify, async (req, res) => {
 });
 
 //all toys
-router.get("/all", verify, async (req, res) => {
+router.get("/all", async (req, res) => {
   await Toy.find({}, function(err, toy) {
     if (err) {
       res.status(400).send("something went wrong");
