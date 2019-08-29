@@ -79,12 +79,16 @@ export default class UpdateUser extends Component {
                     />
                   </div>
                   <div className="d-flex flex-row justify-content-between">
-                  <input
-                    className="btn btn-primary"
-                    type="submit"
-                    value="Update"
-                  />
-                  <input className="btn btn-danger" value="Delete Account" /></div>
+                    <input
+                      className="btn btn-primary"
+                      type="submit"
+                      value="Update"
+                    />
+                    <input
+                      className="btn btn-danger"
+                      defaultValue="Delete Account"
+                    />
+                  </div>
                 </form>
               </div>
             </div>
