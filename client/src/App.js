@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.scss";
 
-import Landing from "./pages/Landing";
+import ToyModal from "./components/ToyModal";
 
 function App() {
   return (
     <div className="App">
-      <Landing />
+      <ToyModal />
     </div>
   );
 }
