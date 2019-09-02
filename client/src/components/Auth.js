@@ -5,10 +5,10 @@ import Login from "./Login";
 export default class Auth extends Component {
   render() {
     return (
-      <div>
+      <div className="d-flex flex-column align-items-center" >
         <nav>
           <div
-            className="nav nav-tabs justify-content-center"
+            className="nav nav-tabs"
             id="nav-tab"
             role="tablist"
           >
