@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 
-
 // import Routes
 const authRoute = require("./routes/auth");
 const toysRoute = require("./routes/toys");

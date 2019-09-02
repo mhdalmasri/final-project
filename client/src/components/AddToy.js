@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 
+const tableStyle = {
+  width: "100%"
+};
+const tdStyle = {
+  width: "1%"
+};
 export default class AddToy extends Component {
   render() {
     return (
@@ -129,8 +135,21 @@ export default class AddToy extends Component {
                       className="custom-range"
                       min="0"
                       max="4"
-                      id="customRange2"
+                      id="range"
                     />
+
+                    <table style={tableStyle}>
+                      <tr className="d-flex justify-content-between">
+                       
+                        <td>00-03</td>
+                        <td>03-06</td>
+                        <td>06-09</td>
+                        <td>09-12</td>
+                        <td>12-15</td>
+             
+                      </tr>
+                    </table>
+
                     <label htmlFor="img">Photo:</label>
                     <div className="custom-file">
                       <input
