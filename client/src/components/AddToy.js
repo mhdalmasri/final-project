@@ -139,15 +139,15 @@ export default class AddToy extends Component {
                     />
 
                     <table style={tableStyle}>
-                      <tr className="d-flex justify-content-between">
-                       
-                        <td>00-03</td>
-                        <td>03-06</td>
-                        <td>06-09</td>
-                        <td>09-12</td>
-                        <td>12-15</td>
-             
-                      </tr>
+                      <tbody>
+                        <tr className="d-flex justify-content-between">
+                          <td>00-03</td>
+                          <td>03-06</td>
+                          <td>06-09</td>
+                          <td>09-12</td>
+                          <td>12-15</td>
+                        </tr>
+                      </tbody>
                     </table>
 
                     <label htmlFor="img">Photo:</label>
