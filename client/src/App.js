@@ -5,9 +5,8 @@ import "./App.scss";
 import Landing from "./pages/Landing";
 
 import Homepage from "./pages/Homepage";
-import Footer from './components/Footer'
+import Footer from "./components/Footer";
 import MyToys from "./pages/MyToys";
-
 
 function App() {
   return (
@@ -16,7 +15,7 @@ function App() {
       <Route path="/homepage/" component={Homepage} />
       <Route path="/myToys/" component={MyToys} />
     </Router>
-  )
+  );
 }
 
 // function App() {

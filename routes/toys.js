@@ -33,7 +33,7 @@ router.post("/new", verify, async (req, res) => {
 });
 
 //all toys
-router.get("/all", async (req, res) => {
+router.get("/all",verify, async (req, res) => {
   await Toy.find({}, function(err, toy) {
     if (err) {
       res.status(400).send("something went wrong");
@@ -44,8 +44,8 @@ router.get("/all", async (req, res) => {
 });
 
 //my toys
-router.get("/my", async (req, res) => {
-  await Toy.find({ userID: req.user._id }, function(err, toy) {
+router.get("/my",verify, async (req, res) => {
+  await Toy.find({ userID: req.params._id }, function(err, toy) {
     if (err) {
       res.status(400).send("something went wrong");
     } else {

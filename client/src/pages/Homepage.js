@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
 import Navbar from '../components/Navbar'
+import Cookies from 'universal-cookie';
 
 
 export default class Homepage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            toys: [],
+             toys: [],
             filterToys: [],
             locationToys: [],
             ageToys: [],
@@ -23,7 +23,9 @@ export default class Homepage extends Component {
         this.swapCheck = React.createRef()
     }
     componentDidMount() {
-        axios.get('http://localhost:5000/api/toys/all').then(resp => this.setState({
+        const cookies = new Cookies()
+        const token = cookies.get("myToken")
+        axios.get(`http://localhost:5000/api/toys/all`, { headers: { token }}).then(resp => this.setState({
             toys: resp.data,
             filterToys: resp.data
         }))
@@ -217,7 +219,7 @@ export default class Homepage extends Component {
 
     render() {
         return (
-            <>
+            <div>
                 <Navbar data = {this.state.filterToys} />
                 <div className="mt-3 d-flex border-bottom pb-2" >
                     <div className="d-flex justify-content-between col-9" >
@@ -321,7 +323,7 @@ export default class Homepage extends Component {
                     }
                 </div>
 
-            </>
+            </div>
         )
     }
 }

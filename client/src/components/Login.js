@@ -1,28 +1,46 @@
 import React, { Component } from "react";
-const axios = require('axios');
+import { Link } from "react-router-dom";
+import Cookies from "universal-cookie";
+const axios = require("axios");
 export default class Login extends Component {
-  constructor(props){
-    super(props)
-    this.state = { toys: [] }
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: ""
+    };
   }
-  componentDidMount(){
-    axios.get('http://localhost:5000/api/toys/my')
-    .then(res => console.log(res.data))
-  }
+
+  submitHandler = e => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/api/users/login", this.state)
+      .then(res => {
+        const cookies = new Cookies();
+        cookies.set("myToken", res.data.token, { path: "*" });
+        cookies.set("myId", res.data._id, { path: "*" });
+        console.log(cookies.get("myCookie"));
+      });
+  };
+  changHandler = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
   render() {
     return (
       <div>
-        <form method="post" action="http://localhost:5000/api/users/login">
+        <form onSubmit={this.submitHandler}>
           <div className="form-group">
             <label htmlFor="email">
               <b>Email:</b>
             </label>
             <input
-           
               type="email"
               className="form-control"
               placeholder="Enter email"
               name="email"
+              id="email"
+              onChange={this.changHandler}
+              value={this.state.email}
               required
             />
           </div>
@@ -31,15 +49,20 @@ export default class Login extends Component {
               <b>Password:</b>
             </label>
             <input
-             
               type="password"
               className="form-control"
               placeholder="Enter Password"
               name="password"
+              id="password"
+              onChange={this.changHandler}
+              value={this.state.password}
               required
             />
           </div>
-          <input className="btn btn-primary" type="submit" value="Login" />
+
+          <button className="btn btn-primary" type="submit">
+            Login
+          </button>
         </form>
       </div>
     );

@@ -4,6 +4,8 @@ const { registerValidation, loginValidation } = require("../validation");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const verify = require("./verifyToken");
+const Cookies = require('universal-cookie');
+
 
 //register user
 router.post("/register", async (req, res) => {
@@ -48,8 +50,15 @@ router.post("/login", async (req, res) => {
   else console.log(user.name + " has logged in ///", user._id + " ur ID");
   //creat and assign a token
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+  console.log("Token created");
 
-  res.header("token", token).send(token);
+  res.json({
+    token,
+    _id: user._id
+  });
+  const cookies = new Cookies()
+  cookies.set('myToken', token)
+  res.header('token'.token)
 });
 
 //delete user
