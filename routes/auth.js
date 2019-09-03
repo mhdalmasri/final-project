@@ -58,13 +58,26 @@ router.post("/login", async (req, res) => {
   });
   const cookies = new Cookies()
   cookies.set('myToken', token)
-  res.header('token'.token)
+
 });
+
+// logout user
+
+router.post("/logout", async (req, res) => {
+  const user = await User.findOne({ email: "hahahahahaha" });
+  if (!user) {
+    const cookies = new Cookies()
+    cookies.remove("myToken")
+    cookies.remove("myId")
+    console.log("user has logout")
+    return res.send(cookies)
+  }
+})
 
 //delete user
 router.delete("/del/:id", verify, (req, res) => {
   var id = req.params.id;
-  User.findOneAndRemove({ _id: id }, function(err, user) {
+  User.findOneAndRemove({ _id: id }, function (err, user) {
     if (err) {
       console.log("err");
       return res.status(500).send("something went wrong");
@@ -78,7 +91,7 @@ router.delete("/del/:id", verify, (req, res) => {
 //update user
 router.put("/update/:id", verify, async (req, res) => {
   var id = req.params.id;
-  await User.findOne({ _id: id }, async function(err, user) {
+  await User.findOne({ _id: id }, async function (err, user) {
     if (err) {
       console.log("err");
       res.status(500).send("something went wrong");
