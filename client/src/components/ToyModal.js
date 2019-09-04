@@ -2,21 +2,15 @@ import React, { Component } from "react";
 import logo from "../img/images.jpeg";
 
 export default class ToyModal extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div>
-        <button
-          type="button"
-          className="btn btn-primary"
-          data-toggle="modal"
-          data-target="#toyModal"
-        >
-          Toy modal
-        </button>
-
         <div
           className="modal fade"
-          id="toyModal"
+          id={this.props.toyId}
           tabIndex="-1"
           role="dialog"
           aria-labelledby="exampleModalCenterTitle"
@@ -26,7 +20,7 @@ export default class ToyModal extends Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalCenterTitle">
-                  Toy Name
+                  {this.props.name}
                 </h5>
 
                 <button
@@ -54,34 +48,36 @@ export default class ToyModal extends Component {
                           <tbody>
                             <tr>
                               <th scope="row">Description:</th>
-                              <td>Nice cute toy</td>
+                              <td>{this.props.description}</td>
                             </tr>
                             <tr>
                               <th scope="row">Age:</th>
-                              <td>3-6</td>
+                              <td>{this.props.age}</td>
                             </tr>
                             <tr>
                               <th scope="row">Condition:</th>
-                              <td>Good</td>
+                              <td>{this.props.condition}</td>
                             </tr>
                             <tr>
                               <th scope="row">Location:</th>
-                              <td>Mitte</td>
+                              <td>{this.props.location}</td>
                             </tr>
                             <tr>
                               <th scope="row">Category:</th>
-                              <td>Stuffed Animal</td>
+                              <td>{this.props.category}</td>
                             </tr>
                           </tbody>
                         </table>
                         <p className="card-text">
                           <small className="text-muted">By: Nadoo</small>
+                          {/* {toy.status === "swap"} ?{
                           <span className="badge badge-pill badge-success">
                             to Swap
-                          </span>
-                          <span className="badge badge-pill badge-danger">
+                          </span>}
+                          :
+                          {<span className="badge badge-pill badge-danger">}
                             to Give
-                          </span>
+                          </span> */}
                         </p>
                       </div>
                     </div>

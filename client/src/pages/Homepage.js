@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Navbar from '../components/Navbar'
 import Cookies from 'universal-cookie';
+import ToyModal from '../components/ToyModal';
+import ToyThumb from '../components/ToyThumb';
+
 
 
 export default class Homepage extends Component {
@@ -301,22 +304,16 @@ export default class Homepage extends Component {
                 </div>
 
                 <div className="d-flex flex-wrap justify-content-around" >
-                    <div>{this.state.filterToys.length}</div>
                     {(this.state.filterToys.length !== 0) ?
                         this.state.filterToys.map((toy, index) => {
                             let color
                             (toy.status === "swap") ? color = "#2BD0C6" : color = "#D9A728"
                             return (
-                                <div key={index} className="card col-xl-3 m-5 p-0">
-                                    <img src={toy.url} className="card-img-top" style={{ border: `0.5rem solid ${color}` }} alt="..." />
-                                    <div className="card-body">
-                                        <h5 className="card-title">{toy.toyName}</h5>
-                                        <p> {toy.location} </p>
-                                        <p> {toy.condition} </p>
-                                        <p> {toy.age} </p>
-                                        <p> {toy.category} </p>
-                                    </div>
-                                </div>
+                                <div key={index}>
+                                <ToyModal toyId={toy._id} name={toy.toyName} description={toy.description} condition={toy.condition} age={toy.age} location={toy.location} status={toy.status} category={toy.category}/>
+                                <ToyThumb  toyId={toy._id} name={toy.toyName}/>
+                             </div>
+                                   
                             )
                         }) :
                         <div className="mt-5 bold"> No results are found, Sorry 😞 </div>

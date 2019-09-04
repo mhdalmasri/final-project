@@ -10,19 +10,12 @@ import ToyModal from "../components/ToyModal";
 export default class Landing extends Component {
   render() {
     return (
-      <div className="d-flex align-items-center flex-column justify-content-center LandingPage">
-        <div className="d-flex border" >
+      <div className="d-flex align-items-center flex-column justify-content-center ">
+        <div className="d-flex " >
           <Img />
           <Auth />
         </div>
-        <div>
-          <ToyModal />
-        <MyToy />
-        <AddToy />
-        <UpdateUser />
-        <UpdateToy />
-        <ToyThumb />
-        </div>
+       
         
       </div>
     );

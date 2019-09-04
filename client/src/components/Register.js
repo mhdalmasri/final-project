@@ -6,7 +6,7 @@ export default class Register extends Component {
 
       <div className="card">
         <div className="card-body px-lg-5 pt-0">
-          <div>
+     
             <form
               method="post"
               action="http://localhost:5000/api/users/register"
@@ -51,7 +51,7 @@ export default class Register extends Component {
               </div>
               <input className="btn btn-primary" type="submit" value="Register" />
             </form>
-          </div>
+         
         </div>
       </div>
     )
