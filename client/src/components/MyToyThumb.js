@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import logo from "../img/images.jpeg";
-import ViewToyModal from "./ViewToyModal";
+import UpdateToy from "./UpdateToy";
 
 const divStyle = {
   width: "15rem"
 };
-export default class ToyThumb extends Component {
+export default class MYToyThumb extends Component {
   constructor(props) {
     super(props);
   }
@@ -16,7 +16,7 @@ export default class ToyThumb extends Component {
         <img src={logo} className="card-img-top" alt="img" />
         <div className="card-body">
           <h5 className="card-title">{this.props.name}</h5>
-          <ViewToyModal
+          <UpdateToy
             toyId={this.props.toyId}
             name={this.props.name}
             description={this.props.description}

@@ -21,7 +21,7 @@ export default class Auth extends Component {
               aria-controls="nav-home"
               aria-selected="true"
             >
-              Register
+              Login
             </a>
             <a
               className="nav-item nav-link"
@@ -32,7 +32,7 @@ export default class Auth extends Component {
               aria-controls="nav-profile"
               aria-selected="false"
             >
-              Login
+              Register
             </a>
           </div>
         </nav>
@@ -43,7 +43,7 @@ export default class Auth extends Component {
             role="tabpanel"
             aria-labelledby="nav-home-tab"
           >
-            <Register />
+            <Login />
           </div>
           <div
             className="tab-pane fade"
@@ -51,7 +51,7 @@ export default class Auth extends Component {
             role="tabpanel"
             aria-labelledby="nav-profile-tab"
           >
-            <Login />
+            <Register />
           </div>
         </div>
       </div>

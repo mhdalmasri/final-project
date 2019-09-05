@@ -58,6 +58,7 @@ router.post("/login", async (req, res) => {
   });
   const cookies = new Cookies()
   cookies.set('myToken', token)
+  cookies.set('myId', user._id)
 
 });
 
