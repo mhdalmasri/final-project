@@ -7,8 +7,16 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { UserProvider } from './ContextApi/UserContext'
+import { ToysProvider } from './ContextApi/ToysContext'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <UserProvider>
+        <ToysProvider>
+            <App />
+        </ToysProvider>
+    </UserProvider>, document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

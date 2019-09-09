@@ -76,9 +76,9 @@ router.post("/logout", async (req, res) => {
 })
 
 //delete user
-router.delete("/del/:id", verify, (req, res) => {
+router.delete("/del/:id", verify, async(req, res) => {
   var id = req.params.id;
-  User.findOneAndRemove({ _id: id }, function (err, user) {
+ await User.findOneAndRemove({ _id: id }, function (err, user) {
     if (err) {
       console.log("err");
       return res.status(500).send("something went wrong");
@@ -122,11 +122,16 @@ router.put("/update/:id", verify, async (req, res) => {
     }
   });
 });
-// //all users
-// router.get("/all", (req, res) => {
-//   User.find({}).exec(function(err, users) {
-//     if (err) console.log(err);
-//     else res.send(users);
-//   });
-// });
+//all users
+
+router.get("/all", verify, async(req, res) => {
+  await User.find({}).exec(function (err, users) {
+    if (err) console.log(err);
+    else res.send(users);
+  });
+});
+
+
+
+
 module.exports = router;

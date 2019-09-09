@@ -1,33 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import logo from "../img/images.jpeg";
 import ViewToyModal from "./ViewToyModal";
 
 const divStyle = {
   width: "15rem"
 };
-export default class ToyThumb extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className="card m-2" style={divStyle}>
-        <img src={logo} className="card-img-top" alt="img" />
-        <div className="card-body">
-          <h5 className="card-title">{this.props.name}</h5>
+const ToyThumb = (props) => (
+  <div className="card m-2" style={divStyle}>
+    <img src={logo} className="card-img-top" alt="img" />
+    <div className="card-body">
+          <h5 className="card-title">{props.toy.toyName}</h5>
           <ViewToyModal
-            toyId={this.props.toyId}
-            name={this.props.name}
-            description={this.props.description}
-            condition={this.props.condition}
-            age={this.props.age}
-            location={this.props.location}
-            status={this.props.status}
-            category={this.props.category}
+            toy = {props.toy}
           />
         </div>
       </div>
-    );
-  }
-}
+)
+
+export default ToyThumb
