@@ -1,6 +1,7 @@
 import React from 'react'
 import { ToysContext } from '../ContextApi/ToysContext'
 import ToyThumb from './ToyThumb'
+import UpdateToy from './UpdateToy'
 
 const ToysList = (props) => (
     <ToysContext.Consumer>
@@ -14,6 +15,7 @@ const ToysList = (props) => (
                             <div key={index}>
                                 <ToyThumb
                                     toy = {toy}
+                                    page="ToysList"
                                 />
                             </div>
                         );

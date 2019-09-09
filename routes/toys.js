@@ -74,7 +74,7 @@ router.delete("/del/:id", verify, (req, res) => {
       console.log("err");
       return res.status(500).send("something went wrong");
     } else {
-      console.log(toy.name + " removed");
+      console.log(toy.name + " removed")
       return res.status(200).send("toy deleted");
     }
   });

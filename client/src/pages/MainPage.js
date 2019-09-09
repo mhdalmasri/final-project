@@ -496,6 +496,7 @@ class MainPage extends React.Component {
                                 <div key={index}>
                                     <ToyThumb
                                         toy = {toy}
+                                        route= "MainPage"
                                     />
                                 </div>
                             );
