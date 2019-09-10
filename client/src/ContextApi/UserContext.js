@@ -12,6 +12,7 @@ class UserProvider extends React.Component {
             currentUser: null,
             users: []
         }
+        this.handleLogin= this.handleLogin.bind(this)
     }
     componentDidMount() {
         const token = cookies.get("myToken")

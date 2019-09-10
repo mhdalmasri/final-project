@@ -24,8 +24,9 @@ export default class UpdateToy extends Component {
     }))
   }
 
-onDelete(e, deleteToy, alertMessage){
-  deleteToy(e.target.name)
+deleteToy(e, onDeleteToy){
+  const toyId = e.target.name
+  onDeleteToy(toyId)
   this.deleteToggle()
 }
   
@@ -33,7 +34,7 @@ onDelete(e, deleteToy, alertMessage){
   render() {
     return (
       <ToysContext.Consumer>
-        {({ deleteToy, alertMessage }) =>
+        {({ onDeleteToy }) =>
           <div>
             <div className="d-flex justify-content-around">
               <div>
@@ -189,7 +190,7 @@ onDelete(e, deleteToy, alertMessage){
                   <ModalHeader toggle={this.deleteToggle}>Delete Confirmation!</ModalHeader>
                   <ModalBody> Do you want to delete {this.props.toy.toyName}? </ModalBody>
                   <ModalFooter>
-                    <Button name={this.props.toy._id} color="primary" onClick={e => this.onDelete(e, deleteToy, alertMessage)} >Yes</Button>{' '}
+                    <Button name={this.props.toy._id} color="primary" onClick={e => this.deleteToy(e, onDeleteToy)} >Yes</Button>{' '}
                     <Button color="secondary" onClick={this.deleteToggle}>No</Button>
                   </ModalFooter>
                 </Modal>

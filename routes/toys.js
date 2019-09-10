@@ -2,9 +2,10 @@ const router = require("express").Router();
 const verify = require("./verifyToken");
 const Toy = require("../model/Toy");
 const { toyValidation } = require("../validation");
-
+const Cookies = require('universal-cookie')
+const cookies = new Cookies
 // add toy
-router.post("/new", verify, async (req, res) => {
+router.post("/new",  async (req, res) => {
   // validate data b4 create user
   const { error } = toyValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -13,7 +14,7 @@ router.post("/new", verify, async (req, res) => {
   if (toyExist) return res.status(400).send("this toy name already exists");
   //create toy
   const toy = new Toy({
-    userID: req.user._id,
+    userID: req.header("userId"),
     toyName: req.body.toyName,
     condition: req.body.condition,
     description: req.body.description,
@@ -22,7 +23,7 @@ router.post("/new", verify, async (req, res) => {
     category: req.body.category,
     status: req.body.status,
     url: "https://picsum.photos/300/300"
-  });
+  })
   try {
     const savedToy = await toy.save();
     res.send({ toy: toy._id });

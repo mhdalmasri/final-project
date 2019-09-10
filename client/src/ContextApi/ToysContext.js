@@ -12,17 +12,17 @@ class ToysProvider extends React.Component {
             toys: [],
             currentUserToys: [],
             error: null,
-            loading: false,
-            alertMessage: null
+            loading: false
         }
-        this.deleteToy = this.deleteToy.bind(this)
+        this.onDeleteToy = this.onDeleteToy.bind(this)
+        this.onAddNewToy = this.onAddNewToy.bind(this)
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const token = cookies.get("myToken");
         const userId = cookies.get("myId");
         this.setState({ loading: true, error: null, alertMessage: null })
-        axios(`http://localhost:5000/api/toys/all`, { headers: { token, userId } })
+        await axios(`http://localhost:5000/api/toys/all`, { headers: { token, userId } })
             .then(resp => {
                 this.setState({
                     toys: resp.data,
@@ -40,12 +40,27 @@ class ToysProvider extends React.Component {
             }))
     }
 
-
-    async deleteToy(toyId) {
+    async onAddNewToy() {
         const token = cookies.get("myToken")
         const userId = cookies.get("myId")
         this.setState({ loading: true, error: null })
-        await axios.delete(`http://localhost:5000/api/toys/del/${toyId}`, { headers: { token, userId } }).then(resp => {
+        await axios.post(`http://localhost:5000/api/toys/new`,{ headers: { token, userId } })
+        .then(resp => {
+            console.log(resp)
+        }).catch(error => this.setState({
+            error,
+            loading: false
+        }))
+    }
+
+
+
+    async onDeleteToy(toyId) {
+        const token = cookies.get("myToken")
+        const userId = cookies.get("myId")
+        this.setState({ loading: true, error: null })
+        await axios.delete(`http://localhost:5000/api/toys/del/${toyId}`, { headers: { token, userId } })
+        .then(resp => {
             this.setState({
                 loading: false,
                 toys: this.state.toys.filter(toy => {
@@ -53,8 +68,7 @@ class ToysProvider extends React.Component {
                 }),
                 currentUserToys: this.state.currentUserToys.filter(toy => {
                     if(toy._id !== toyId) return toy
-                }),
-                alertMessage: resp.data
+                })
             })
         }).catch(error => this.setState({
             error,
@@ -68,7 +82,8 @@ class ToysProvider extends React.Component {
         return (
             <ToysContext.Provider value={{
                 ...this.state,
-                deleteToy: this.deleteToy
+                onDeleteToy: this.onDeleteToy,
+                onAddNewToy : this.onAddNewToy
             }} > {this.props.children} </ToysContext.Provider>
         )
     }
