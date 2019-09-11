@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 
+
+
 // import Routes
 const authRoute = require("./routes/auth");
 const toysRoute = require("./routes/toys");
@@ -22,5 +24,8 @@ app.use(cors());
 // Route Middleware
 app.use("/api/users", authRoute);
 app.use("/api/toys", toysRoute);
+
+//Public folder
+app.use(express.static("./public"));
 
 app.listen(5000, () => console.log("server is running"));

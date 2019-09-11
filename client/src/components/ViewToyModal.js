@@ -37,7 +37,7 @@ export default class ViewToyModal extends React.Component {
           <ModalHeader toggle={this.toggle}>{this.props.toy.toyName}</ModalHeader>
           <ModalBody>
             <div className="d-flex justify-content-around">
-              <img className="m-2" src={logo} alt="..." />
+              <img className="m-2" src={this.props.toy.url} alt="..." />
             </div>
             <table className="table table-striped">
               <tbody>

@@ -58,7 +58,7 @@ export default class AddToy extends Component {
             >
               <ModalHeader toggle={this.toggle}>Add New Toy</ModalHeader>
               <ModalBody>
-                <form method="POST" action={url}>
+                <form method="POST" action={url} encType="multipart/form-data">
                   <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">Name:</label>
                     <input
@@ -171,6 +171,7 @@ export default class AddToy extends Component {
                       name="age"
                       onChange={this.handelOnChange}
                     />
+
                     <label htmlFor="img">Photo:</label>
                     <div className="custom-file">
                       <input
@@ -178,6 +179,7 @@ export default class AddToy extends Component {
                         type="file"
                         className="custom-file-input"
                         id="customFile"
+                        name="myImage"
                       />
                       <label className="custom-file-label" htmlFor="customFile">
                         Choose file
