@@ -44,7 +44,7 @@ class ToysProvider extends React.Component {
         const token = cookies.get("myToken")
         const userId = cookies.get("myId")
         this.setState({ loading: true, error: null })
-        await axios.post(`http://localhost:5000/api/toys/new`,{ headers: { token, userId } })
+        await axios.post(`http://localhost:5000/api/toys/new/${userId}`,{ headers: { token, userId } })
         .then(resp => {
             console.log(resp)
         }).catch(error => this.setState({

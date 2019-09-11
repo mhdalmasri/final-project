@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { ToysContext } from "../ContextApi/ToysContext";
+import { UserConsumer } from "../ContextApi/UserContext";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
+
 export default class AddToy extends Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
       newToy: {}
-    }
+    };
     this.toggle = this.toggle.bind(this);
   }
 
@@ -17,32 +21,34 @@ export default class AddToy extends Component {
     }));
   }
 
-  addNewToy=(e, onAddNewToy)=> {
-    onAddNewToy()
-    this.toggle()
-    console.log("addNewToy called")
-  }
+  addNewToy = (e, onAddNewToy) => {
+    onAddNewToy();
+    this.toggle();
+    console.log("addNewToy called");
+  };
 
   handelOnChange = e => {
-    const name = e.target.name
-    let value
-    if (e.target.type === "radio" ) {
-      value = e.target.id
+    const name = e.target.name;
+    let value;
+    if (e.target.type === "radio") {
+      value = e.target.id;
     } else {
-      value = e.target.value
+      value = e.target.value;
     }
-    
-    this.setState(state=>{
-      const obj = state.newToy
-      return obj[name] = value
-    })
-  }
+
+    this.setState(state => {
+      const obj = state.newToy;
+      return (obj[name] = value);
+    });
+  };
 
   render() {
-    console.log(this.state.newToy)
+    const userId = cookies.get("myId");
+    const url = `http://localhost:5000/api/toys/new/${userId}`;
+    console.log(this.state.newToy);
     return (
       <ToysContext.Consumer>
-        {({ onAddNewToy }) =>
+        {({ onAddNewToy }) => (
           <div>
             <Button onClick={this.toggle}>Add New Toy</Button>
             <Modal
@@ -52,7 +58,7 @@ export default class AddToy extends Component {
             >
               <ModalHeader toggle={this.toggle}>Add New Toy</ModalHeader>
               <ModalBody>
-                <form onSubmit={(e) => this.addNewToy(e, onAddNewToy) } >
+                <form method="POST" action={url}>
                   <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">Name:</label>
                     <input
@@ -64,13 +70,12 @@ export default class AddToy extends Component {
                       name="toyName"
                     />
                   </div>
-
                   <div className="form-group">
                     <label htmlFor="exampleFormControlTextarea1">
                       Description:
-                </label>
+                    </label>
                     <textarea
-                    onChange={this.handelOnChange}
+                      onChange={this.handelOnChange}
                       className="form-control"
                       id="exampleFormControlTextarea1"
                       rows="3"
@@ -80,18 +85,18 @@ export default class AddToy extends Component {
                   </div>
                   <label htmlFor="condition">Condition:</label>
                   <br></br>
-              <div className="custom-control custom-radio custom-control-inline">
-                <input
+                  <div className="custom-control custom-radio custom-control-inline">
+                    <input
                       onChange={this.handelOnChange}
                       type="radio"
-                  id="great"
-                  name="condition"
-                  className="custom-control-input"
-                  value="great"
-                />
-                <label className="custom-control-label" htmlFor="great">
-                  Great
-                </label>
+                      id="great"
+                      name="condition"
+                      className="custom-control-input"
+                      value="great"
+                    />
+                    <label className="custom-control-label" htmlFor="great">
+                      Great
+                    </label>
                   </div>
                   <div className="custom-control custom-radio custom-control-inline">
                     <input
@@ -104,7 +109,7 @@ export default class AddToy extends Component {
                     />
                     <label className="custom-control-label" htmlFor="good">
                       Good
-                </label>
+                    </label>
                   </div>
                   <div className="custom-control custom-radio custom-control-inline">
                     <input
@@ -117,12 +122,16 @@ export default class AddToy extends Component {
                     />
                     <label className="custom-control-label" htmlFor="fine">
                       Fine
-                </label>
+                    </label>
                   </div>
-                  <br></br> 
+                  <br></br>
                   <div>
                     <label htmlFor="location">Location:</label>
-                    <select className="custom-select" name="location" onChange={this.handelOnChange} >
+                    <select
+                      className="custom-select"
+                      name="location"
+                      onChange={this.handelOnChange}
+                    >
                       <option defaultValue>Select Location</option>
                       <option value="char">Charlottenburg-Wilmersdorf</option>
                       <option value="fried">Friedrichshain-Kreuzberg</option>
@@ -138,7 +147,11 @@ export default class AddToy extends Component {
                       <option value="trep">Treptow-Köpenick</option>
                     </select>
                     <label htmlFor="category">Category:</label>
-                    <select className="custom-select" name="category" onChange={this.handelOnChange}>
+                    <select
+                      className="custom-select"
+                      name="category"
+                      onChange={this.handelOnChange}
+                    >
                       <option defaultValue>Select category</option>
                       <option value="action">Action & Adventure</option>
                       <option value="game">Games & Puzzles</option>
@@ -149,15 +162,15 @@ export default class AddToy extends Component {
                       <option value="animals">Stuffed Animals</option>
                     </select>
                     <label htmlFor="age">Age rang:</label>
-                <input
-                  type="range"
-                  className="custom-range"
-                  min="0"
-                  max="4"
-                  id="customRange2"
+                    <input
+                      type="range"
+                      className="custom-range"
+                      min="0"
+                      max="4"
+                      id="customRange2"
                       name="age"
                       onChange={this.handelOnChange}
-                    /> 
+                    />
                     <label htmlFor="img">Photo:</label>
                     <div className="custom-file">
                       <input
@@ -168,7 +181,7 @@ export default class AddToy extends Component {
                       />
                       <label className="custom-file-label" htmlFor="customFile">
                         Choose file
-                  </label>
+                      </label>
                     </div>
                     <label htmlFor="status">Status:</label>
                     <br></br>
@@ -183,7 +196,7 @@ export default class AddToy extends Component {
                       />
                       <label className="custom-control-label" htmlFor="swap">
                         To Swap
-                  </label>
+                      </label>
                     </div>
                     <div className="custom-control custom-radio custom-control-inline">
                       <input
@@ -196,20 +209,18 @@ export default class AddToy extends Component {
                       />
                       <label className="custom-control-label" htmlFor="get">
                         To Get
-                  </label> 
+                      </label>
                     </div>
                   </div>
-                  <button type="submit" >Add</button>
+                  <button className="btn btn-primary" type="submit">
+                    Add
+                  </button>
                 </form>
               </ModalBody>
-              <ModalFooter className="d-flex justify-content-around">
-            <Button>Add</Button>
-          </ModalFooter>
-        </Modal>
-      </div>
-
-        }
+            </Modal>
+          </div>
+        )}
       </ToysContext.Consumer>
-    )
+    );
   }
 }

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const toySchema = new mongoose.Schema({
   userID: {
-    type: String,
+    type: Object,
     required: true
   },
   toyName: {

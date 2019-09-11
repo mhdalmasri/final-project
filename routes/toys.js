@@ -4,8 +4,9 @@ const Toy = require("../model/Toy");
 const { toyValidation } = require("../validation");
 const Cookies = require('universal-cookie')
 const cookies = new Cookies
+const ObjectId = require('mongodb').ObjectID
 // add toy
-router.post("/new",  async (req, res) => {
+router.post("/new/:id",  async (req, res) => {
   // validate data b4 create user
   const { error } = toyValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -14,7 +15,7 @@ router.post("/new",  async (req, res) => {
   if (toyExist) return res.status(400).send("this toy name already exists");
   //create toy
   const toy = new Toy({
-    userID: req.header("userId"),
+    userID: ObjectId(req.params.id),
     toyName: req.body.toyName,
     condition: req.body.condition,
     description: req.body.description,
