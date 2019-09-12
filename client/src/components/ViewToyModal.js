@@ -24,9 +24,9 @@ export default class ViewToyModal extends React.Component {
         {({ users }) =>
           <div>
             {this.props.toy.status === "swap" ? (
-              <Button onClick={this.toggle}>Swap</Button>
+              <Button color="outline-secondary" onClick={this.toggle}>Swap</Button>
             ) : (
-                <Button onClick={this.toggle}>Get</Button>
+                <Button color="outline-secondary" onClick={this.toggle}>Get</Button>
               )}
 
         <Modal
@@ -88,7 +88,7 @@ export default class ViewToyModal extends React.Component {
                 </table>
               </ModalBody>
               <ModalFooter className="d-flex justify-content-around">
-                <Button>Request</Button>
+                <Button color="outline-info">Request</Button>
               </ModalFooter>
             </Modal>
           </div>

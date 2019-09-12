@@ -73,7 +73,7 @@ export default class Login extends Component {
                   />
                 </div>
                 {error && <div> {error.message} </div>}
-                <button className="btn btn-primary" type="submit" disabled={loading} >
+                <button className="btn btn-outline-primary" type="submit" disabled={loading} >
                   Login
             </button>
               </form>
