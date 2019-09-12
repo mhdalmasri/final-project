@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
-export default class Conatct extends Component {
+export default class Contact extends Component {
   render() {
     return (
       <div>
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-8 offset-xl-2 py-5">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-8 offset-xl-2 py-5">
               <h1>GET IN TOUCH</h1>
               <form
                 action="https://formspree.io/m.almasri@outlook.de"
@@ -18,7 +18,7 @@ export default class Conatct extends Component {
                   <div className="row">
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label for="form_name">Firstname *</label>
+                        <label htmlFor="form_name">Firstname *</label>
                         <input
                           id="form_name"
                           type="text"
@@ -33,7 +33,7 @@ export default class Conatct extends Component {
                     </div>
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label for="form_lastname">Lastname *</label>
+                        <label htmlFor="form_lastname">Lastname *</label>
                         <input
                           id="form_lastname"
                           type="text"
@@ -50,7 +50,7 @@ export default class Conatct extends Component {
                   <div className="row">
                     <div className="col-md">
                       <div className="form-group">
-                        <label for="form_email">Email *</label>
+                        <label htmlFor="form_email">Email *</label>
                         <input
                           id="form_email"
                           type="email"
@@ -67,7 +67,7 @@ export default class Conatct extends Component {
                   <div className="row">
                     <div className="col-md-12">
                       <div className="form-group">
-                        <label for="form_message">Message *</label>
+                        <label htmlFor="form_message">Message *</label>
                         <textarea
                           id="form_message"
                           name="message"
@@ -93,21 +93,21 @@ export default class Conatct extends Component {
             </div>
           </div>
         </div>
-        <div class="container">
-          <ul class="socialIcons">
-            <li class="facebook">
+        <div className="container">
+          <ul className="socialIcons">
+            <li className="facebook">
               <a href="#">
-                <i class="fa fa-fw fa-facebook"></i>Facebook
+                <i className="fa fa-fw fa-facebook"></i>Facebook
               </a>
             </li>
-            <li class="twitter">
+            <li className="twitter">
               <a href="#">
-                <i class="fa fa-fw fa-twitter"></i>Twitter
+                <i className="fa fa-fw fa-twitter"></i>Twitter
               </a>
             </li>
-            <li class="instagram">
+            <li className="instagram">
               <a href="#">
-                <i class="fa fa-fw fa-instagram"></i>Instagram
+                <i className="fa fa-fw fa-instagram"></i>Instagram
               </a>
             </li>
           </ul>

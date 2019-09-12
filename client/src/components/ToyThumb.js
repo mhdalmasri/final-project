@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../img/images.jpeg";
 import ViewToyModal from "./ViewToyModal";
-import UpdateToy from "./UpdateToy";
+import ManageToy from "./ManageToy";
 
 
 const divStyle = {
@@ -15,7 +15,7 @@ const ToyThumb = props => (
       {props.route === "MainPage" ? (
         <ViewToyModal toy={props.toy} />
       ) : (
-        <UpdateToy toy={props.toy} />
+        <ManageToy toy={props.toy} />
       )}
     </div>
   </div>

@@ -1,54 +1,44 @@
-import React, { Component } from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { ToysContext } from "../ContextApi/ToysContext";
-import { UserConsumer } from "../ContextApi/UserContext";
-import Cookies from "universal-cookie";
-const cookies = new Cookies();
+import React, { Component } from "react"
+import { Button, Modal, ModalHeader, ModalBody } from "reactstrap"
+import Cookies from "universal-cookie"
+const cookies = new Cookies()
 
 export default class AddToy extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       modal: false,
       newToy: {}
-    };
-    this.toggle = this.toggle.bind(this);
+    }
+    this.toggle = this.toggle.bind(this)
   }
 
   toggle() {
     this.setState(prevState => ({
       modal: !prevState.modal
-    }));
+    }))
   }
 
-  addNewToy = (e, onAddNewToy) => {
-    onAddNewToy();
-    this.toggle();
-    console.log("addNewToy called");
-  };
-
   handelOnChange = e => {
-    const name = e.target.name;
-    let value;
+    const name = e.target.name
+    let value
     if (e.target.type === "radio") {
-      value = e.target.id;
+      value = e.target.id
     } else {
-      value = e.target.value;
+      value = e.target.value
     }
 
     this.setState(state => {
-      const obj = state.newToy;
-      return (obj[name] = value);
-    });
-  };
+      const obj = state.newToy
+      return (obj[name] = value)
+    })
+  }
 
   render() {
     const userId = cookies.get("myId");
     const url = `http://localhost:5000/api/toys/new/${userId}`;
     console.log(this.state.newToy);
     return (
-      <ToysContext.Consumer>
-        {({ onAddNewToy }) => (
           <div>
             <Button color="outline-info"onClick={this.toggle}>Add New Toy</Button>
             <Modal
@@ -179,7 +169,7 @@ export default class AddToy extends Component {
                         type="file"
                         className="custom-file-input"
                         id="customFile"
-                        name="myImage"
+                        name="url"
                       />
                       <label className="custom-file-label" htmlFor="customFile">
                         Choose file
@@ -221,8 +211,6 @@ export default class AddToy extends Component {
               </ModalBody>
             </Modal>
           </div>
-        )}
-      </ToysContext.Consumer>
-    );
+    )
   }
 }

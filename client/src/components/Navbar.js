@@ -73,7 +73,7 @@ export default class Navbar extends Component {
                 </li>
               </ul>
               <form
-                // onSubmit={(e) => this.submitHandler(e, onLogout)}
+                onSubmit={(e) => this.submitHandler(e, onLogout)}
                 className="form-inline my-2 my-lg-0"
               >
                  

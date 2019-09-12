@@ -68,8 +68,8 @@ router.post("/logout", async (req, res) => {
   const user = await User.findOne({ email: "hahahahahaha" });
   if (!user) {
     const cookies = new Cookies()
-    cookies.remove("myToken")
-    cookies.remove("myId")
+    cookies.remove("myToken", { path: '/' })
+    cookies.remove("myId", { path: '/' })
     console.log("user has logout")
     return res.send(cookies)
   }
