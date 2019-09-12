@@ -10,6 +10,7 @@ import { UserConsumer } from './ContextApi/UserContext'
 import MainPage from './pages/MainPage'
 import ToysList from './components/ToysList'
 import { ToysContext } from "./ContextApi/ToysContext"
+import Contact from "./pages/Conatct"
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
                       <MainPage data={toys} />
                     </Route>
                     <Route path="/myToys" exact component={ToysList} />
+                    <Route path="/contact" exact component={Contact} />
                   </Switch>
                 </>}
             </ToysContext.Consumer>
