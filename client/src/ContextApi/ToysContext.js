@@ -12,10 +12,11 @@ class ToysProvider extends React.Component {
             toys: [],
             currentUserToys: [],
             error: null,
-            loading: false
+            loading: false,
+            alertMessage:null
         }
         this.onDeleteToy = this.onDeleteToy.bind(this)
-        this.onAddNewToy = this.onAddNewToy.bind(this)
+        this.onUpdateToy = this.onUpdateToy.bind(this)
     }
 
     async componentDidMount() {
@@ -40,13 +41,19 @@ class ToysProvider extends React.Component {
             }))
     }
 
-    async onAddNewToy() {
-        const token = cookies.get("myToken")
-        const userId = cookies.get("myId")
+    async onUpdateToy(url, data) {
         this.setState({ loading: true, error: null })
-        await axios.post(`http://localhost:5000/api/toys/new/${userId}`,{ headers: { token, userId } })
+        await axios({
+            method: 'put',
+            url: url,
+            data: data,
+            config: { headers: {'Content-Type': 'multipart/form-data' }}
+          })
         .then(resp => {
-            console.log(resp)
+            this.setState({
+                loading : false
+            })
+          alert(resp.data) || window.location.reload()
         }).catch(error => this.setState({
             error,
             loading: false
@@ -68,7 +75,8 @@ class ToysProvider extends React.Component {
                 }),
                 currentUserToys: this.state.currentUserToys.filter(toy => {
                     if(toy._id !== toyId) return toy
-                })
+                }),
+                alertMessage:resp.data
             })
         }).catch(error => this.setState({
             error,
@@ -83,8 +91,8 @@ class ToysProvider extends React.Component {
             <ToysContext.Provider value={{
                 ...this.state,
                 onDeleteToy: this.onDeleteToy,
-                onAddNewToy : this.onAddNewToy
-            }} > {this.props.children} </ToysContext.Provider>
+                onUpdateToy : this.onUpdateToy
+            }} > {this.state.alertMessage ? alert(this.state.alertMessage) || window.location.reload() : ""} {this.props.children} </ToysContext.Provider>
         )
     }
 

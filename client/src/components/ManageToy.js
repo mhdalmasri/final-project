@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { ToysContext } from "../ContextApi/ToysContext";
-export default class UpdateToy extends Component {
+
+export default class ManageToy extends Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
-      deleteModal : false
+      deleteModal: false,
+      updateModal: false,
+      updatedToy:{}
     };
     this.toggle = this.toggle.bind(this)
     this.deleteToggle = this.deleteToggle.bind(this)
+    this.updateToggle = this.updateToggle.bind(this)
   }
 
   toggle() {
@@ -18,23 +22,51 @@ export default class UpdateToy extends Component {
     }));
   }
 
-  deleteToggle(){
+  deleteToggle() {
     this.setState(prevState => ({
-      deleteModal : !prevState.deleteModal
+      deleteModal: !prevState.deleteModal
     }))
   }
+  updateToggle() {
+    this.setState(prevState => ({
+      updateModal: !prevState.updateModal
+    }))
+  }
+  deleteToy(e, onDeleteToy) {
+    const toyId = e.target.name
+    onDeleteToy(toyId)
+    this.deleteToggle()
+  }
+  updateToy=(e, onUpdateToy)=> {
+    e.preventDefault()
+    const id = this.props.toy._id
+    const url = `http://localhost:5000/api/toys/update/${id}`;
+    const data = this.state.updatedToy
+    onUpdateToy(url, data)
+    console.log(data)
+    this.updateToggle()
+  }
+  handelOnChange = e => {
+    const name = e.target.name
+    let value = e.target.value
+    if (e.target.type === "radio") {
+      value = e.target.id
+    } else {
+      value = e.target.value
+    }
 
-deleteToy(e, onDeleteToy){
-  const toyId = e.target.name
-  onDeleteToy(toyId)
-  this.deleteToggle()
-}
-  
+    this.setState(state => {
+      const obj = state.updatedToy
+      obj[name] = value
+      console.log(JSON.stringify(obj))
+      return JSON.stringify(obj)
+    })
+  }
 
   render() {
     return (
       <ToysContext.Consumer>
-        {({ onDeleteToy }) =>
+        {({ onDeleteToy, onUpdateToy }) =>
           <div>
             <div className="d-flex justify-content-around">
               <div>
@@ -46,14 +78,16 @@ deleteToy(e, onDeleteToy){
                 >
                   <ModalHeader toggle={this.toggle}>Update Toy</ModalHeader>
                   <ModalBody>
-                    <form>
+                    <form onSubmit={e => this.updateToy(e,onUpdateToy)} encType="multipart/form-data">
                       <div className="form-group">
                         <label htmlFor="exampleFormControlInput1">Name:</label>
                         <input
+                        name="toyName"
                           type="text"
                           className="form-control"
                           id="exampleFormControlInput1"
-                          placeholder="enter name"
+                          defaultValue={this.props.toy.toyName}
+                          onChange={this.handelOnChange}
                         />
                       </div>
 
@@ -62,10 +96,13 @@ deleteToy(e, onDeleteToy){
                           Description:
                 </label>
                         <textarea
+                        name="description"
                           className="form-control"
                           id="exampleFormControlTextarea1"
                           rows="3"
                           placeholder="describe your toy"
+                          defaultValue={this.props.toy.description}
+                          onChange={this.handelOnChange}
                         ></textarea>
                       </div>
                       <label htmlFor="condition">Condition:</label>
@@ -73,41 +110,51 @@ deleteToy(e, onDeleteToy){
                       <div className="custom-control custom-radio custom-control-inline">
                         <input
                           type="radio"
-                          id="conditon1"
-                          name="great"
+                          onChange={this.handelOnChange}
+                          id="great"
+                          name="condition"
                           className="custom-control-input"
+                          value="great"
+                          defaultChecked={this.props.toy.condition === "great" ? "checked" : false}
                         />
-                        <label className="custom-control-label" htmlFor="conditon1">
+                        <label className="custom-control-label" htmlFor="great">
                           Great
                 </label>
                       </div>
                       <div className="custom-control custom-radio custom-control-inline">
                         <input
                           type="radio"
-                          id="conditon2"
-                          name="good"
+                          onChange={this.handelOnChange}
+                          id="good"
+                          name="condition"
                           className="custom-control-input"
+                          value="good"
+                          defaultChecked={this.props.toy.condition === "good" ? "checked" : false}
                         />
-                        <label className="custom-control-label" htmlFor="conditon2">
+                        <label className="custom-control-label" htmlFor="good">
                           Good
                 </label>
                       </div>
                       <div className="custom-control custom-radio custom-control-inline">
                         <input
                           type="radio"
-                          id="conditon3"
-                          name="fine"
+                          onChange={this.handelOnChange}
+                          id="fine"
+                          name="condition"
                           className="custom-control-input"
+                          value="fine"
+                          defaultChecked={this.props.toy.condition === "fine" ? "checked" : false}
                         />
-                        <label className="custom-control-label" htmlFor="conditon3">
+                        <label className="custom-control-label" htmlFor="fine">
                           Fine
                 </label>
                       </div>
                       <br></br>
                       <div>
                         <label htmlFor="location">Location:</label>
-                        <select className="custom-select">
-                          <option defaultValue>Select Location</option>
+                        <select 
+                        name="location"
+                        className="custom-select" onChange={this.handelOnChange} defaultValue={this.props.toy.location} >
                           <option value="char">Charlottenburg-Wilmersdorf</option>
                           <option value="fried">Friedrichshain-Kreuzberg</option>
                           <option value="licht">Lichtenberg</option>
@@ -122,8 +169,9 @@ deleteToy(e, onDeleteToy){
                           <option value="trep">Treptow-Köpenick</option>
                         </select>
                         <label htmlFor="category">Category:</label>
-                        <select className="custom-select">
-                          <option defaultValue>Select category</option>
+                        <select className="custom-select" 
+                        name="category"
+                        defaultValue={this.props.toy.category} onChange={this.handelOnChange} >
                           <option value="action">Action & Adventure</option>
                           <option value="game">Games & Puzzles</option>
                           <option value="build">Build & Play sets</option>
@@ -134,53 +182,64 @@ deleteToy(e, onDeleteToy){
                         </select>
                         <label htmlFor="age">Age rang:</label>
                         <input
+                        name="age"
                           type="range"
+                          onChange={this.handelOnChange}
                           className="custom-range"
                           min="0"
                           max="4"
                           id="customRange2"
+                          defaultValue={this.props.toy.age}
                         />
                         <label htmlFor="img">Photo:</label>
                         <div className="custom-file">
                           <input
+                          onChange={this.handelOnChange}
                             type="file"
                             className="custom-file-input"
                             id="customFile"
+                            name="url"
                           />
                           <label className="custom-file-label" htmlFor="customFile">
                             Choose file
-                  </label>
+                      </label>
                         </div>
                         <label htmlFor="status">Status:</label>
                         <br></br>
                         <div className="custom-control custom-radio custom-control-inline">
                           <input
                             type="radio"
-                            id="status1"
-                            name="swap"
+                            onChange={this.handelOnChange}
+                            id="swap"
+                            name="status"
                             className="custom-control-input"
+                            value="swap"
+                            defaultChecked={this.props.toy.status === "swap" ? "checked" : false}
                           />
-                          <label className="custom-control-label" htmlFor="status1">
+                          <label className="custom-control-label" htmlFor="swap">
                             To Swap
                   </label>
                         </div>
                         <div className="custom-control custom-radio custom-control-inline">
                           <input
                             type="radio"
-                            id="status2"
-                            name="get"
+                            onChange={this.handelOnChange}
+                            id="get"
+                            name="status"
                             className="custom-control-input"
+                            value="get"
+                            defaultChecked={this.props.toy.status === "get" ? "checked" : false}
                           />
-                          <label className="custom-control-label" htmlFor="status2">
+                          <label className="custom-control-label" htmlFor="get">
                             To Get
                   </label>
                         </div>
                       </div>
+                      <div>
+                        <button className="btn btn-primary" type="submit" > update </button>
+                      </div>
                     </form>
                   </ModalBody>
-                  <ModalFooter className="d-flex justify-content-around">
-                    <Button>Update</Button>
-                  </ModalFooter>
                 </Modal>
               </div>
 
@@ -200,6 +259,6 @@ deleteToy(e, onDeleteToy){
 
         }
       </ToysContext.Consumer>
-    );
+    )
   }
 }
