@@ -487,7 +487,9 @@ class MainPage extends React.Component {
                 </button>
                     </form>
                 </div>
-              
+                <div className="d-flex flex-wrap justify-content-around">
+                    <h1> {this.state.filterToys.length} </h1>
+                </div>
                 <div className="d-flex flex-wrap justify-content-around">
                     {this.state.filterToys.length !== 0 ? (
                         this.state.filterToys.map((toy, index) => {
