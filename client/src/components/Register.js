@@ -49,7 +49,7 @@ export default class Register extends Component {
                   required
                 />
               </div>
-              <input className="btn btn-primary" type="submit" value="Register" />
+              <input className="btn btn-outline-primary" type="submit" value="Register" />
             </form>
          
         </div>

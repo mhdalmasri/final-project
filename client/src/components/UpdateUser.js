@@ -6,7 +6,7 @@ export default class UpdateUser extends Component {
       <div>
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-outline-primary"
           data-toggle="modal"
           data-target="#updateUserModal"
         >

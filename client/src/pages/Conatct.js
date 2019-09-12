@@ -7,13 +7,11 @@ export default class Conatct extends Component {
         <div class="container">
           <div class="row">
             <div class="col-xl-8 offset-xl-2 py-5">
-              <h1>Contact Us:</h1>
-
-              <p class="lead">
-                This is a demo for our tutorial dedicated to crafting working
-                Bootstrap contact form with PHP and AJAX background.
-              </p>
-              <form>
+              <h1>GET IN TOUCH</h1>
+              <form
+                action="https://formspree.io/m.almasri@outlook.de"
+                method="POST"
+              >
                 <div className="messages"></div>
 
                 <div className="controls">
@@ -82,10 +80,10 @@ export default class Conatct extends Component {
                         <div className="help-block with-errors"></div>
                       </div>
                     </div>
-                    <div className="col-md-12">
+                    <div className="col-md flex-row justify-content-around">
                       <input
                         type="submit"
-                        className="btn btn-success btn-send"
+                        className="btn btn-outline-success btn-send mx-auto"
                         value="Send message"
                       />
                     </div>
@@ -94,6 +92,25 @@ export default class Conatct extends Component {
               </form>
             </div>
           </div>
+        </div>
+        <div class="container">
+          <ul class="socialIcons">
+            <li class="facebook">
+              <a href="#">
+                <i class="fa fa-fw fa-facebook"></i>Facebook
+              </a>
+            </li>
+            <li class="twitter">
+              <a href="#">
+                <i class="fa fa-fw fa-twitter"></i>Twitter
+              </a>
+            </li>
+            <li class="instagram">
+              <a href="#">
+                <i class="fa fa-fw fa-instagram"></i>Instagram
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     );

@@ -50,7 +50,7 @@ export default class AddToy extends Component {
       <ToysContext.Consumer>
         {({ onAddNewToy }) => (
           <div>
-            <Button onClick={this.toggle}>Add New Toy</Button>
+            <Button color="outline-info"onClick={this.toggle}>Add New Toy</Button>
             <Modal
               isOpen={this.state.modal}
               toggle={this.toggle}
@@ -214,7 +214,7 @@ export default class AddToy extends Component {
                       </label>
                     </div>
                   </div>
-                  <button className="btn btn-primary" type="submit">
+                  <button className="btn btn-outline-primary" type="submit">
                     Add
                   </button>
                 </form>

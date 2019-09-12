@@ -38,7 +38,7 @@ deleteToy(e, onDeleteToy){
           <div>
             <div className="d-flex justify-content-around">
               <div>
-                <Button color="info" onClick={this.toggle}>Update</Button>
+                <Button color="outline-info" onClick={this.toggle}>Update</Button>
                 <Modal
                   isOpen={this.state.modal}
                   toggle={this.toggle}
@@ -179,19 +179,19 @@ deleteToy(e, onDeleteToy){
                     </form>
                   </ModalBody>
                   <ModalFooter className="d-flex justify-content-around">
-                    <Button>Update</Button>
+                    <Button color="outline-secondary">Update</Button>
                   </ModalFooter>
                 </Modal>
               </div>
 
               <div>
-                <Button color="danger" onClick={this.deleteToggle}>Delete</Button>
+                <Button color="outline-danger" onClick={this.deleteToggle}>Delete</Button>
                 <Modal isOpen={this.state.deleteModal} toggle={this.deleteToggle} className={this.props.className}>
                   <ModalHeader toggle={this.deleteToggle}>Delete Confirmation!</ModalHeader>
                   <ModalBody> Do you want to delete {this.props.toy.toyName}? </ModalBody>
                   <ModalFooter>
-                    <Button name={this.props.toy._id} color="primary" onClick={e => this.deleteToy(e, onDeleteToy)} >Yes</Button>{' '}
-                    <Button color="secondary" onClick={this.deleteToggle}>No</Button>
+                    <Button name={this.props.toy._id} color="outline-danger" onClick={e => this.deleteToy(e, onDeleteToy)} >Yes</Button>{' '}
+                    <Button color="outline-primary" onClick={this.deleteToggle}>No</Button>
                   </ModalFooter>
                 </Modal>
               </div>
