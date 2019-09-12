@@ -240,12 +240,9 @@ export default class ManageToy extends Component {
                       </div>
                     </form>
                   </ModalBody>
-<<<<<<< HEAD:client/src/components/ManageToy.js
-=======
                   <ModalFooter className="d-flex justify-content-around">
                     <Button color="outline-secondary">Update</Button>
                   </ModalFooter>
->>>>>>> a1a2449d132c57900f492ce94f0aa19c264e6a0f:client/src/components/UpdateToy.js
                 </Modal>
               </div>
 
