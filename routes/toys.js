@@ -133,19 +133,19 @@ router.put("/update/:id",upload, async (req, res) => {
       if (req.body.condition) {
         toy.condition = req.body.condition
       }
-      if (req.body.url) {
-        console.log(req.file.path)
-       // toy.url = "./" + req.file.path.substring(14)
-      }
-      // toy.save((err, toy) => {
-      //   if (err) {
-      //     console.log(err)
-      //     res.status(500).send()
-      //   } else {
-      //     res.status(200).send(toy.toyName + " is updated")
-      //     console.log(toy.toyName + " is updated")
-      //   }
-      // })
+      // if (req.body.url) {
+      //   console.log(req.file.path)
+      //  toy.url = "./" + req.file.path.substring(14)
+      // }
+      toy.save((err, toy) => {
+        if (err) {
+          console.log(err)
+          res.status(500).send()
+        } else {
+          res.status(200).send(toy.toyName + " is updated")
+          console.log(toy.toyName + " is updated")
+        }
+      })
     }
   })
 })

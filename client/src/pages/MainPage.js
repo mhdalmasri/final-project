@@ -504,7 +504,7 @@ class MainPage extends React.Component {
                             <div className="mt-5 bold"> No results are found, Sorry 😞 </div>
                         )}
                 </div>
-                <AddToy/>
+                
             </div >
         )
     }
