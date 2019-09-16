@@ -17,7 +17,7 @@ class MainPage extends React.Component {
         this.category = React.createRef()
         this.condition = React.createRef()
         this.status = React.createRef()
-        this.filter= this.filter.bind(this)
+        this.filter = this.filter.bind(this)
     }
     componentWillUnmount() {
         this.setState({
@@ -264,32 +264,11 @@ class MainPage extends React.Component {
                                     Search
                 </button>
 
-                    </form>
-                </div>
-                <div className="d-flex flex-wrap justify-content-around">
-                    <h1> {this.state.filterToys.length} </h1>
-                </div>
-                <div className="d-flex flex-wrap justify-content-around">
-                    {this.state.filterToys.length !== 0 ? (
-                        this.state.filterToys.map((toy, index) => {
-                            return (
-                                <div key={index}>
-                                    <ToyThumb
-                                        toy = {toy}
-                                        route= "MainPage"
-                                    />
-                                </div>
-                            );
-                        })
-                    ) : (
-                            <div className="mt-5 bold"> No results are found, Sorry 😞 </div>
-                        )}
-                </div>
-                
-            </div >
 
-                            </form>
+                    </form>
+              
                         </div>
+
 
                         <div className="d-flex flex-wrap justify-content-around">
                             {
@@ -315,20 +294,6 @@ class MainPage extends React.Component {
                                         <div className="mt-5 bold"> No results are found, Sorry 😞 </div>
 
                             }
-                            {/* {filterToys.length !== 0 ? (
-                                filterToys.map((toy, index) => {
-                                    return (
-                                        <div key={index}>
-                                            <ToyThumb
-                                                toy={toy}
-                                                route="MainPage"
-                                            />
-                                        </div>
-                                    );
-                                })
-                            ) : (
-                                    <div className="mt-5 bold"> No results are found, Sorry 😞 </div>
-                                )} */}
                         </div>
                         <AddToy />
                     </div >
