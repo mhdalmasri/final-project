@@ -1,6 +1,5 @@
 import React from 'react'
 import ToyThumb from '../components/ToyThumb'
-import AddToy from '../components/AddToy';
 import { ToysContext } from '../ContextApi/ToysContext';
 import { ifError } from 'assert';
 
@@ -85,10 +84,6 @@ class MainPage extends React.Component {
                 this.filter()
             }
         }
-
-
-
-
 
     }
     handleOnChange = e => {
@@ -295,7 +290,7 @@ class MainPage extends React.Component {
 
                             }
                         </div>
-                        <AddToy />
+                 
                     </div >
 
                 }

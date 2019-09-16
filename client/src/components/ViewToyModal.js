@@ -21,53 +21,61 @@ export default class ViewToyModal extends React.Component {
   render() {
     return (
       <UserConsumer>
-        {({ users }) =>
+        {({ users }) => (
           <div>
             {this.props.toy.status === "swap" ? (
-              <Button color="outline-secondary" onClick={this.toggle}>Swap</Button>
+              <Button color="outline-secondary" onClick={this.toggle}>
+                Swap
+              </Button>
             ) : (
-                <Button color="outline-secondary" onClick={this.toggle}>Get</Button>
-              )}
+              <Button color="outline-secondary" onClick={this.toggle}>
+                Get
+              </Button>
+            )}
 
-        <Modal
-          isOpen={this.state.modal}
-          toggle={this.toggle}
-          className={this.props.toy.className}
-        >
-          <ModalHeader toggle={this.toggle}>{this.props.toy.toyName}</ModalHeader>
-          <ModalBody>
-            <div className="d-flex justify-content-around">
-              <img className="m-2" src={this.props.toy.url} alt="..." />
-            </div>
-            <table className="table table-striped">
-              <tbody>
-                <tr>
-                  <th scope="row">Description:</th>
-                  <td>{this.props.toy.description}</td>
-                </tr>
-                <tr>
-                  <th scope="row">Age:</th>
-                  <td>{this.props.toy.age}</td>
-                </tr>
-                <tr>
-                  <th scope="row">Condition:</th>
-                  <td>{this.props.toy.condition}</td>
-                </tr>
-                <tr>
-                  <th scope="row">Location:</th>
+            <Modal
+              isOpen={this.state.modal}
+              toggle={this.toggle}
+              className={this.props.toy.className}
+            >
+              <ModalHeader toggle={this.toggle}>
+                {this.props.toy.toyName}
+              </ModalHeader>
+              <ModalBody>
+                <div className="d-flex justify-content-around">
+                  <img className="m-2" src={this.props.toy.url} alt="..." />
+                </div>
+                <table className="table table-striped">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Description:</th>
+                      <td>{this.props.toy.description}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Age:</th>
+                      <td>{this.props.toy.age}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Condition:</th>
+                      <td>{this.props.toy.condition}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Location:</th>
                       <td>{this.props.toy.location}</td>
                     </tr>
                     <tr>
                       <th scope="row">Category:</th>
-                  <td>{this.props.toy.category}</td>
-                </tr>
-                <tr>
-                  <th scope="row">Added By:</th>
-                      <td>{users.map(user => {
-                        if (user._id === this.props.toy.userID) {
-                          return user.name
-                        }
-                      })}</td>
+                      <td>{this.props.toy.category}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Added By:</th>
+                      <td>
+                        {users.map(user => {
+                          if (user._id === this.props.toy.userID) {
+                            return user.name;
+                          }
+                        })}
+                      </td>
                     </tr>
                     <tr>
                       <th scope="row">Status:</th>
@@ -76,12 +84,12 @@ export default class ViewToyModal extends React.Component {
                         {this.props.toy.status === "swap" ? (
                           <span className="badge badge-pill badge-success">
                             to Swap
-                      </span>
+                          </span>
                         ) : (
-                            <span className="badge badge-pill badge-danger">
-                              to Give
-                      </span>
-                          )}
+                          <span className="badge badge-pill badge-danger">
+                            to Give
+                          </span>
+                        )}
                       </td>
                     </tr>
                   </tbody>
@@ -92,9 +100,8 @@ export default class ViewToyModal extends React.Component {
               </ModalFooter>
             </Modal>
           </div>
-        }
+        )}
       </UserConsumer>
-
     );
   }
 }
