@@ -5,7 +5,7 @@ import Landing from "./pages/Landing";
 import Navbar from "./components/Navbar";
 import { UserConsumer } from "./ContextApi/UserContext";
 import MainPage from "./pages/MainPage";
-import ToysList from "./components/ToysList";
+import ToysList from "./pages/ToysList";
 import { ToysContext } from "./ContextApi/ToysContext";
 import Contact from "./pages/Conatct";
 

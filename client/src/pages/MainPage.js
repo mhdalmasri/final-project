@@ -263,6 +263,29 @@ class MainPage extends React.Component {
                                 <button className="btn btn-outline-info my-2 my-sm-0" type="button" onClick={() => this.search()} >
                                     Search
                 </button>
+
+                    </form>
+                </div>
+              
+                <div className="d-flex flex-wrap justify-content-around">
+                    {this.state.filterToys.length !== 0 ? (
+                        this.state.filterToys.map((toy, index) => {
+                            return (
+                                <div key={index}>
+                                    <ToyThumb
+                                        toy = {toy}
+                                        route= "MainPage"
+                                    />
+                                </div>
+                            );
+                        })
+                    ) : (
+                            <div className="mt-5 bold"> No results are found, Sorry 😞 </div>
+                        )}
+                </div>
+                
+            </div >
+
                             </form>
                         </div>
 
@@ -310,6 +333,7 @@ class MainPage extends React.Component {
 
                 }
             </ToysContext.Consumer>
+
         )
     }
 
