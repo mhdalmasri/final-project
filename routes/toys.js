@@ -11,7 +11,7 @@ const ObjectId = require("mongodb").ObjectID
 //Set Storage Engine
 const storage = multer.diskStorage({
   destination: "client/public/uploads/",
-  filename: function(req, file, cb) {
+  filename: function (req, file, cb) {
     cb(
       null,
       file.fieldname + "-" + Date.now() + path.extname(file.originalname)
@@ -41,7 +41,7 @@ router.post("/new/:id", upload, async (req, res, next) => {
     location: req.body.location,
     category: req.body.category,
     status: req.body.status,
-    url: "./"+req.file.path.substring(14)
+    url: "./" + req.file.path.substring(14)
   })
   try {
     const savedToy = await toy.save()
@@ -105,9 +105,9 @@ router.delete("/del/:id", verify, (req, res) => {
 })
 
 //update toys
-router.put("/update/:id",upload, async (req, res) => {
+router.put("/update/:id", upload, async (req, res) => {
   const id = req.params.id
-  await Toy.findOneAndUpdate({ _id: id },upload, function(err, toy) {
+  await Toy.findOneAndUpdate({ _id: id }, upload, function (err, toy) {
     if (err) {
       console.log("err")
       res.status(500).send("something went wrong")
@@ -133,6 +133,7 @@ router.put("/update/:id",upload, async (req, res) => {
       if (req.body.condition) {
         toy.condition = req.body.condition
       }
+
       // if (req.body.url) {
       //   console.log(req.file.path)
       //  toy.url = "./" + req.file.path.substring(14)
@@ -146,6 +147,21 @@ router.put("/update/:id",upload, async (req, res) => {
           console.log(toy.toyName + " is updated")
         }
       })
+
+      if (req.body.url) {
+        console.log(req.file.path)
+        // toy.url = "./" + req.file.path.substring(14)
+      }
+      // toy.save((err, toy) => {
+      //   if (err) {
+      //     console.log(err)
+      //     res.status(500).send()
+      //   } else {
+      //     res.status(200).send(toy.toyName + " is updated")
+      //     console.log(toy.toyName + " is updated")
+      //   }
+      // })
+
     }
   })
 })
