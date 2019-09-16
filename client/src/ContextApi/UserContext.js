@@ -35,7 +35,6 @@ class UserProvider extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <Provider value={{
                 user: this.state.currentUser,
