@@ -20,30 +20,32 @@ class ToysProvider extends React.Component {
         this.onDeleteToy = this.onDeleteToy.bind(this)
         this.onUpdateToy = this.onUpdateToy.bind(this)
         this.onFilter = this.onFilter.bind(this)
+        this.onFilterStatus = this.onFilterStatus.bind(this)
+        this.onSearch = this.onSearch.bind(this)
     }
 
-   componentDidMount() {
+    componentDidMount() {
         this.setState({ loading: true, error: null, alertMessage: null, interval: 10000 })
-       this.interval = setInterval(() => {
-        const token = cookies.get("myToken");
-        const userId = cookies.get("myId");
-        axios(`http://localhost:5000/api/toys/all`, { headers: { token, userId } })
-            .then(resp => {
-                this.setState({
-                    toys: resp.data,
-                    loading: false,
-                    currentUserToys: resp.data.filter(toy => {
-                        if (toy.userID === userId) {
-                            return toy
-                        }
+        this.interval = setInterval(() => {
+            const token = cookies.get("myToken");
+            const userId = cookies.get("myId");
+            axios(`http://localhost:5000/api/toys/all`, { headers: { token, userId } })
+                .then(resp => {
+                    this.setState({
+                        toys: resp.data,
+                        loading: false,
+                        currentUserToys: resp.data.filter(toy => {
+                            if (toy.userID === userId) {
+                                return toy
+                            }
+                        })
                     })
                 })
-            })
-            .catch(error => this.setState({
-                error,
-                loading: false
-            }))
-    }, 2000)
+                .catch(error => this.setState({
+                    error,
+                    loading: false
+                }))
+        }, 2000)
 
     }
 
@@ -51,7 +53,7 @@ class ToysProvider extends React.Component {
     //     clearInterval(this.interval)
     // }
 
-    onFilter(selectedLocation, selectedAge, selectedCondition,selectedCategory){
+    onFilter(selectedLocation, selectedAge, selectedCondition, selectedCategory) {
         if (
             selectedLocation === "all" &&
             selectedAge === "all" &&
@@ -284,6 +286,35 @@ class ToysProvider extends React.Component {
         }
     }
 
+    onFilterStatus(getCheck, swapCheck) {
+        console.log(getCheck, swapCheck)
+        if (getCheck && swapCheck) {
+            return this.onFilter()
+        } else {
+            if (getCheck && !swapCheck) {
+
+                this.setState({
+                    filterToys: this.state.toys.filter(toy => {
+                        if (toy.status === "get") {
+                            return toy
+                        }
+                    })
+                })
+
+            } else if (swapCheck && !getCheck) {
+
+                this.setState({
+                    filterToys: this.state.toys.filter(toy => {
+                        if (toy.status === "swap") {
+                            return toy
+                        }
+                    })
+                })
+            } else {
+                this.onFilter()
+            }
+        }
+    }
     async onUpdateToy(url, data) {
         this.setState({ loading: true, error: null })
         await axios({
@@ -303,7 +334,22 @@ class ToysProvider extends React.Component {
             }))
     }
 
+    onSearch(value) {
+        console.log(value)
 
+        this.setState({
+            filterToys: this.state.toys.filter(toy => {
+                const toyName = toy.toyName.replace(/\s/g, '').toLowerCase()
+                const toyDesc = toy.description.replace(/\s/g, '').toLowerCase()
+                const inpValue = value.replace(/\s/g, '').toLowerCase()
+                console.log(toyName, toyDesc, inpValue)
+                if (toyName.includes(inpValue) || toyDesc.includes(inpValue)) {
+                    return toy
+                }
+            })
+
+        })
+    }
 
     async onDeleteToy(toyId) {
         const token = cookies.get("myToken")
@@ -329,14 +375,15 @@ class ToysProvider extends React.Component {
 
 
     render() {
-        console.log(this.state.toys)
         return (
             <ToysContext.Provider value={{
                 ...this.state,
                 onDeleteToy: this.onDeleteToy,
                 onUpdateToy: this.onUpdateToy,
-                onFilter: this.onFilter
-            }} >  {this.props.children} </ToysContext.Provider>
+                onFilter: this.onFilter,
+                onFilterStatus: this.onFilterStatus,
+                onSearch: this.onSearch
+            }} > {this.props.children} </ToysContext.Provider >
         )
     }
 

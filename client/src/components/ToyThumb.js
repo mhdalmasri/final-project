@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../img/images.jpeg";
 import ViewToyModal from "./ViewToyModal";
 import ManageToy from "./ManageToy";
 

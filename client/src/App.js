@@ -6,8 +6,10 @@ import Navbar from "./components/Navbar";
 import { UserConsumer } from "./ContextApi/UserContext";
 import MainPage from "./pages/MainPage";
 import ToysList from "./pages/ToysList";
-import { ToysContext } from "./ContextApi/ToysContext";
+import Notifications from "./pages/Notifications"
+import { ToysProvider } from "./ContextApi/ToysContext";
 import Contact from "./pages/Conatct";
+import NotificationsProvider from './ContextApi/NotificationsContext'
 
 function App() {
   return (
@@ -15,23 +17,21 @@ function App() {
       {({ user }) => (
         <Router>
           {user ? (
-            <ToysContext.Consumer>
-              {({ toys }) => (
-                <>
-                  <Navbar />
-                  <Switch>
-                    <Route path="/ToySwap" exact>
-                      <MainPage data={toys} />
-                    </Route>
-                    <Route path="/myToys" exact component={ToysList} />
-                    <Route path="/contact" exact component={Contact} />
-                  </Switch>
-                </>
-              )}
-            </ToysContext.Consumer>
+            <ToysProvider>
+              <NotificationsProvider>
+                <Navbar />
+                <Switch>
+                  <Route path="/ToySwap" exact>
+                    <MainPage />
+                  </Route>
+                  <Route path="/myToys" exact component={ToysList} />
+                  <Route path="/contact" exact component={Contact} />
+                  <Route path="/notifications" exact component={Notifications} />
+                </Switch>
+              </NotificationsProvider></ToysProvider>
           ) : (
-            <Route path="/" exact component={Landing} />
-          )}
+              <Route path="/" exact component={Landing} />
+            )}
         </Router>
       )}
     </UserConsumer>

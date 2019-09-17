@@ -12,9 +12,7 @@ import { ToysProvider } from './ContextApi/ToysContext'
 
 ReactDOM.render(
     <UserProvider>
-        <ToysProvider>
             <App />
-        </ToysProvider>
     </UserProvider>, document.getElementById('root')
 );
 

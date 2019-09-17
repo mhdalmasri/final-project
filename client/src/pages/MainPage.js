@@ -1,7 +1,6 @@
 import React from 'react'
 import ToyThumb from '../components/ToyThumb'
 import { ToysContext } from '../ContextApi/ToysContext';
-import { ifError } from 'assert';
 
 
 class MainPage extends React.Component {
@@ -16,6 +15,8 @@ class MainPage extends React.Component {
         this.category = React.createRef()
         this.condition = React.createRef()
         this.status = React.createRef()
+        this.getCheck = React.createRef()
+        this.swapCheck = React.createRef()
         this.filter = this.filter.bind(this)
     }
     componentWillUnmount() {
@@ -36,102 +37,30 @@ class MainPage extends React.Component {
 
     }
 
-    filterByStatus() {
-        if (this.status.current.value === "all") {
-            return this.filter();
-        } else {
-            if (this.status.current.value === "get") {
-                if (this.state.filterToys.length === this.state.toys.length) {
-                    console.log("length of filtertoys = toys")
-                    this.setState({
-                        filterToys: this.state.toys.filter(toy => {
-                            if (toy.status === "get") {
-                                return toy;
-                            }
-                        })
-                    });
-                } else {
-                    console.log("length of filtertoys !!!= toys")
-                    this.setState({
-                        filterToys: this.state.filterToys.filter(toy => {
-                            if (toy.status === "get") {
-                                return toy;
-                            }
-                        })
-                    });
-                }
-            } else if (this.status.current.value === "swap") {
-                if (this.state.filterToys.length === this.state.toys.length) {
-                    console.log("length of filtertoys = toys")
-                    this.setState({
-                        filterToys: this.state.toys.filter(toy => {
-                            if (toy.status === "swap") {
-                                return toy;
-                            }
-                        })
-                    });
-                } else {
-                    console.log("length of filtertoys !!!= toys")
-                    this.setState({
-                        filterToys: this.state.filterToys.filter(toy => {
-                            if (toy.status === "swap") {
-                                return toy;
-                            }
-                        })
-                    });
-                }
-            } else {
-                this.filter()
-            }
-        }
-
+    filterByCheck(e, onFilterStatus) {
+        this.address.current.value = "all"
+        this.age.current.value = "all"
+       this.condition.current.value = "all"
+        this.category.current.value = "all"
+        onFilterStatus(this.getCheck.current.checked, this.swapCheck.current.checked)
     }
     handleOnChange = e => {
         console.log(e.target.value)
         this.setState({ [e.target.name]: e.target.value })
     }
-    search() {
-        const { toys, filterToys } = this.state
-        if (filterToys.length === toys.length) {
-            return this.setState({
-                filterToys: this.state.toys.filter(toy => {
-                    const toyName = toy.toyName.replace(/\s/g, '').toLowerCase()
-                    const toyDesc = toy.description.replace(/\s/g, '').toLowerCase()
-                    const value = this.state.searchInput.replace(/\s/g, '').toLowerCase()
-                    console.log(toyName, toyDesc, value)
-                    if (toyName.includes(value) || toyDesc.includes(value)) {
-                        return toy
-                    }
-                })
-            })
-        } else {
-            return this.setState({
-                filterToys: this.state.filterToys.filter(toy => {
-                    const toyName = toy.toyName.replace(/\s/g, '').toLowerCase()
-                    const toyDesc = toy.description.replace(/\s/g, '').toLowerCase()
-                    const value = this.state.searchInput.replace(/\s/g, '').toLowerCase()
-                    console.log(toyName, toyDesc, value)
-                    if (toyName.includes(value) || toyDesc.includes(value)) {
-                        return toy
-                    }
-                })
-            })
-        }
-
+    search(e, onSearch) {
+        onSearch(this.state.searchInput)
     }
     render() {
-        console.log(this.state.filterToys)
         return (
             <ToysContext.Consumer>
-                {({ toys, filterToys, onFilter }) =>
+                {({ toys, filterToys, onFilter, onFilterStatus, onSearch }) =>
                     <div>
                         <div className="mt-3 d-flex border-bottom pb-2">
                             <div className="d-flex justify-content-between col-9">
                                 <div className="input-group m-1">
                                     <div className="input-group-prepend">
-                                        <label className="input-group-text" htmlFor="location">
-                                            Location
-                    </label>
+                                        <label className="input-group-text" htmlFor="location">Location</label>
                                     </div>
                                     <select
                                         className="custom-select"
@@ -139,9 +68,7 @@ class MainPage extends React.Component {
                                         onChange={() => this.filter(onFilter)}
                                         ref={this.address}
                                     >
-                                        <option value="all" defaultValue>
-                                            All ..
-                    </option>
+                                        <option value="all" defaultValue>All ..</option>
                                         <option value="char">Charlottenburg-Wilmersdorf</option>
                                         <option value="fried">Friedrichshain-Kreuzberg</option>
                                         <option value="licht">Lichtenberg</option>
@@ -159,9 +86,7 @@ class MainPage extends React.Component {
 
                                 <div className="input-group  m-1">
                                     <div className="input-group-prepend">
-                                        <label className="input-group-text" htmlFor="age">
-                                            Age
-                    </label>
+                                        <label className="input-group-text" htmlFor="age">Age</label>
                                     </div>
                                     <select
                                         className="custom-select"
@@ -169,9 +94,7 @@ class MainPage extends React.Component {
                                         ref={this.age}
                                         onChange={() => this.filter(onFilter)}
                                     >
-                                        <option value="all" defaultValue>
-                                            All ..
-                    </option>
+                                        <option value="all" defaultValue>All ..</option>
                                         <option value="0">1 - 3</option>
                                         <option value="1">3 - 6</option>
                                         <option value="2">6 - 9</option>
@@ -185,9 +108,7 @@ class MainPage extends React.Component {
                                         <label
                                             className="input-group-text"
                                             htmlFor="inputGroupSelect01"
-                                        >
-                                            Category
-                    </label>
+                                        >Category</label>
                                     </div>
                                     <select
                                         className="custom-select"
@@ -195,9 +116,7 @@ class MainPage extends React.Component {
                                         id="inputGroupSelect01"
                                         onChange={() => this.filter(onFilter)}
                                     >
-                                        <option value="all" defaultValue>
-                                            All ..
-                    </option>
+                                        <option value="all" defaultValue>All ..</option>
                                         <option value="action">Action & Adventure</option>
                                         <option value="game">Games & Puzzles</option>
                                         <option value="build">Build & Play sets</option>
@@ -210,9 +129,7 @@ class MainPage extends React.Component {
 
                                 <div className="input-group m-1">
                                     <div className="input-group-prepend">
-                                        <label className="input-group-text" htmlFor="condition">
-                                            Condition
-                    </label>
+                                        <label className="input-group-text" htmlFor="condition">Condition</label>
                                     </div>
                                     <select
                                         className="custom-select"
@@ -220,30 +137,25 @@ class MainPage extends React.Component {
                                         id="condition"
                                         onChange={() => this.filter(onFilter)}
                                     >
-                                        <option value="all" defaultValue>
-                                            All ..
-                    </option>
+                                        <option value="all" defaultValue>All ..</option>
                                         <option value="great">Great</option>
                                         <option value="good">Good</option>
                                         <option value="fine">Fine</option>
                                     </select>
                                 </div>
                                 <div className="input-group m-1">
-                                    <div className="input-group-prepend">
-                                        <label className="input-group-text" htmlFor="status">
-                                            Status
-                    </label>
+                                    <div className="col-3">
+                                        <div className="" >
+                                            <label className="checkRadio">Get<input type="checkbox" name="status" value="get" ref={this.getCheck} onClick={(e) => this.filterByCheck(e, onFilterStatus)} />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div className="" >
+                                            <label className="checkRadio">Swap<input type="checkbox" name="status" value="swap" ref={this.swapCheck} onClick={(e) => this.filterByCheck(e, onFilterStatus)} />
+                                                <span className="checkmark"></span>
+                                            </label>
+                                        </div>
                                     </div>
-                                    <select
-                                        className="custom-select"
-                                        ref={this.status}
-                                        id="status"
-                                        onClick={e => this.filterByStatus(e)}
-                                    >
-                                        <option value="all" defaultValue>All ..</option>
-                                        <option value="get">Get</option>
-                                        <option value="swap">Swap</option>
-                                    </select>
                                 </div>
                             </div>
                             <form className="form-inline">
@@ -255,16 +167,10 @@ class MainPage extends React.Component {
                                     aria-label="Search"
                                     onChange={this.handleOnChange}
                                 />
-                                <button className="btn btn-outline-info my-2 my-sm-0" type="button" onClick={() => this.search()} >
-                                    Search
-                </button>
+                                <button className="btn btn-outline-info my-2 my-sm-0" type="button" onClick={(e) => this.search(e, onSearch)} >Search </button>
+                            </form>
 
-
-                    </form>
-              
                         </div>
-
-
                         <div className="d-flex flex-wrap justify-content-around">
                             {
                                 (filterToys.length === 0 && !this.state.isFilterUsed) ?
@@ -290,7 +196,7 @@ class MainPage extends React.Component {
 
                             }
                         </div>
-                 
+
                     </div >
 
                 }

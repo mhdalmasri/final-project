@@ -9,6 +9,7 @@ const cors = require("cors");
 // import Routes
 const authRoute = require("./routes/auth");
 const toysRoute = require("./routes/toys");
+const notificationsRoute = require("./routes/notification")
 
 //connect DB
 dotenv.config();
@@ -24,6 +25,7 @@ app.use(cors());
 // Route Middleware
 app.use("/api/users", authRoute);
 app.use("/api/toys", toysRoute);
+app.use("/api/notifications", notificationsRoute)
 
 //Public folder
 app.use(express.static("./public"));

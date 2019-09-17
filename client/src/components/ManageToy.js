@@ -9,7 +9,7 @@ export default class ManageToy extends Component {
       modal: false,
       deleteModal: false,
       updateModal: false,
-      updatedToy:{}
+      updatedToy: {}
     };
     this.toggle = this.toggle.bind(this)
     this.deleteToggle = this.deleteToggle.bind(this)
@@ -37,7 +37,7 @@ export default class ManageToy extends Component {
     onDeleteToy(toyId)
     this.deleteToggle()
   }
-  updateToy=(e, onUpdateToy)=> {
+  updateToy = (e, onUpdateToy) => {
     e.preventDefault()
     const id = this.props.toy._id
     const url = `http://localhost:5000/api/toys/update/${id}`;
@@ -78,11 +78,11 @@ export default class ManageToy extends Component {
                 >
                   <ModalHeader toggle={this.toggle}>Update Toy</ModalHeader>
                   <ModalBody>
-                    <form onSubmit={e => this.updateToy(e,onUpdateToy)} encType="multipart/form-data">
+                    <form onSubmit={e => this.updateToy(e, onUpdateToy)} encType="multipart/form-data">
                       <div className="form-group">
                         <label htmlFor="exampleFormControlInput1">Name:</label>
                         <input
-                        name="toyName"
+                          name="toyName"
                           type="text"
                           className="form-control"
                           id="exampleFormControlInput1"
@@ -96,7 +96,7 @@ export default class ManageToy extends Component {
                           Description:
                 </label>
                         <textarea
-                        name="description"
+                          name="description"
                           className="form-control"
                           id="exampleFormControlTextarea1"
                           rows="3"
@@ -152,9 +152,9 @@ export default class ManageToy extends Component {
                       <br></br>
                       <div>
                         <label htmlFor="location">Location:</label>
-                        <select 
-                        name="location"
-                        className="custom-select" onChange={this.handelOnChange} defaultValue={this.props.toy.location} >
+                        <select
+                          name="location"
+                          className="custom-select" onChange={this.handelOnChange} defaultValue={this.props.toy.location} >
                           <option value="char">Charlottenburg-Wilmersdorf</option>
                           <option value="fried">Friedrichshain-Kreuzberg</option>
                           <option value="licht">Lichtenberg</option>
@@ -169,9 +169,9 @@ export default class ManageToy extends Component {
                           <option value="trep">Treptow-Köpenick</option>
                         </select>
                         <label htmlFor="category">Category:</label>
-                        <select className="custom-select" 
-                        name="category"
-                        defaultValue={this.props.toy.category} onChange={this.handelOnChange} >
+                        <select className="custom-select"
+                          name="category"
+                          defaultValue={this.props.toy.category} onChange={this.handelOnChange} >
                           <option value="action">Action & Adventure</option>
                           <option value="game">Games & Puzzles</option>
                           <option value="build">Build & Play sets</option>
@@ -182,7 +182,7 @@ export default class ManageToy extends Component {
                         </select>
                         <label htmlFor="age">Age rang:</label>
                         <input
-                        name="age"
+                          name="age"
                           type="range"
                           onChange={this.handelOnChange}
                           className="custom-range"
@@ -194,7 +194,7 @@ export default class ManageToy extends Component {
                         <label htmlFor="img">Photo:</label>
                         <div className="custom-file">
                           <input
-                          onChange={this.handelOnChange}
+                            onChange={this.handelOnChange}
                             type="file"
                             className="custom-file-input"
                             id="customFile"
