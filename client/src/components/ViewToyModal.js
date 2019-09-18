@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import logo from "../img/images.jpeg";
 import { UserConsumer } from "../ContextApi/UserContext";
 
 export default class ViewToyModal extends React.Component {

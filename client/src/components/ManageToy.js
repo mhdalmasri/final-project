@@ -9,11 +9,11 @@ export default class ManageToy extends Component {
       modal: false,
       deleteModal: false,
       updateModal: false,
-      updatedToy:{}
+      updatedToy: {}
     };
-    this.toggle = this.toggle.bind(this)
-    this.deleteToggle = this.deleteToggle.bind(this)
-    this.updateToggle = this.updateToggle.bind(this)
+    this.toggle = this.toggle.bind(this);
+    this.deleteToggle = this.deleteToggle.bind(this);
+    this.updateToggle = this.updateToggle.bind(this);
   }
 
   toggle() {
@@ -25,52 +25,54 @@ export default class ManageToy extends Component {
   deleteToggle() {
     this.setState(prevState => ({
       deleteModal: !prevState.deleteModal
-    }))
+    }));
   }
   updateToggle() {
     this.setState(prevState => ({
       updateModal: !prevState.updateModal
-    }))
+    }));
   }
   deleteToy(e, onDeleteToy) {
-    const toyId = e.target.name
-    onDeleteToy(toyId)
-    this.deleteToggle()
+    const toyId = e.target.name;
+    onDeleteToy(toyId);
+    this.deleteToggle();
   }
-  updateToy=(e, onUpdateToy)=> {
-    e.preventDefault()
-    const id = this.props.toy._id
+  updateToy = (e, onUpdateToy) => {
+    e.preventDefault();
+    const id = this.props.toy._id;
     const url = `http://localhost:5000/api/toys/update/${id}`;
-    const data = this.state.updatedToy
-    onUpdateToy(url, data)
-    console.log(data)
-    this.updateToggle()
-  }
+    const data = this.state.updatedToy;
+    onUpdateToy(url, data);
+    console.log(data);
+    this.updateToggle();
+  };
   handelOnChange = e => {
-    const name = e.target.name
-    let value = e.target.value
+    const name = e.target.name;
+    let value = e.target.value;
     if (e.target.type === "radio") {
-      value = e.target.id
+      value = e.target.id;
     } else {
-      value = e.target.value
+      value = e.target.value;
     }
 
     this.setState(state => {
-      const obj = state.updatedToy
-      obj[name] = value
-      console.log(JSON.stringify(obj))
-      return JSON.stringify(obj)
-    })
-  }
+      const obj = state.updatedToy;
+      obj[name] = value;
+      console.log(JSON.stringify(obj));
+      return JSON.stringify(obj);
+    });
+  };
 
   render() {
     return (
       <ToysContext.Consumer>
-        {({ onDeleteToy, onUpdateToy }) =>
+        {({ onDeleteToy, onUpdateToy }) => (
           <div>
             <div className="d-flex justify-content-around">
               <div>
-                <Button color="outline-info" onClick={this.toggle}>Update</Button>
+                <Button color="outline-info" onClick={this.toggle}>
+                  Update
+                </Button>
                 <Modal
                   isOpen={this.state.modal}
                   toggle={this.toggle}
@@ -78,11 +80,14 @@ export default class ManageToy extends Component {
                 >
                   <ModalHeader toggle={this.toggle}>Update Toy</ModalHeader>
                   <ModalBody>
-                    <form onSubmit={e => this.updateToy(e,onUpdateToy)} encType="multipart/form-data">
+                    <form
+                      onSubmit={e => this.updateToy(e, onUpdateToy)}
+                      encType="multipart/form-data"
+                    >
                       <div className="form-group">
                         <label htmlFor="exampleFormControlInput1">Name:</label>
                         <input
-                        name="toyName"
+                          name="toyName"
                           type="text"
                           className="form-control"
                           id="exampleFormControlInput1"
@@ -94,9 +99,9 @@ export default class ManageToy extends Component {
                       <div className="form-group">
                         <label htmlFor="exampleFormControlTextarea1">
                           Description:
-                </label>
+                        </label>
                         <textarea
-                        name="description"
+                          name="description"
                           className="form-control"
                           id="exampleFormControlTextarea1"
                           rows="3"
@@ -115,11 +120,15 @@ export default class ManageToy extends Component {
                           name="condition"
                           className="custom-control-input"
                           value="great"
-                          defaultChecked={this.props.toy.condition === "great" ? "checked" : false}
+                          defaultChecked={
+                            this.props.toy.condition === "great"
+                              ? "checked"
+                              : false
+                          }
                         />
                         <label className="custom-control-label" htmlFor="great">
                           Great
-                </label>
+                        </label>
                       </div>
                       <div className="custom-control custom-radio custom-control-inline">
                         <input
@@ -129,11 +138,15 @@ export default class ManageToy extends Component {
                           name="condition"
                           className="custom-control-input"
                           value="good"
-                          defaultChecked={this.props.toy.condition === "good" ? "checked" : false}
+                          defaultChecked={
+                            this.props.toy.condition === "good"
+                              ? "checked"
+                              : false
+                          }
                         />
                         <label className="custom-control-label" htmlFor="good">
                           Good
-                </label>
+                        </label>
                       </div>
                       <div className="custom-control custom-radio custom-control-inline">
                         <input
@@ -143,20 +156,31 @@ export default class ManageToy extends Component {
                           name="condition"
                           className="custom-control-input"
                           value="fine"
-                          defaultChecked={this.props.toy.condition === "fine" ? "checked" : false}
+                          defaultChecked={
+                            this.props.toy.condition === "fine"
+                              ? "checked"
+                              : false
+                          }
                         />
                         <label className="custom-control-label" htmlFor="fine">
                           Fine
-                </label>
+                        </label>
                       </div>
                       <br></br>
                       <div>
                         <label htmlFor="location">Location:</label>
-                        <select 
-                        name="location"
-                        className="custom-select" onChange={this.handelOnChange} defaultValue={this.props.toy.location} >
-                          <option value="char">Charlottenburg-Wilmersdorf</option>
-                          <option value="fried">Friedrichshain-Kreuzberg</option>
+                        <select
+                          name="location"
+                          className="custom-select"
+                          onChange={this.handelOnChange}
+                          defaultValue={this.props.toy.location}
+                        >
+                          <option value="char">
+                            Charlottenburg-Wilmersdorf
+                          </option>
+                          <option value="fried">
+                            Friedrichshain-Kreuzberg
+                          </option>
                           <option value="licht">Lichtenberg</option>
                           <option value="mar">Marzahn-Hellersdorf</option>
                           <option value="mit">Mitte</option>
@@ -169,9 +193,12 @@ export default class ManageToy extends Component {
                           <option value="trep">Treptow-Köpenick</option>
                         </select>
                         <label htmlFor="category">Category:</label>
-                        <select className="custom-select" 
-                        name="category"
-                        defaultValue={this.props.toy.category} onChange={this.handelOnChange} >
+                        <select
+                          className="custom-select"
+                          name="category"
+                          defaultValue={this.props.toy.category}
+                          onChange={this.handelOnChange}
+                        >
                           <option value="action">Action & Adventure</option>
                           <option value="game">Games & Puzzles</option>
                           <option value="build">Build & Play sets</option>
@@ -182,7 +209,7 @@ export default class ManageToy extends Component {
                         </select>
                         <label htmlFor="age">Age rang:</label>
                         <input
-                        name="age"
+                          name="age"
                           type="range"
                           onChange={this.handelOnChange}
                           className="custom-range"
@@ -194,15 +221,18 @@ export default class ManageToy extends Component {
                         <label htmlFor="img">Photo:</label>
                         <div className="custom-file">
                           <input
-                          onChange={this.handelOnChange}
+                            onChange={this.handelOnChange}
                             type="file"
                             className="custom-file-input"
                             id="customFile"
                             name="url"
                           />
-                          <label className="custom-file-label" htmlFor="customFile">
+                          <label
+                            className="custom-file-label"
+                            htmlFor="customFile"
+                          >
                             Choose file
-                      </label>
+                          </label>
                         </div>
                         <label htmlFor="status">Status:</label>
                         <br></br>
@@ -214,11 +244,18 @@ export default class ManageToy extends Component {
                             name="status"
                             className="custom-control-input"
                             value="swap"
-                            defaultChecked={this.props.toy.status === "swap" ? "checked" : false}
+                            defaultChecked={
+                              this.props.toy.status === "swap"
+                                ? "checked"
+                                : false
+                            }
                           />
-                          <label className="custom-control-label" htmlFor="swap">
+                          <label
+                            className="custom-control-label"
+                            htmlFor="swap"
+                          >
                             To Swap
-                  </label>
+                          </label>
                         </div>
                         <div className="custom-control custom-radio custom-control-inline">
                           <input
@@ -228,15 +265,21 @@ export default class ManageToy extends Component {
                             name="status"
                             className="custom-control-input"
                             value="get"
-                            defaultChecked={this.props.toy.status === "get" ? "checked" : false}
+                            defaultChecked={
+                              this.props.toy.status === "get"
+                                ? "checked"
+                                : false
+                            }
                           />
                           <label className="custom-control-label" htmlFor="get">
                             To Get
-                  </label>
+                          </label>
                         </div>
                       </div>
                       <div>
-                        <button className="btn btn-primary" type="submit" > update </button>
+                        <button className="btn btn-primary" type="submit">
+                          update
+                        </button>
                       </div>
                     </form>
                   </ModalBody>
@@ -244,21 +287,38 @@ export default class ManageToy extends Component {
               </div>
 
               <div>
-                <Button color="outline-danger" onClick={this.deleteToggle}>Delete</Button>
-                <Modal isOpen={this.state.deleteModal} toggle={this.deleteToggle} className={this.props.className}>
-                  <ModalHeader toggle={this.deleteToggle}>Delete Confirmation!</ModalHeader>
-                  <ModalBody> Do you want to delete {this.props.toy.toyName}? </ModalBody>
+                <Button color="outline-danger" onClick={this.deleteToggle}>
+                  Delete
+                </Button>
+                <Modal
+                  isOpen={this.state.deleteModal}
+                  toggle={this.deleteToggle}
+                  className={this.props.className}
+                >
+                  <ModalHeader toggle={this.deleteToggle}>
+                    Delete Confirmation!
+                  </ModalHeader>
+                  <ModalBody>
+                    Do you want to delete {this.props.toy.toyName}?
+                  </ModalBody>
                   <ModalFooter>
-                    <Button name={this.props.toy._id} color="outline-danger" onClick={e => this.deleteToy(e, onDeleteToy)} >Yes</Button>{' '}
-                    <Button color="outline-primary" onClick={this.deleteToggle}>No</Button>
+                    <Button
+                      name={this.props.toy._id}
+                      color="outline-danger"
+                      onClick={e => this.deleteToy(e, onDeleteToy)}
+                    >
+                      Yes
+                    </Button>{" "}
+                    <Button color="outline-primary" onClick={this.deleteToggle}>
+                      No
+                    </Button>
                   </ModalFooter>
                 </Modal>
               </div>
             </div>
           </div>
-
-        }
+        )}
       </ToysContext.Consumer>
-    )
+    );
   }
 }
