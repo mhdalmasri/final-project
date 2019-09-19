@@ -38,8 +38,10 @@ export default class ManageToy extends Component {
     this.deleteToggle();
   }
   updateToy = (e, onUpdateToy) => {
+
     e.preventDefault();
     const id = this.props.toy._id;
+
     const url = `http://localhost:5000/api/toys/update/${id}`;
     const data = this.state.updatedToy;
     onUpdateToy(url, data);
@@ -80,10 +82,12 @@ export default class ManageToy extends Component {
                 >
                   <ModalHeader toggle={this.toggle}>Update Toy</ModalHeader>
                   <ModalBody>
+
                     <form
                       onSubmit={e => this.updateToy(e, onUpdateToy)}
                       encType="multipart/form-data"
                     >
+
                       <div className="form-group">
                         <label htmlFor="exampleFormControlInput1">Name:</label>
                         <input
@@ -171,6 +175,7 @@ export default class ManageToy extends Component {
                         <label htmlFor="location">Location:</label>
                         <select
                           name="location"
+
                           className="custom-select"
                           onChange={this.handelOnChange}
                           defaultValue={this.props.toy.location}
@@ -181,6 +186,7 @@ export default class ManageToy extends Component {
                           <option value="fried">
                             Friedrichshain-Kreuzberg
                           </option>
+
                           <option value="licht">Lichtenberg</option>
                           <option value="mar">Marzahn-Hellersdorf</option>
                           <option value="mit">Mitte</option>
@@ -193,12 +199,14 @@ export default class ManageToy extends Component {
                           <option value="trep">Treptow-Köpenick</option>
                         </select>
                         <label htmlFor="category">Category:</label>
+
                         <select
                           className="custom-select"
                           name="category"
                           defaultValue={this.props.toy.category}
                           onChange={this.handelOnChange}
                         >
+
                           <option value="action">Action & Adventure</option>
                           <option value="game">Games & Puzzles</option>
                           <option value="build">Build & Play sets</option>

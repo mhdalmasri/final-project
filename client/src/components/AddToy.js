@@ -36,8 +36,7 @@ export default class AddToy extends Component {
 
   render() {
     const userId = cookies.get("myId");
-    const url = `http://localhost:5000/api/toys/new/${userId}`;
-    console.log(this.state.newToy);
+    const url = `http://localhost:5000/api/toys/new/${userId}`
     return (
           <div>
             <Button color="outline-info"onClick={this.toggle}>Add New Toy</Button>

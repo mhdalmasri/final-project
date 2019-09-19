@@ -1,14 +1,13 @@
-const fs = require("fs");
-const router = require("express").Router();
-const verify = require("./verifyToken");
-const Toy = require("../model/Toy");
-const { toyValidation } = require("../validation");
-const multer = require("multer");
-const path = require("path");
-const Cookies = require("universal-cookie");
-const cookies = new Cookies();
-const ObjectId = require("mongodb").ObjectID;
 
+const router = require("express").Router()
+const verify = require("./verifyToken")
+const Toy = require("../model/Toy")
+const { toyValidation } = require("../validation")
+const multer = require("multer")
+const path = require("path")
+const Cookies = require("universal-cookie")
+const cookies = new Cookies()
+const ObjectId = require("mongodb").ObjectID
 
 //Set Storage Engine
 const storage = multer.diskStorage({
