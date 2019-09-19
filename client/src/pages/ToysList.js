@@ -7,12 +7,15 @@ import logo from "../img/images.jpeg"
 const divStyle = {
   width: "15rem"
 };
+const imgStyle = {
+height: "15rem"
+};
 const ToysList = props => (
   <ToysContext.Consumer>
     {({ currentUserToys }) => (
       <div className="d-flex flex-wrap justify-content-around">
         <div className="card m-2" style={divStyle}>
-          <img src={logo} className="card-img-top" alt="img" />
+          <img src={logo} className="card-img-top" alt="img" style={imgStyle} />
           <div className="card-body">
             <AddToy />
           </div>

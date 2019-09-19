@@ -65,7 +65,7 @@ export default class ManageToy extends Component {
           <div>
             <div className="d-flex justify-content-around">
               <div>
-                <Button color="outline-info" onClick={this.toggle}>
+                <Button color="outline-info btn-sm" onClick={this.toggle}>
                   Update
                 </Button>
                 <Modal
@@ -88,6 +88,7 @@ export default class ManageToy extends Component {
                           id="exampleFormControlInput1"
                           defaultValue={this.props.toy.toyName}
                           onChange={this.handelOnChange}
+                          autoFocus
                         />
                       </div>
                       ​
@@ -272,7 +273,7 @@ export default class ManageToy extends Component {
                         </div>
                       </div>
                       <div>
-                        <button className="btn btn-primary" type="submit">
+                        <button className="btn btn-primary btn-sm" type="submit">
                           {" "}
                           update{" "}
                         </button>
@@ -283,7 +284,7 @@ export default class ManageToy extends Component {
               </div>
               ​
               <div>
-                <Button color="outline-danger" onClick={this.deleteToggle}>
+                <Button color="outline-danger btn-sm" onClick={this.deleteToggle}>
                   Delete
                 </Button>
                 <Modal

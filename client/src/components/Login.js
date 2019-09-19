@@ -55,6 +55,7 @@ export default class Login extends Component {
                     onChange={this.changHandler}
                     value={email}
                     required
+                    autoFocus
                   />
                 </div>
                 <div className="form-group">

@@ -27,6 +27,7 @@ export default class Contact extends Component {
                           placeholder="Please enter your firstname *"
                           required="required"
                           data-error="Firstname is required."
+                          autoFocus
                         />
                         <div className="help-block with-errors"></div>
                       </div>

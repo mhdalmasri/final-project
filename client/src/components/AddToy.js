@@ -39,7 +39,7 @@ export default class AddToy extends Component {
     const url = `http://localhost:5000/api/toys/new/${userId}`
     return (
           <div>
-            <Button color="outline-info"onClick={this.toggle}>Add New Toy</Button>
+            <Button color="outline-info btn-sm"onClick={this.toggle}>Add New Toy</Button>
             <Modal
               isOpen={this.state.modal}
               toggle={this.toggle}
@@ -57,6 +57,7 @@ export default class AddToy extends Component {
                       id="exampleFormControlInput1"
                       placeholder="enter name"
                       name="toyName"
+                      autoFocus
                     />
                   </div>
                   <div className="form-group">
@@ -203,7 +204,7 @@ export default class AddToy extends Component {
                       </label>
                     </div>
                   </div>
-                  <button className="btn btn-outline-primary" type="submit">
+                  <button className="btn btn-outline-primary btn-sm" type="submit">
                     Add
                   </button>
                 </form>
