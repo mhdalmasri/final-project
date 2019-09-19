@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { ToysContext } from "../ContextApi/ToysContext";
-
 export default class ManageToy extends Component {
   constructor(props) {
     super(props);
@@ -15,13 +14,11 @@ export default class ManageToy extends Component {
     this.deleteToggle = this.deleteToggle.bind(this);
     this.updateToggle = this.updateToggle.bind(this);
   }
-
   toggle() {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
   }
-
   deleteToggle() {
     this.setState(prevState => ({
       deleteModal: !prevState.deleteModal
@@ -38,10 +35,8 @@ export default class ManageToy extends Component {
     this.deleteToggle();
   }
   updateToy = (e, onUpdateToy) => {
-
     e.preventDefault();
     const id = this.props.toy._id;
-
     const url = `http://localhost:5000/api/toys/update/${id}`;
     const data = this.state.updatedToy;
     onUpdateToy(url, data);
@@ -56,7 +51,6 @@ export default class ManageToy extends Component {
     } else {
       value = e.target.value;
     }
-
     this.setState(state => {
       const obj = state.updatedToy;
       obj[name] = value;
@@ -64,7 +58,6 @@ export default class ManageToy extends Component {
       return JSON.stringify(obj);
     });
   };
-
   render() {
     return (
       <ToysContext.Consumer>
@@ -82,12 +75,10 @@ export default class ManageToy extends Component {
                 >
                   <ModalHeader toggle={this.toggle}>Update Toy</ModalHeader>
                   <ModalBody>
-
                     <form
                       onSubmit={e => this.updateToy(e, onUpdateToy)}
                       encType="multipart/form-data"
                     >
-
                       <div className="form-group">
                         <label htmlFor="exampleFormControlInput1">Name:</label>
                         <input
@@ -99,7 +90,7 @@ export default class ManageToy extends Component {
                           onChange={this.handelOnChange}
                         />
                       </div>
-
+                      ​
                       <div className="form-group">
                         <label htmlFor="exampleFormControlTextarea1">
                           Description:
@@ -175,7 +166,6 @@ export default class ManageToy extends Component {
                         <label htmlFor="location">Location:</label>
                         <select
                           name="location"
-
                           className="custom-select"
                           onChange={this.handelOnChange}
                           defaultValue={this.props.toy.location}
@@ -186,7 +176,6 @@ export default class ManageToy extends Component {
                           <option value="fried">
                             Friedrichshain-Kreuzberg
                           </option>
-
                           <option value="licht">Lichtenberg</option>
                           <option value="mar">Marzahn-Hellersdorf</option>
                           <option value="mit">Mitte</option>
@@ -199,14 +188,12 @@ export default class ManageToy extends Component {
                           <option value="trep">Treptow-Köpenick</option>
                         </select>
                         <label htmlFor="category">Category:</label>
-
                         <select
                           className="custom-select"
                           name="category"
                           defaultValue={this.props.toy.category}
                           onChange={this.handelOnChange}
                         >
-
                           <option value="action">Action & Adventure</option>
                           <option value="game">Games & Puzzles</option>
                           <option value="build">Build & Play sets</option>
@@ -286,14 +273,15 @@ export default class ManageToy extends Component {
                       </div>
                       <div>
                         <button className="btn btn-primary" type="submit">
-                          update
+                          {" "}
+                          update{" "}
                         </button>
                       </div>
                     </form>
                   </ModalBody>
                 </Modal>
               </div>
-
+              ​
               <div>
                 <Button color="outline-danger" onClick={this.deleteToggle}>
                   Delete
@@ -307,7 +295,8 @@ export default class ManageToy extends Component {
                     Delete Confirmation!
                   </ModalHeader>
                   <ModalBody>
-                    Do you want to delete {this.props.toy.toyName}?
+                    {" "}
+                    Do you want to delete {this.props.toy.toyName}?{" "}
                   </ModalBody>
                   <ModalFooter>
                     <Button
