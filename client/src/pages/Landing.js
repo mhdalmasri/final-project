@@ -3,21 +3,15 @@ import Register from "../components/Register";
 import Login from "../components/Login";
 import logo from "../img/images.jpeg";
 
-
-
 const Landing = props => (
   <div className="d-flex align-items-center flex-column justify-content-center ">
     <div className="d-flex ">
       <div>
         <img src={logo} alt="logo" />
       </div>
-      <div className="d-flex flex-column align-items-center" >
+      <div className="d-flex flex-column align-items-center">
         <nav>
-          <div
-            className="nav nav-tabs"
-            id="nav-tab"
-            role="tablist"
-          >
+          <div className="nav nav-tabs" id="nav-tab" role="tablist">
             <a
               className="nav-item nav-link active"
               id="nav-home-tab"
@@ -63,6 +57,6 @@ const Landing = props => (
       </div>
     </div>
   </div>
-)
+);
 
-export default Landing
+export default Landing;
