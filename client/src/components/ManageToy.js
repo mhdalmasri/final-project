@@ -59,6 +59,7 @@ export default class ManageToy extends Component {
     });
   };
   render() {
+    let url = `http://localhost:5000/api/toys/update/${this.props.toy._id}`;
     return (
       <ToysContext.Consumer>
         {({ onDeleteToy, onUpdateToy }) => (
@@ -76,7 +77,8 @@ export default class ManageToy extends Component {
                   <ModalHeader toggle={this.toggle}>Update Toy</ModalHeader>
                   <ModalBody>
                     <form
-                      onSubmit={e => this.updateToy(e, onUpdateToy)}
+                      method="POST"
+                      action={url}
                       encType="multipart/form-data"
                     >
                       <div className="form-group">
@@ -273,7 +275,10 @@ export default class ManageToy extends Component {
                         </div>
                       </div>
                       <div>
-                        <button className="btn btn-primary btn-sm" type="submit">
+                        <button
+                          className="btn btn-primary btn-sm"
+                          type="submit"
+                        >
                           {" "}
                           update{" "}
                         </button>
@@ -284,7 +289,10 @@ export default class ManageToy extends Component {
               </div>
               ​
               <div>
-                <Button color="outline-danger btn-sm" onClick={this.deleteToggle}>
+                <Button
+                  color="outline-danger btn-sm"
+                  onClick={this.deleteToggle}
+                >
                   Delete
                 </Button>
                 <Modal
