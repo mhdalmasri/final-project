@@ -74,7 +74,9 @@ export default class ManageToy extends Component {
                   toggle={this.toggle}
                   className={this.props.className}
                 >
-                  <ModalHeader toggle={this.toggle}>Update Toy</ModalHeader>
+                  <ModalHeader className="text-capitalize" toggle={this.toggle}>
+                    Update {this.props.toy.toyName}
+                  </ModalHeader>
                   <ModalBody>
                     <form
                       method="POST"
@@ -93,7 +95,6 @@ export default class ManageToy extends Component {
                           autoFocus
                         />
                       </div>
-                      ​
                       <div className="form-group">
                         <label htmlFor="exampleFormControlTextarea1">
                           Description:
@@ -108,64 +109,74 @@ export default class ManageToy extends Component {
                           onChange={this.handelOnChange}
                         ></textarea>
                       </div>
-                      <label htmlFor="condition">Condition:</label>
-                      <br></br>
-                      <div className="custom-control custom-radio custom-control-inline">
-                        <input
-                          type="radio"
-                          onChange={this.handelOnChange}
-                          id="great"
-                          name="condition"
-                          className="custom-control-input"
-                          value="great"
-                          defaultChecked={
-                            this.props.toy.condition === "great"
-                              ? "checked"
-                              : false
-                          }
-                        />
-                        <label className="custom-control-label" htmlFor="great">
-                          Great
-                        </label>
+                      <div className="form-group">
+                        <label htmlFor="condition">Condition:</label>
+                        <br></br>
+                        <div className="custom-control custom-radio custom-control-inline">
+                          <input
+                            type="radio"
+                            onChange={this.handelOnChange}
+                            id="Great"
+                            name="condition"
+                            className="custom-control-input"
+                            value="Great"
+                            defaultChecked={
+                              this.props.toy.condition === "Great"
+                                ? "checked"
+                                : false
+                            }
+                          />
+                          <label
+                            className="custom-control-label"
+                            htmlFor="Great"
+                          >
+                            Great
+                          </label>
+                        </div>
+                        <div className="custom-control custom-radio custom-control-inline">
+                          <input
+                            type="radio"
+                            onChange={this.handelOnChange}
+                            id="Good"
+                            name="condition"
+                            className="custom-control-input"
+                            value="Good"
+                            defaultChecked={
+                              this.props.toy.condition === "Good"
+                                ? "checked"
+                                : false
+                            }
+                          />
+                          <label
+                            className="custom-control-label"
+                            htmlFor="Good"
+                          >
+                            Good
+                          </label>
+                        </div>
+                        <div className="custom-control custom-radio custom-control-inline">
+                          <input
+                            type="radio"
+                            onChange={this.handelOnChange}
+                            id="Fine"
+                            name="condition"
+                            className="custom-control-input"
+                            value="Fine"
+                            defaultChecked={
+                              this.props.toy.condition === "Fine"
+                                ? "checked"
+                                : false
+                            }
+                          />
+                          <label
+                            className="custom-control-label"
+                            htmlFor="Fine"
+                          >
+                            Fine
+                          </label>
+                        </div>
                       </div>
-                      <div className="custom-control custom-radio custom-control-inline">
-                        <input
-                          type="radio"
-                          onChange={this.handelOnChange}
-                          id="good"
-                          name="condition"
-                          className="custom-control-input"
-                          value="good"
-                          defaultChecked={
-                            this.props.toy.condition === "good"
-                              ? "checked"
-                              : false
-                          }
-                        />
-                        <label className="custom-control-label" htmlFor="good">
-                          Good
-                        </label>
-                      </div>
-                      <div className="custom-control custom-radio custom-control-inline">
-                        <input
-                          type="radio"
-                          onChange={this.handelOnChange}
-                          id="fine"
-                          name="condition"
-                          className="custom-control-input"
-                          value="fine"
-                          defaultChecked={
-                            this.props.toy.condition === "fine"
-                              ? "checked"
-                              : false
-                          }
-                        />
-                        <label className="custom-control-label" htmlFor="fine">
-                          Fine
-                        </label>
-                      </div>
-                      <br></br>
-                      <div>
+                      <div className="form-group">
                         <label htmlFor="location">Location:</label>
                         <select
                           name="location"
@@ -173,23 +184,33 @@ export default class ManageToy extends Component {
                           onChange={this.handelOnChange}
                           defaultValue={this.props.toy.location}
                         >
-                          <option value="char">
+                          <option value="Charlottenburg-Wilmersdorf">
                             Charlottenburg-Wilmersdorf
                           </option>
-                          <option value="fried">
+                          <option value="Friedrichshain-Kreuzberg">
                             Friedrichshain-Kreuzberg
                           </option>
-                          <option value="licht">Lichtenberg</option>
-                          <option value="mar">Marzahn-Hellersdorf</option>
-                          <option value="mit">Mitte</option>
-                          <option value="neu">Neukölln</option>
-                          <option value="pan">Pankow</option>
-                          <option value="rein">Reinickendorf</option>
-                          <option value="spa">Spandau</option>
-                          <option value="steg">Steglitz-Zehlendorf</option>
-                          <option value="tem">Tempelhof-Schöneberg</option>
-                          <option value="trep">Treptow-Köpenick</option>
+                          <option value="Lichtenberg">Lichtenberg</option>
+                          <option value="Marzahn-Hellersdorf">
+                            Marzahn-Hellersdorf
+                          </option>
+                          <option value="Mitte">Mitte</option>
+                          <option value="Neukölln">Neukölln</option>
+                          <option value="Pankow">Pankow</option>
+                          <option value="Reinickendorf">Reinickendorf</option>
+                          <option value="Spandau">Spandau</option>
+                          <option value="Steglitz-Zehlendorf">
+                            Steglitz-Zehlendorf
+                          </option>
+                          <option value="Tempelhof-Schöneberg">
+                            Tempelhof-Schöneberg
+                          </option>
+                          <option value="Treptow-Köpenick">
+                            Treptow-Köpenick
+                          </option>
                         </select>
+                      </div>
+                      <div className="form-group">
                         <label htmlFor="category">Category:</label>
                         <select
                           className="custom-select"
@@ -197,25 +218,41 @@ export default class ManageToy extends Component {
                           defaultValue={this.props.toy.category}
                           onChange={this.handelOnChange}
                         >
-                          <option value="action">Action & Adventure</option>
-                          <option value="game">Games & Puzzles</option>
-                          <option value="build">Build & Play sets</option>
-                          <option value="doll">Dolls & Accessories</option>
-                          <option value="outdoor">Outdoor</option>
-                          <option value="multimedia">Multimedia</option>
-                          <option value="animals">Stuffed Animals</option>
+                          <option value="Action & Adventure">
+                            Action & Adventure
+                          </option>
+                          <option value="Games & Puzzles">
+                            Games & Puzzles
+                          </option>
+                          <option value="Build & Play sets">
+                            Build & Play sets
+                          </option>
+                          <option value="Dolls & Accessories">
+                            Dolls & Accessories
+                          </option>
+                          <option value="Outdoor">Outdoor</option>
+                          <option value="Multimedia">Multimedia</option>
+                          <option value="Stuffed Animals">
+                            Stuffed Animals
+                          </option>
                         </select>
+                      </div>
+                      <div className="form-group">
                         <label htmlFor="age">Age rang:</label>
-                        <input
+                        <select
+                          className="custom-select"
                           name="age"
-                          type="range"
                           onChange={this.handelOnChange}
-                          className="custom-range"
-                          min="0"
-                          max="4"
-                          id="customRange2"
-                          defaultValue={this.props.toy.age}
-                        />
+                        >
+                          <option defaultValue>Select Age range</option>
+                          <option value="0 - 3">0 - 3</option>
+                          <option value="3 - 6">3 - 6</option>
+                          <option value="6 - 9">6 - 9</option>
+                          <option value="9 - 12">9 - 12</option>
+                          <option value="12 - 15">12 - 15</option>
+                        </select>
+                      </div>
+                      <div className="form-group">
                         <label htmlFor="img">Photo:</label>
                         <div className="custom-file">
                           <input
@@ -232,6 +269,8 @@ export default class ManageToy extends Component {
                             Choose file
                           </label>
                         </div>
+                      </div>
+                      <div className="form-group">
                         <label htmlFor="status">Status:</label>
                         <br></br>
                         <div className="custom-control custom-radio custom-control-inline">
@@ -274,20 +313,18 @@ export default class ManageToy extends Component {
                           </label>
                         </div>
                       </div>
-                      <div>
+                      <div className="d-flex justify-content-around">
                         <button
-                          className="btn btn-primary btn-sm"
+                          className="btn btn-outline-primary btn-sm"
                           type="submit"
                         >
-                          {" "}
-                          update{" "}
+                          update
                         </button>
                       </div>
                     </form>
                   </ModalBody>
                 </Modal>
               </div>
-              ​
               <div>
                 <Button
                   color="outline-danger btn-sm"
@@ -304,7 +341,6 @@ export default class ManageToy extends Component {
                     Delete Confirmation!
                   </ModalHeader>
                   <ModalBody>
-                    {" "}
                     Do you want to delete {this.props.toy.toyName}?{" "}
                   </ModalBody>
                   <ModalFooter>

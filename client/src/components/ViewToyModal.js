@@ -37,7 +37,7 @@ export default class ViewToyModal extends React.Component {
               toggle={this.toggle}
               className={this.props.toy.className}
             >
-              <ModalHeader toggle={this.toggle}>
+              <ModalHeader className="text-capitalize" toggle={this.toggle}>
                 {this.props.toy.toyName}
               </ModalHeader>
               <ModalBody>
@@ -68,7 +68,7 @@ export default class ViewToyModal extends React.Component {
                     </tr>
                     <tr>
                       <th scope="row">Added By:</th>
-                      <td>
+                      <td className="text-capitalize">
                         {users.map(user => {
                           if (user._id === this.props.toy.userID) {
                             return user.name;

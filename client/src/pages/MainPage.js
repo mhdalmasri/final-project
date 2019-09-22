@@ -96,11 +96,11 @@ class MainPage extends React.Component {
                   <option value="all" defaultValue>
                     Ages ..
                   </option>
-                  <option value="0">1 - 3</option>
-                  <option value="1">3 - 6</option>
-                  <option value="2">6 - 9</option>
-                  <option value="3">9 - 13</option>
-                  <option value="4">13 - 17</option>
+                  <option value="0 - 3">0 - 3</option>
+                  <option value="3 - 6">3 - 6</option>
+                  <option value="6 - 9">6 - 9</option>
+                  <option value="9 - 12">9 - 12</option>
+                  <option value="12 - 15">12 - 15</option>
                 </select>
 
                 <select

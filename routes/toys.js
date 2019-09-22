@@ -105,7 +105,6 @@ router.delete("/del/:id", verify, (req, res) => {
   });
 });
 
-
 //update toys
 router.post("/update/:id", upload, async (req, res, next) => {
   const id = req.params.id;
@@ -134,7 +133,7 @@ router.post("/update/:id", upload, async (req, res, next) => {
       if (toy.condition !== req.body.condition) {
         toy.condition = req.body.condition;
       }
-      if (toy.url !== "./" + req.file.path.substring(14)) {
+      if (req.file !== undefined) {
         fs.unlink("client/public/" + toy.url, err => {
           if (err) throw err;
         });

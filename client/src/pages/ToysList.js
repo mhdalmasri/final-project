@@ -2,13 +2,13 @@ import React from "react";
 import { ToysContext } from "../ContextApi/ToysContext";
 import ToyThumb from "../components/ToyThumb";
 import AddToy from "../components/AddToy";
-import logo from "../img/images.jpeg"
+import logo from "../img/images.jpeg";
 
 const divStyle = {
   width: "15rem"
 };
 const imgStyle = {
-height: "15rem"
+  height: "15rem"
 };
 const ToysList = props => (
   <ToysContext.Consumer>
@@ -17,6 +17,9 @@ const ToysList = props => (
         <div className="card m-2" style={divStyle}>
           <img src={logo} className="card-img-top" alt="img" style={imgStyle} />
           <div className="card-body">
+            <h5 className="card-title text-capitalize font-weight-bold">
+              Add New Toy
+            </h5>
             <AddToy />
           </div>
         </div>
