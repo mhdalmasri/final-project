@@ -60,6 +60,7 @@ export default class AddToy extends Component {
                   placeholder="enter name"
                   name="toyName"
                   autoFocus
+                  required
                 />
               </div>
               <div className="form-group">
@@ -73,6 +74,7 @@ export default class AddToy extends Component {
                   rows="3"
                   placeholder="describe your toy"
                   name="description"
+                  required
                 ></textarea>
               </div>
               <div className="form-group">
@@ -86,6 +88,7 @@ export default class AddToy extends Component {
                     name="condition"
                     className="custom-control-input"
                     value="Great"
+                    
                   />
                   <label className="custom-control-label" htmlFor="great">
                     Great
@@ -99,6 +102,7 @@ export default class AddToy extends Component {
                     name="condition"
                     className="custom-control-input"
                     value="Good"
+                    
                   />
                   <label className="custom-control-label" htmlFor="good">
                     Good
@@ -112,6 +116,7 @@ export default class AddToy extends Component {
                     name="condition"
                     className="custom-control-input"
                     value="Fine"
+                    
                   />
                   <label className="custom-control-label" htmlFor="fine">
                     Fine
@@ -184,7 +189,6 @@ export default class AddToy extends Component {
                 </select>
               </div>
               <div className="form-group">
-                {" "}
                 <label htmlFor="img">Photo:</label>
                 <div className="custom-file">
                   <input

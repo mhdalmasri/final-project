@@ -94,7 +94,7 @@ class MainPage extends React.Component {
                   onChange={() => this.filter(onFilter)}
                 >
                   <option value="all" defaultValue>
-                    Ages ..
+                    Age ranges ..
                   </option>
                   <option value="0 - 3">0 - 3</option>
                   <option value="3 - 6">3 - 6</option>
@@ -135,10 +135,10 @@ class MainPage extends React.Component {
                   <option value="fine">Fine</option>
                 </select>
 
-                <div className="input-group m-1">
+                <div className="input-group m-1 ">
                   <div className="d-flex">
-                    <label className="checkRadio">
-                      Get
+                    <label className="checkRadio m-1">
+                      Get 
                       <input
                         type="checkbox"
                         name="status"
@@ -148,7 +148,7 @@ class MainPage extends React.Component {
                       />
                       <span className="checkmark"></span>
                     </label>
-                    <label className="checkRadio">
+                    <label className="checkRadio m-1">
                       Swap
                       <input
                         type="checkbox"

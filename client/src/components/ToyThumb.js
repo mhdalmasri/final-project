@@ -17,7 +17,7 @@ const ToyThumb = React.memo(props => (
       style={imgStyle}
     />
     <div className="card-body">
-      <h5 className="card-title text-capitalize font-weight-bold text-center">
+      <h5 className="card-title text-capitalize text-center">
         {props.toy.toyName}
       </h5>
       <div className="d-flex justify-content-around">

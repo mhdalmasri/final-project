@@ -18,7 +18,7 @@ const ToysList = props => (
         <div className="card m-2" style={divStyle}>
           <img src={logo} className="card-img-top" alt="img" style={imgStyle} />
           <div className="card-body">
-            <h5 className="card-title text-capitalize font-weight-bold text-center">
+            <h5 className="card-title text-capitalize text-center">
               New Toy
             </h5>
             <div className="d-flex justify-content-around">

@@ -10,6 +10,8 @@ import Notifications from "./pages/Notifications"
 import { ToysProvider } from "./ContextApi/ToysContext";
 import Contact from "./pages/Conatct";
 import NotificationsProvider from './ContextApi/NotificationsContext'
+import './index.css';
+
 
 function App() {
   return (
