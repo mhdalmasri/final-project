@@ -168,7 +168,7 @@ class MainPage extends React.Component {
                     className="form-control mr-sm-2"
                     type="search"
                     name="searchInput"
-                    placeholder="Search Toy . ."
+                    placeholder="Specific Toy ? !"
                     aria-label="Search"
                     onChange={this.handleOnChange}
                   />

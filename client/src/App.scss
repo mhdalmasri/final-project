@@ -1,10 +1,11 @@
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 @import '../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss' ;
 @import '../node_modules/@fortawesome/fontawesome-free/scss/brands.scss';
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=swap');
-
+// @import url('https://fonts.googleapis.com/css?family=Aladin&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Emilys+Candy&display=swap');
 body{
-  font-family: 'Amatic SC', cursive;
+  // font-family: 'Aladin', cursive;
+  font-family: 'Emilys Candy', cursive;
 }
 .LandingPage{
     height: 100vh;
