@@ -3,10 +3,10 @@ import ViewToyModal from "./ViewToyModal";
 import ManageToy from "./ManageToy";
 
 const divStyle = {
-  width: "15rem"
+  width: "13rem"
 };
 const imgStyle = {
-  height: "15rem"
+ height: "10rem"
 };
 const ToyThumb = React.memo(props => (
   <div className="card m-2" style={divStyle}>
@@ -17,15 +17,16 @@ const ToyThumb = React.memo(props => (
       style={imgStyle}
     />
     <div className="card-body">
-      <h5 className="card-title text-capitalize font-weight-bold">
+      <h5 className="card-title text-capitalize font-weight-bold text-center">
         {props.toy.toyName}
       </h5>
+      <div className="d-flex justify-content-around">
       {props.route === "MainPage" ? (
         <ViewToyModal toy={props.toy} />
       ) : (
         <ManageToy toy={props.toy} />
       )}
-    </div>
+    </div></div>
   </div>
 ));
 

@@ -326,12 +326,20 @@ export default class ManageToy extends Component {
                 </Modal>
               </div>
               <div>
-                <Button
+                {/* <button
+                  type="button"
+                  className="close text-danger"
+                  onClick={this.deleteToggle}
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button> */}
+              <Button
                   color="outline-danger btn-sm"
                   onClick={this.deleteToggle}
                 >
-                  Delete
-                </Button>
+                 X
+                </Button> 
                 <Modal
                   isOpen={this.state.deleteModal}
                   toggle={this.deleteToggle}
@@ -341,7 +349,7 @@ export default class ManageToy extends Component {
                     Delete Confirmation!
                   </ModalHeader>
                   <ModalBody>
-                    Do you want to delete {this.props.toy.toyName}?{" "}
+                    Do you want to delete {this.props.toy.toyName}?
                   </ModalBody>
                   <ModalFooter>
                     <Button
@@ -350,7 +358,7 @@ export default class ManageToy extends Component {
                       onClick={e => this.deleteToy(e, onDeleteToy)}
                     >
                       Yes
-                    </Button>{" "}
+                    </Button>
                     <Button color="outline-primary" onClick={this.deleteToggle}>
                       No
                     </Button>
