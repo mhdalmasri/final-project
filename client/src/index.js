@@ -9,7 +9,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { UserProvider } from './ContextApi/UserContext'
-import { ToysProvider } from './ContextApi/ToysContext'
+
 
 ReactDOM.render(
     <UserProvider>

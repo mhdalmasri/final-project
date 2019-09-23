@@ -97,17 +97,17 @@ export default class Contact extends Component {
         <div className="container">
           <ul className="socialIcons">
             <li className="facebook">
-              <a href="#">
+              <a href="www.facebook.com">
                 <i className="fa fa-fw fa-facebook"></i>Facebook
               </a>
             </li>
             <li className="twitter">
-              <a href="#">
+              <a href="www.twitter.com">
                 <i className="fa fa-fw fa-twitter"></i>Twitter
               </a>
             </li>
             <li className="instagram">
-              <a href="#">
+              <a href="www.instagram.com">
                 <i className="fa fa-fw fa-instagram"></i>Instagram
               </a>
             </li>

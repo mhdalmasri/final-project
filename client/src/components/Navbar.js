@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import { Link, Redirect } from "react-router-dom"
 import Cookies from "universal-cookie"
 import axios from "axios"
-import AddToy from "./AddToy"
 import { UserConsumer } from '../ContextApi/UserContext'
 
 export default class Navbar extends Component {

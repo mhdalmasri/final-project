@@ -36,7 +36,7 @@ const ToysList = props => (
             );
           })
         ) : (
-          <div className="mt-5 bold"> No results are found, Sorry 😞 </div>
+          <div className="mt-5 bold"> <span>Sorry, No results are found</span></div>
         )}
       </div>
     )}

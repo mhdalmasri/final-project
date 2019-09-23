@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Cookies from 'universal-cookie'
-const cookies = new Cookies
+const cookies = new Cookies()
 
 const ToysContext = React.createContext()
 

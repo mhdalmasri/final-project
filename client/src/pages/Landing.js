@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import Register from "../components/Register";
 import Login from "../components/Login";
-import logo from "../img/images.jpeg";
+import logo from "../img/swap.jpg";
+
 
 const Landing = props => (
   <div className="d-flex align-items-center flex-column justify-content-center ">
