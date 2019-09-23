@@ -67,7 +67,7 @@ export default class ManageToy extends Component {
             <div className="d-flex justify-content-around">
               <div>
                 <Button color="outline-info btn-sm" onClick={this.toggle}>
-                  Update
+                  Edit
                 </Button>
                 <Modal
                   isOpen={this.state.modal}

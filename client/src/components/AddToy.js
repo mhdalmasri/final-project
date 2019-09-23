@@ -40,7 +40,7 @@ export default class AddToy extends Component {
     const url = `http://localhost:5000/api/toys/new/${userId}`;
     return (
       <div>
-        <Button color="outline-info btn-sm" onClick={this.toggle}>
+        <Button color="outline-success btn-sm" onClick={this.toggle}>
           Add
         </Button>
         <Modal

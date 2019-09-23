@@ -18,15 +18,15 @@ export default class Contact extends Component {
                   <div className="row">
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label htmlFor="form_name">Firstname *</label>
+                        <label htmlFor="form_name">First Name *</label>
                         <input
                           id="form_name"
                           type="text"
                           name="name"
                           className="form-control"
-                          placeholder="Please enter your firstname *"
+                          placeholder="Please enter your first name"
                           required="required"
-                          data-error="Firstname is required."
+                          data-error="First name is required."
                           autoFocus
                         />
                         <div className="help-block with-errors"></div>
@@ -34,15 +34,15 @@ export default class Contact extends Component {
                     </div>
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label htmlFor="form_lastname">Lastname *</label>
+                        <label htmlFor="form_lastname">Last Name *</label>
                         <input
                           id="form_lastname"
                           type="text"
                           name="surname"
                           className="form-control"
-                          placeholder="Please enter your lastname *"
+                          placeholder="Please enter your last name"
                           required="required"
-                          data-error="Lastname is required."
+                          data-error="Last name is required."
                         />
                         <div className="help-block with-errors"></div>
                       </div>
@@ -57,7 +57,7 @@ export default class Contact extends Component {
                           type="email"
                           name="email"
                           className="form-control"
-                          placeholder="Please enter your email *"
+                          placeholder="Please enter your email"
                           required="required"
                           data-error="Valid email is required."
                         />
@@ -73,7 +73,7 @@ export default class Contact extends Component {
                           id="form_message"
                           name="message"
                           className="form-control"
-                          placeholder="Your Message *"
+                          placeholder="Your Message"
                           rows="4"
                           required="required"
                           data-error="Please, leave us a message."
