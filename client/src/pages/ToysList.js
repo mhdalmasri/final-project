@@ -2,7 +2,7 @@ import React from "react";
 import { ToysContext } from "../ContextApi/ToysContext";
 import ToyThumb from "../components/ToyThumb";
 import AddToy from "../components/AddToy";
-import logo from "../img/images.jpeg";
+import add from "../img/add.png";
 
 const divStyle = {
   width: "13rem"
@@ -16,7 +16,7 @@ const ToysList = props => (
     {({ currentUserToys }) => (
       <div className="d-flex flex-wrap justify-content-around">
         <div className="card m-2" style={divStyle}>
-          <img src={logo} className="card-img-top" alt="img" style={imgStyle} />
+          <img src={add} className="card-img-top" alt="img" style={imgStyle} />
           <div className="card-body">
             <h5 className="card-title text-capitalize text-center">
               New Toy

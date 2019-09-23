@@ -3,6 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
+
 export default class AddToy extends Component {
   constructor(props) {
     super(props);
@@ -190,15 +191,16 @@ export default class AddToy extends Component {
               </div>
               <div className="form-group">
                 <label htmlFor="img">Photo:</label>
+               
                 <div className="custom-file">
                   <input
                     onChange={this.handelOnChange}
                     type="file"
                     className="custom-file-input"
-                    id="customFile"
+                    id="customFile1"
                     name="url"
                   />
-                  <label className="custom-file-label" htmlFor="customFile">
+                  <label className="custom-file-label" htmlFor="customFile1">
                     Choose file
                   </label>
                 </div>

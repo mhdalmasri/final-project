@@ -315,7 +315,7 @@ export default class ManageToy extends Component {
                       </div>
                       <div className="d-flex justify-content-around">
                         <button
-                          className="btn btn-outline-primary btn-sm"
+                          className="btn btn-outline-primary btn-sm mx-1"
                           type="submit"
                         >
                           update
@@ -326,20 +326,13 @@ export default class ManageToy extends Component {
                 </Modal>
               </div>
               <div>
-                {/* <button
-                  type="button"
-                  className="close text-danger"
-                  onClick={this.deleteToggle}
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button> */}
-              <Button
+                <Button
+                  className="mx-1"
                   color="outline-danger btn-sm"
                   onClick={this.deleteToggle}
                 >
-                 X
-                </Button> 
+                  Delete
+                </Button>
                 <Modal
                   isOpen={this.state.deleteModal}
                   toggle={this.deleteToggle}

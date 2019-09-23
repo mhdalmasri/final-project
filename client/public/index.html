@@ -10,28 +10,11 @@
   <link rel="apple-touch-icon" href="logo192.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <title>React App</title>
+  <title>Toy Swap</title>
 </head>
 
 <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
-  <script> 
-  // range 
-  $('#range').slider({
-	formatter: function(value) {
-		return 'Current value: ' + value;
-	}
-});
-
-//brows img
-$(".custom-file-input").on("change", function() {
-  var fileName = $(this).val().split("\\").pop();
-  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-});
-  </script>
- 
-
 </body>
 
 </html>
