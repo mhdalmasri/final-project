@@ -7,7 +7,7 @@ export default class Contact extends Component {
         <div className="container">
           <div className="row">
             <div className="col-xl-8 offset-xl-2 py-5">
-              <h1>GET IN TOUCH</h1>
+              <h1 className="my-5">GET IN TOUCH</h1>
               <form
                 action="https://formspree.io/m.almasri@outlook.de"
                 method="POST"
@@ -97,17 +97,17 @@ export default class Contact extends Component {
         <div className="container">
           <ul className="socialIcons">
             <li className="facebook">
-              <a href="www.facebook.com">
+              <a href="#">
                 <i className="fa fa-fw fa-facebook"></i>Facebook
               </a>
             </li>
             <li className="twitter">
-              <a href="www.twitter.com">
+              <a href="#">
                 <i className="fa fa-fw fa-twitter"></i>Twitter
               </a>
             </li>
             <li className="instagram">
-              <a href="www.instagram.com">
+              <a href="#">
                 <i className="fa fa-fw fa-instagram"></i>Instagram
               </a>
             </li>
