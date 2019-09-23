@@ -73,18 +73,18 @@ class MainPage extends React.Component {
                   <option value="all" defaultValue>
                     Locations ..
                   </option>
-                  <option value="char">Charlottenburg-Wilmersdorf</option>
-                  <option value="fried">Friedrichshain-Kreuzberg</option>
-                  <option value="licht">Lichtenberg</option>
-                  <option value="mar">Marzahn-Hellersdorf</option>
-                  <option value="mit">Mitte</option>
-                  <option value="neu">Neukölln</option>
-                  <option value="pan">Pankow</option>
-                  <option value="rein">Reinickendorf</option>
-                  <option value="spa">Spandau</option>
-                  <option value="steg">Steglitz-Zehlendorf</option>
-                  <option value="tem">Tempelhof-Schöneberg</option>
-                  <option value="trep">Treptow-Köpenick</option>
+                  <option value="Charlottenburg-Wilmersdorf">Charlottenburg-Wilmersdorf</option>
+                  <option value="Friedrichshain-Kreuzberg">Friedrichshain-Kreuzberg</option>
+                  <option value="Lichtenberg">Lichtenberg</option>
+                  <option value="Marzahn-Hellersdorf">Marzahn-Hellersdorf</option>
+                  <option value="Mitte">Mitte</option>
+                  <option value="Neukölln">Neukölln</option>
+                  <option value="Pankow">Pankow</option>
+                  <option value="Reinickendorf">Reinickendorf</option>
+                  <option value="Spandau">Spandau</option>
+                  <option value="Steglitz-Zehlendorf">Steglitz-Zehlendorf</option>
+                  <option value="Tempelhof-Schöneberg">Tempelhof-Schöneberg</option>
+                  <option value="Treptow-Köpenick">Treptow-Köpenick</option>
                 </select>
 
                 <select
@@ -112,13 +112,13 @@ class MainPage extends React.Component {
                   <option value="all" defaultValue>
                     Categories ..
                   </option>
-                  <option value="action">Action & Adventure</option>
-                  <option value="game">Games & Puzzles</option>
-                  <option value="build">Build & Play sets</option>
-                  <option value="doll">Dolls & Accessories</option>
-                  <option value="outdoor">Outdoor</option>
-                  <option value="multimedia">Multimedia</option>
-                  <option value="animals">Stuffed Animals</option>
+                  <option value="Action & Adventure">Action & Adventure</option>
+                  <option value="Games & Puzzles">Games & Puzzles</option>
+                  <option value="Build & Play sets">Build & Play sets</option>
+                  <option value="Dolls & Accessories">Dolls & Accessories</option>
+                  <option value="Outdoor">Outdoor</option>
+                  <option value="Multimedia">Multimedia</option>
+                  <option value="Stuffed Animals">Stuffed Animals</option>
                 </select>
 
                 <select
@@ -130,9 +130,9 @@ class MainPage extends React.Component {
                   <option value="all" defaultValue>
                     Status ..
                   </option>
-                  <option value="great">Great</option>
-                  <option value="good">Good</option>
-                  <option value="fine">Fine</option>
+                  <option value="Great">Great</option>
+                  <option value="Good">Good</option>
+                  <option value="Fine">Fine</option>
                 </select>
 
                 <div className="input-group m-1 ">
