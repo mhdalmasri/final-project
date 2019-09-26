@@ -9,7 +9,7 @@ const imgStyle = {
  height: "10rem"
 };
 const ToyThumb = React.memo(props => (
-  <div className="card m-2" style={divStyle}>
+  <div className="card m-2 ml-3" style={divStyle}>
     <img
       src={props.toy.url}
       className="card-img-top"

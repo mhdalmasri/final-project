@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Cookies from 'universal-cookie'
+
 const cookies = new Cookies()
 
 const ToysContext = React.createContext()
@@ -338,7 +339,6 @@ class ToysProvider extends React.Component {
 
     onSearch(value) {
         console.log(value)
-
         this.setState({
             filterToys: this.state.toys.filter(toy => {
                 const toyName = toy.toyName.replace(/\s/g, '').toLowerCase()

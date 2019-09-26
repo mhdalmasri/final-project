@@ -55,6 +55,7 @@ class MainPage extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   search(e, onSearch) {
+    e.preventDefault();
     onSearch(this.state.searchInput);
   }
   render() {
@@ -182,7 +183,7 @@ class MainPage extends React.Component {
                 </form>
               </div>
             </div>
-            <div className="d-flex flex-wrap justify-content-around">
+            <div className="d-flex flex-wrap justify-content-start px-5">
               {filterToys.length === 0 && !this.state.isFilterUsed ? (
                 toys.map((toy, index) => (
                   <div key={index}>
