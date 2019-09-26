@@ -13,13 +13,41 @@ const notifySchema = new mongoose.Schema({
       type: Object,
       required: true
     },
+    toyID:{
+      type: Object,
+      required: true
+    },
+    messages:[
+      {
+        sender:{
+          type: String,
+          required: true
+        },
+        text:{
+          type: String,
+          required: true
+        },
+        date:{
+          type: Date,
+          default: new Date
+        }
+      }
+    ],
     date: {
       type: Date,
-      default: Date.now
+      default: new Date
     },
     clicked:{
         type: Boolean,
-        required: true
+        default: false
+    },
+    receiver:{
+      type: String,
+      required: true
+    },
+    sender:{
+      type: String,
+      required: true
     }
   });
   

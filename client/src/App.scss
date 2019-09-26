@@ -2,6 +2,8 @@
 @import '../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss' ;
 @import '../node_modules/@fortawesome/fontawesome-free/scss/brands.scss';
 @import url('https://fonts.googleapis.com/css?family=Aladin&display=swap');
+@import'../node_modules/@fortawesome/fontawesome-free/scss/regular.scss';
+@import'../node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
 
 body{
    font-family: 'Aladin', cursive;
@@ -76,48 +78,145 @@ body{
     transform: rotate(45deg);
   }
 
-  ul.socialIcons {
-    padding: 0;
-    text-align: center;
+
+// chat page design 
+
+  
+li{
+  list-style: none;
+  div{
+    background: #F5F5F5;
+    border-radius: 1rem;
+  }
 }
-.socialIcons li {
-    background: yellow;
-    list-style: none;
-    display: inline-block;
-    margin: 15px;
-   
-    border-radius: 2em;
-    overflow:hidden;
+
+a:hover{
+      outline: none;
+      text-decoration: none;
+    };
+.card.chat-room .members-panel-1,
+.card.chat-room .chat-1 {
+overflow-y: scroll  }
+
+.card.chat-room{
+  margin: 0 auto;
+  border: none;
+  height: 100vh;
 }
-.socialIcons li a {
-    display: block;
-    padding: .5em;
-    max-width: 2.3em;
-    min-width: 2.3em;
-    height: 2.3em;
-    white-space: nowrap;
-    line-height: 1.5em;
-    transition:.5s;
-    text-decoration: none;
-    font-family: arial;
-    color: #fff;
+.card.chat-room .members-panel-1 {
+background: #32465ad3;
+height: 80vh;
+width: 30vw; 
 }
-.socialIcons li i {
-    margin-right:.5em;
+
+.card.chat-room .chat-1 {height: 80vh;
+width: 70vw; }
+
+
+.scrollbar-light-blue::-webkit-scrollbar-track {
+-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-color: rgb(219, 209, 209);
+border-radius: 10px; }
+
+.scrollbar-light-blue::-webkit-scrollbar {
+width: 12px;
+background-color: #F5F5F5; }
+
+.scrollbar-light-blue::-webkit-scrollbar-thumb {
+border-radius: 10px;
+-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+background-color: #435f7a }
+
+.messenger{
+  margin-bottom: 0;
 }
-.socialIcons li:hover a {
-    max-width:200px;
-    padding-right:1em;
+
+.chat-1{
+  background: #f5f5f5;
 }
-.socialIcons .facebook {
-    background: #3b5998;
-    box-shadow: 0 0 16px #3b5998;
+
+.bgReceivedMessage{
+  background: #435f7a;
 }
-.socialIcons .twitter {
-    background: #00aced;
-    box-shadow: 0 0 16px #00aced;
+.message-input {
+  position: absolute !important;
+  bottom: 0 !important;
+  width: 100%;
+  z-index: 99;
 }
-.socialIcons .instagram {
-    background: #cd486b;
-    box-shadow: 0 0 16px #cd486b;
+.message-input .wrap {
+  position: relative;
+}
+.message-input .wrap input {
+  float: left;
+  border: none;
+  width: calc(100% - 3rem );
+  padding: 1rem 0.3rem;
+  height: 3rem;
+  color: #32465a;
+}
+.message-input .wrap input:focus {
+  outline: none;
+}
+.message-input .wrap button {
+  float: right;
+  border: none;
+  width: 3rem;
+  height: 3rem;
+  padding: 12px 0;
+  cursor: pointer;
+  background: #32465a;
+  color: #f5f5f5;
+}
+.message-input .wrap button:hover {
+  background: #435f7a;
+}
+.message-input .wrap button:focus {
+  outline: none;
+}
+
+.avatar{
+  width: 4rem;
+  border: 0.3rem solid #435f7a;
+  margin: 0.5rem; 
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+  background-color: #435f7a !important;
+
+}
+
+.scrollbar-light-blue{
+  padding: 0 !important
+}
+h1.chatFrame{
+  background: linear-gradient( rgba(128, 0, 128, 0.534), rgb(0, 183, 255)) !important
+}
+.chatFrame{
+  background: linear-gradient( rgb(0, 183, 255), pink, purple) !important;
+  
+}
+
+@media screen and (max-width:780px){
+  .card.chat-room .members-panel-1 {
+    background: #32465ad3;
+    height: 75vh;
+    width: 20vw; 
+    padding-right: 0.1rem !important;
+    }
+    
+    .card.chat-room .chat-1 {height: 75vh;
+    width: 80vw; }
+  .toHide{
+    padding: 0.1rem !important;
+    div{
+      display: none
+    };
+    .avatar{
+      position: relative;
+      border: none;
+      width: 80%;
+    }
+     
+  }
 }
