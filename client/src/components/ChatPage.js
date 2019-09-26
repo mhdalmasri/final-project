@@ -67,7 +67,7 @@ class ChatPage extends Component {
           <NotificationsConsumer>
             {({ sentNotifications, receivedNotifications, OnSendMessage, allNotifications }) => (
               <div className="card chat-room" >
-                <h1 className="text-center text-uppercase">Requests</h1>
+                <h1 className="text-center text-uppercase my-5">Requests</h1>
                 <div className="d-flex justify-content-center">
                   <div className="z-depth-1 scrollbar-light-blue members-panel-1">
                     <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
