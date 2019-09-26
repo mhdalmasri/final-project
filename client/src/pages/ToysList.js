@@ -14,7 +14,7 @@ const imgStyle = {
 const ToysList = props => (
   <ToysContext.Consumer>
     {({ currentUserToys }) => (
-      <div className="d-flex flex-wrap justify-content-around">
+      <div className="d-flex flex-wrap justify-content-start">
         <div className="card m-2" style={divStyle}>
           <img src={add} className="card-img-top" alt="img" style={imgStyle} />
           <div className="card-body">

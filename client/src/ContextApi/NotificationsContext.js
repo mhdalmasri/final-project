@@ -14,6 +14,7 @@ class NotificationsProvider extends React.Component {
       sentNotifications: [],
       receivedNotifications: []
     };
+    this.OnDeleteRequest= this.OnDeleteRequest.bind(this)
   }
 
 
@@ -24,7 +25,11 @@ class NotificationsProvider extends React.Component {
         this.interval = setInterval(()=>{
             axios.get(url, {headers:{token, userId} } )
             .then(resp => this.setState({
-                allNotifications: resp.data,
+                allNotifications: resp.data.filter(note => {
+                    if (note.senderID === userId || note.receiverID === userId) {
+                        return note
+                    }
+                }),
                 sentNotifications: resp.data.filter(note => {
                     if (note.senderID === userId) {
                         return note
@@ -51,11 +56,34 @@ class NotificationsProvider extends React.Component {
         }).then(resp => console.log(resp))
         .catch(error => console.log(error))
     }
+
+    async OnDeleteRequest(noteID){
+        const url = `http://localhost:5000/api/notifications/requests/delete/${noteID}`
+        await axios.delete(url).then(resp => this.setState({
+            allNotifications: this.state.allNotifications.filter(note => {
+                if (note._id === noteID ) {
+                    return note
+                }
+            }),
+            sentNotifications: this.state.sentNotifications.filter(note => {
+                if (note._id === noteID) {
+                    return note
+                }
+            }),
+            receivedNotifications: this.state.receivedNotifications.filter(note => {
+                if (note._id === noteID) {
+                    return note
+                }
+            })
+        })).catch(error => console.log(error))
+    }
+
     render() {
         return (
             <Provider value={{
                 ...this.state,
-                OnSendMessage:this.OnSendMessage
+                OnSendMessage:this.OnSendMessage,
+                OnDeleteRequest: this.OnDeleteRequest
             }} >
                 {this.props.children}
             </Provider>

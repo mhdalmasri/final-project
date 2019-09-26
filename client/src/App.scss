@@ -196,6 +196,36 @@ h1.chatFrame{
   background: linear-gradient( rgb(0, 183, 255), pink, purple) !important;
   
 }
+.chatTab{
+  top: 0;
+  left: 0;
+  border: 1px solid rgba(119, 116, 116, 0.548);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.deleteChatBtn{
+  z-index: 1000 !important;
+  overflow: hidden !important;
+  padding: 1em 0.75rem;
+  background: white;
+  font-weight: 400;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  border-left: 1px solid rgba(119, 116, 116, 0.548);
+  &:hover{
+    background: red;
+    border-radius: 1px;
+  }
+}
+.modalUserToys{
+  display: flex;
+  flex-wrap: wrap
+}
 
 @media screen and (max-width:780px){
   .card.chat-room .members-panel-1 {
