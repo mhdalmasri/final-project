@@ -17,16 +17,6 @@ class NotificationsProvider extends React.Component {
   }
 
 
-
-    constructor(props) {
-        super(props)
-        this.state = {
-            allNotifications: [],
-            sentNotifications: [],
-            receivedNotifications: []
-        }
-    }
-
     componentDidMount() {
         const token = cookies.get("myToken")
         const userId = cookies.get("myId")
