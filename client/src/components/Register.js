@@ -34,6 +34,7 @@ export default class Register extends Component {
                   placeholder="Enter email"
                   name="email"
                   required
+                  autoFocus
                 />
               </div>
               <div className="form-group">

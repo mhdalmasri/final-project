@@ -9,7 +9,9 @@ import ToysList from "./pages/ToysList";
 import { ToysProvider } from "./ContextApi/ToysContext";
 import Contact from "./pages/Conatct";
 import NotificationsProvider from './ContextApi/NotificationsContext'
+import './index.css';
 import ChatPage from "./components/ChatPage";
+
 
 function App() {
   return (

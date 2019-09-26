@@ -59,6 +59,7 @@ export default class ViewToyModal extends React.Component {
   render() {
     return (
       <UserConsumer>
+
         {({ users }) => {
           let receiver = users.map(user => {
             if (user._id === this.props.toy.userID) {
@@ -79,6 +80,7 @@ export default class ViewToyModal extends React.Component {
               ) : (
                   <Button color="outline-secondary" onClick={this.toggle}>
                     Get
+
               </Button>
                 )}
 
@@ -129,11 +131,13 @@ export default class ViewToyModal extends React.Component {
                           {this.props.toy.status === "swap" ? (
                             <span className="badge badge-pill badge-success">
                               to Swap
+
                           </span>
                           ) : (
                               <span className="badge badge-pill badge-danger">
                                 to Give
                           </span>
+
                             )}
                         </td>
                       </tr>
@@ -174,6 +178,7 @@ export default class ViewToyModal extends React.Component {
             </div>
           )
         }}
+
       </UserConsumer>
     );
   }

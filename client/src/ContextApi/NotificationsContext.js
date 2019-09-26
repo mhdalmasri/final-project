@@ -1,10 +1,22 @@
-import React from 'react'
-import axios from 'axios'
-import Cookies from 'universal-cookie'
-const cookies = new Cookies
-const { Provider, Consumer } = React.createContext()
+
+import React from "react";
+import axios from "axios";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
+const { Provider, Consumer } = React.createContext();
+
 
 class NotificationsProvider extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      allNotifications: [],
+      sentNotifications: [],
+      receivedNotifications: []
+    };
+  }
+
+
 
     constructor(props) {
         super(props)
@@ -59,6 +71,7 @@ class NotificationsProvider extends React.Component {
             </Provider>
         )
     }
+
 }
 
-export { NotificationsProvider as default, Consumer as NotificationsConsumer }
+export { NotificationsProvider as default, Consumer as NotificationsConsumer };

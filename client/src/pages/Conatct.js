@@ -7,7 +7,7 @@ export default class Contact extends Component {
         <div className="container">
           <div className="row">
             <div className="col-xl-8 offset-xl-2 py-5">
-              <h1>GET IN TOUCH</h1>
+              <h1 className="my-5">GET IN TOUCH</h1>
               <form
                 action="https://formspree.io/m.almasri@outlook.de"
                 method="POST"
@@ -18,30 +18,31 @@ export default class Contact extends Component {
                   <div className="row">
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label htmlFor="form_name">Firstname *</label>
+                        <label htmlFor="form_name">First Name *</label>
                         <input
                           id="form_name"
                           type="text"
                           name="name"
                           className="form-control"
-                          placeholder="Please enter your firstname *"
+                          placeholder="Please enter your first name"
                           required="required"
-                          data-error="Firstname is required."
+                          data-error="First name is required."
+                          autoFocus
                         />
                         <div className="help-block with-errors"></div>
                       </div>
                     </div>
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label htmlFor="form_lastname">Lastname *</label>
+                        <label htmlFor="form_lastname">Last Name *</label>
                         <input
                           id="form_lastname"
                           type="text"
                           name="surname"
                           className="form-control"
-                          placeholder="Please enter your lastname *"
+                          placeholder="Please enter your last name"
                           required="required"
-                          data-error="Lastname is required."
+                          data-error="Last name is required."
                         />
                         <div className="help-block with-errors"></div>
                       </div>
@@ -56,7 +57,7 @@ export default class Contact extends Component {
                           type="email"
                           name="email"
                           className="form-control"
-                          placeholder="Please enter your email *"
+                          placeholder="Please enter your email"
                           required="required"
                           data-error="Valid email is required."
                         />
@@ -72,7 +73,7 @@ export default class Contact extends Component {
                           id="form_message"
                           name="message"
                           className="form-control"
-                          placeholder="Your Message *"
+                          placeholder="Your Message"
                           rows="4"
                           required="required"
                           data-error="Please, leave us a message."
