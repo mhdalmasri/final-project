@@ -16,6 +16,7 @@ class NotificationsProvider extends React.Component {
     };
   }
 
+
     componentDidMount() {
         const token = cookies.get("myToken")
         const userId = cookies.get("myId")
