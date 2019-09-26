@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { NotificationsConsumer } from "../ContextApi/NotificationsContext";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import ToyThumb from "./ToyThumb";
 import axios from 'axios'
 import Cookies from 'universal-cookie'
 import { ToysContext } from "../ContextApi/ToysContext";
@@ -14,10 +16,19 @@ class ChatPage extends Component {
     super(props)
     this.state = {
       message: "",
-      id: ""
+      id: "",
+      modal: false
     }
     this.getID = this.getID.bind(this)
+    this.toggle = this.toggle.bind(this);
   }
+
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
+
   handleOnChange = (e) => {
     const value = e.target.value
     this.setState({
@@ -25,20 +36,21 @@ class ChatPage extends Component {
     })
 
   }
-  async getID(e, id) {
+  async getID(e, id, sender, username) {
     console.log("get id is called")
     this.setState({
       id: id
     })
     console.log(this.state.id)
     const url = `http://localhost:5000/api/notifications/messages/clicked/${id}`
-
-    await axios({
-      method: 'put',
-      url: url,
-      headers: {}
-    }).then(resp => console.log(resp.data))
-      .catch(error => console.log(error))
+    if (sender !== username) {
+      await axios({
+        method: 'put',
+        url: url,
+        headers: {}
+      }).then(resp => console.log(resp.data))
+        .catch(error => console.log(error))
+    }
   }
 
   sendMessage(e, OnSendMessage) {
@@ -51,8 +63,14 @@ class ChatPage extends Component {
 
     OnSendMessage(id, message, username)
     this.setState({
-      message : ""
+      message: ""
     })
+  }
+
+  deleteRequest(e, OnDeleteRequest) {
+    const noteID = e.target.name
+
+    OnDeleteRequest(noteID)
   }
 
   render() {
@@ -65,7 +83,7 @@ class ChatPage extends Component {
       <ToysContext.Consumer>
         {({ toys }) => (
           <NotificationsConsumer>
-            {({ sentNotifications, receivedNotifications, OnSendMessage, allNotifications }) => (
+            {({ sentNotifications, receivedNotifications, allNotifications, OnSendMessage, OnDeleteRequest }) => (
               <div className="card chat-room" >
                 <h1 className="text-center text-uppercase text-light chatFrame">chat</h1>
                 <div className="d-flex justify-content-center">
@@ -78,8 +96,9 @@ class ChatPage extends Component {
                         }).map(note => (
                           <a
                             key={note._id}
-                            onClick={(e) => this.getID(e, note._id)}
+                            onClick={(e) => this.getID(e, note._id, note.messages[note.messages.length - 1].sender, username)}
                             className="d-flex toHide position-relative justify-content-between align-items-center nav-link" id={`v-pills-${note._id}-tab`} data-toggle="pill" href={`#v-pills-${note._id}`} role="tab" aria-controls={`v-pills-${note._id}`} aria-selected="false">
+
                             <img src={toys.map(toy => {
                               if (toy._id === note.toyID) {
                                 return toy.url
@@ -87,19 +106,20 @@ class ChatPage extends Component {
                             }).join("")} alt="avatar" className="avatar align-self-center rounded-circle mr-1 z-depth-1" />
                             <div className="text-small w-75">
                               <strong className="text-white" >{note.receiver}</strong>
-                              <div className="d-flex justify-content-between" >
+                              <div className="d-flex justify-content-between align-items-center">
                                 <p className="last-message text-white text-muted">{note.messages[note.messages.length - 1].text}</p>
                                 <span className="float-right" >
                                   {(note.clicked && note.messages[note.messages.length - 1].sender === username) ? <>
-                                    <i className="fas fa-check"></i>
-                                    <i className="fas fa-check"></i>
+                                    <i className="fas fa-check text-small"></i>
+                                    <i className="fas fa-check text-small"></i>
                                   </>
                                     : (note.clicked && note.messages[note.messages.length - 1].sender !== username) ? <i className="fas fa-eye"></i>
-                                      : (!note.clicked && note.messages[note.messages.length - 1].sender === username) ? <i className="fas fa-check"></i> : <i className="fas fa-circle text-danger"></i>}
+                                      : (!note.clicked && note.messages[note.messages.length - 1].sender === username) ? <i className="fas fa-check text-small"></i> : <i className="fas fa-circle text-danger"></i>}
                                 </span>
                               </div>
                             </div>
                           </a>
+
                         ))
                       ) : (<div className="p-2"> No sent requests </div>)
                       }
@@ -109,7 +129,7 @@ class ChatPage extends Component {
                         }).map(note => (
                           <a
                             key={note._id}
-                            onClick={(e) => this.getID(e, note._id)}
+                            onClick={(e) => this.getID(e, note._id, "clicked")}
                             className="d-flex toHide position-relative justify-content-between align-items-center nav-link" id={`v-pills-${note._id}-tab`} data-toggle="pill" href={`#v-pills-${note._id}`} role="tab" aria-controls={`v-pills-${note._id}`} aria-selected="false">
                             <img src={toys.map(toy => {
                               if (toy._id === note.toyID) {
@@ -118,14 +138,14 @@ class ChatPage extends Component {
                             }).join("")} alt="avatar" className="avatar rounded-circle d-flex align-self-center mr-1 z-depth-1" />
                             <div className="text-small w-75">
                               <strong className="text-white" >{note.sender}</strong>
-                              <div className="d-flex justify-content-between" >
+                              <div className="d-flex justify-content-between align-items-center">
                                 <p className="last-message text-muted">{note.messages[note.messages.length - 1].text}</p>
                                 <span className="float-right" >{(note.clicked && note.messages[note.messages.length - 1].sender === username) ? <>
-                                  <i className="fas fa-check"></i>
-                                  <i className="fas fa-check"></i>
+                                  <i className="fas fa-check text-small"></i>
+                                  <i className="fas fa-check text-small"></i>
                                 </>
                                   : (note.clicked && note.messages[note.messages.length - 1].sender !== username) ? <i className="fas fa-eye"></i>
-                                    : (!note.clicked && note.messages[note.messages.length - 1].sender === username) ? <i className="fas fa-check"></i> : <i className="fas fa-circle text-danger"></i>}</span>
+                                    : (!note.clicked && note.messages[note.messages.length - 1].sender === username) ? <i className="fas fa-check text-small"></i> : <i className="fas fa-circle text-danger"></i>}</span>
                               </div>
 
                             </div>
@@ -138,28 +158,67 @@ class ChatPage extends Component {
                   </div>
                   <div className="position-relative" style={{ padding: "0" }} >
                     <div className="tab-content chat-1 scrollbar-light-blue" id="v-pills-tabContent">
-                    <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">animation</div>
+                      <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">animation</div>
                       {allNotifications ? (
                         allNotifications.map((note, index) => (
                           <div key={index} className="tab-pane fade mb-5" id={`v-pills-${note._id}`} role="tabpanel" aria-labelledby={`v-pills-${note._id}-tab`}>
+                             <div className="chatTab" >
+                              
+                              <div>
+                <Button
+                  className="text-primary"
+                  color="btn"
+                  onClick={this.toggle}
+                >
+                  <h3>{note.sender === username ? note.receiver : note.sender}</h3>
+                </Button>
+                <Modal
+                  isOpen={this.state.modal}
+                  toggle={this.toggle}
+                  className={this.props.className}
+                >
+                  <ModalHeader toggle={this.toggle}>
+                  {note.sender === username ? note.receiver : note.sender}'s Toys
+                  </ModalHeader>
+                  <ModalBody className="modalUserToys" >
+                  {note.sender === username ? toys.map(toy => {
+                    if (toy.userID === note.receiverID ) {
+                      return <ToyThumb toy={toy} route="MainPage" />
+                    }
+                  }) : toys.map(toy => {
+                    if (toy.userID === note.senderID) {
+                      return <ToyThumb toy={toy} route="MainPage" />
+                    }
+                  })}
+                  </ModalBody>
+                  <ModalFooter>
+                    
+                  </ModalFooter>
+                </Modal>
+              </div>
+
+                            <button name={note._id} onClick={(e) => this.deleteRequest(e, OnDeleteRequest)} type="button" className=" deleteChatBtn">
+                            <i className="far fa-trash-alt"></i>
+                            </button>
+                            </div> 
                             <div className="d-flex justify-content-between flex-column mb-4 " >
                               {note.messages.map(message =>
                                 (message.sender === username) ?
                                   <div key={message._id} className="chat-body bg-white rounded border align-self-end w-75 white p-1 m-2 z-depth-1">
-                                    <div className="header">
-                                      <strong className="primary-font float-right">Me</strong>
-                                      <small className="pull-right float-left text-muted"><i className="far fa-clock"></i> {message.date} </small>
+                                    <div className="header  mt-4">
+                                      <strong className="primary-font ">Me</strong>
+                                      <small className="pull-right  text-muted"><i className="far fa-clock"></i> {message.date} </small>
                                     </div>
-                                    <hr className="w-100 mt-4 mb-0" />
+                                    <hr className="w-100" />
                                     <p className="my-0">{message.text}</p>
                                   </div> :
                                   <div key={message._id} className="chat-body bgReceivedMessage rounded align-self-start w-75 text-white p-1 m-2 z-depth-1">
                                     <div className="header">
-                                      <strong className="primary-font float-left">{message.sender}</strong>
-                                      <small className="pull-right float-right text-muted"><i className="far fa-clock"></i> {message.date} </small>
+                                      <strong className="primary-font ">{message.sender}</strong>
+                                      <small className="pull-right text-muted"><i className="far fa-clock"></i> {message.date} </small>
 
                                     </div>
-                                    <hr className="w-100 mt-4" />
+                                    <hr className="w-100" />
                                     <p className="mb-0">{message.text}</p>
                                   </div>
                               )}
@@ -169,7 +228,7 @@ class ChatPage extends Component {
                               <div className="message-input">
                                 <div className="wrap">
                                   <input
-                                   value={this.state.message}
+                                    value={this.state.message}
                                     onChange={this.handleOnChange}
                                     type="text" placeholder="Write your message..." />
 

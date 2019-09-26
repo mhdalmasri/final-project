@@ -81,6 +81,19 @@ router.put("/messages/clicked/:id", async (req, res) => {
     })
 })
 
+// delete request
+
+router.delete("/requests/delete/:id", async(req, res)=>{
+    const id = req.params.id
+    await Notification.findByIdAndDelete(id, (err, notification)=>{
+        if(err){
+            console.log(err)
+        }
+
+        res.send("it's deleted")
+    })
+})
+
 // get all notifications
 router.get("/all", verify, async (req, res) => {
     await Notification.find({}).exec(function (err, notifications) {
