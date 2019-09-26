@@ -19,7 +19,7 @@ function App() {
           {user ? (
             <ToysProvider>
               <NotificationsProvider>
-                <Navbar users={users} />
+                <Navbar/>
                 <Switch>
                   <Route path="/ToySwap" exact>
                     <MainPage />

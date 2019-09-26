@@ -35,20 +35,21 @@ export default class Navbar extends Component {
   }
 
   render() {
-    const username = this.props.users.map(user => {
-      if (user._id === userId) {
-        return user.name
-      }
-    }).join("")
+
     return (
       <UserConsumer>
-        {({ onLogout }) =>
+        {({ onLogout, users }) =>
           <NotificationsConsumer>
             {({ allNotifications }) => {
+              const username = users.map(user => {
+                if (user._id === userId) {
+                  return user.name
+                }
+              }).join("")
               let num = 0
               const newNotifications = allNotifications.map(note => {
                 if (note.clicked === false && note.messages[note.messages.length - 1].sender !== username) {
-                  return  num += 1
+                  return num += 1
                 } else {
                   return null
                 }
@@ -56,7 +57,7 @@ export default class Navbar extends Component {
               console.log(num)
               return (
                 <nav className="navbar  navbar-expand-lg navbar-light">
-                  
+
                   {this.renderRedirect()}
                   <Link className="navbar-brand" to="/ToySwap">ToySwap</Link>
                   <button

@@ -16,7 +16,6 @@ class ChatPage extends Component {
       message: "",
       id: ""
     }
-    this.textareaRef = React.createRef()
     this.getID = this.getID.bind(this)
   }
   handleOnChange = (e) => {
@@ -49,9 +48,11 @@ class ChatPage extends Component {
     const id = this.state.id
     const message = this.state.message
     console.log(id, message, username)
-    this.textareaRef.current.value = null
-    OnSendMessage(id, message, username)
 
+    OnSendMessage(id, message, username)
+    this.setState({
+      message : ""
+    })
   }
 
   render() {
@@ -72,7 +73,7 @@ class ChatPage extends Component {
                     <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
                       {sentNotifications ? (
-                        sentNotifications.sort(function(a,b){
+                        sentNotifications.sort(function (a, b) {
                           return new Date(b.date) - new Date(a.date);
                         }).map(note => (
                           <a
@@ -90,11 +91,11 @@ class ChatPage extends Component {
                                 <p className="last-message text-white text-muted">{note.messages[note.messages.length - 1].text}</p>
                                 <span className="float-right" >
                                   {(note.clicked && note.messages[note.messages.length - 1].sender === username) ? <>
-                                        <i className="fas fa-check"></i>
-                                        <i className="fas fa-check"></i>
-                                      </>
+                                    <i className="fas fa-check"></i>
+                                    <i className="fas fa-check"></i>
+                                  </>
                                     : (note.clicked && note.messages[note.messages.length - 1].sender !== username) ? <i className="fas fa-eye"></i>
-                                       : (!note.clicked && note.messages[note.messages.length - 1].sender === username) ? <i className="fas fa-check"></i> : <i className="fas fa-circle text-danger"></i>}
+                                      : (!note.clicked && note.messages[note.messages.length - 1].sender === username) ? <i className="fas fa-check"></i> : <i className="fas fa-circle text-danger"></i>}
                                 </span>
                               </div>
                             </div>
@@ -103,7 +104,7 @@ class ChatPage extends Component {
                       ) : (<div className="p-2"> No sent requests </div>)
                       }
                       {receivedNotifications ? (
-                        receivedNotifications.sort(function(a,b){
+                        receivedNotifications.sort(function (a, b) {
                           return new Date(b.date) - new Date(a.date);
                         }).map(note => (
                           <a
@@ -120,11 +121,11 @@ class ChatPage extends Component {
                               <div className="d-flex justify-content-between" >
                                 <p className="last-message text-muted">{note.messages[note.messages.length - 1].text}</p>
                                 <span className="float-right" >{(note.clicked && note.messages[note.messages.length - 1].sender === username) ? <>
-                                      <i className="fas fa-check"></i>
-                                      <i className="fas fa-check"></i>
-                                    </>
+                                  <i className="fas fa-check"></i>
+                                  <i className="fas fa-check"></i>
+                                </>
                                   : (note.clicked && note.messages[note.messages.length - 1].sender !== username) ? <i className="fas fa-eye"></i>
-                                     : (!note.clicked && note.messages[note.messages.length - 1].sender === username) ? <i className="fas fa-check"></i> : <i className="fas fa-circle text-danger"></i>}</span>
+                                    : (!note.clicked && note.messages[note.messages.length - 1].sender === username) ? <i className="fas fa-check"></i> : <i className="fas fa-circle text-danger"></i>}</span>
                               </div>
 
                             </div>
@@ -137,6 +138,7 @@ class ChatPage extends Component {
                   </div>
                   <div className="position-relative" style={{ padding: "0" }} >
                     <div className="tab-content chat-1 scrollbar-light-blue" id="v-pills-tabContent">
+                    <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">animation</div>
                       {allNotifications ? (
                         allNotifications.map((note, index) => (
                           <div key={index} className="tab-pane fade mb-5" id={`v-pills-${note._id}`} role="tabpanel" aria-labelledby={`v-pills-${note._id}-tab`}>
@@ -167,8 +169,7 @@ class ChatPage extends Component {
                               <div className="message-input">
                                 <div className="wrap">
                                   <input
-                                    defaultValue={this.state.message}
-                                    ref={this.textareaRef}
+                                   value={this.state.message}
                                     onChange={this.handleOnChange}
                                     type="text" placeholder="Write your message..." />
 
