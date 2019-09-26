@@ -12,7 +12,7 @@ const ToyThumb = React.memo(props => (
   <div className="card m-2 ml-3" style={divStyle}>
     <img
       src={props.toy.url}
-      className="card-img-top"
+      className="card-img-top w-100"
       alt="img"
       style={imgStyle}
     />

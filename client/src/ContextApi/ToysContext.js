@@ -330,7 +330,7 @@ class ToysProvider extends React.Component {
                 this.setState({
                     loading: false
                 })
-                alert(resp.data) || window.location.reload()
+                alert(resp.data) 
             }).catch(error => this.setState({
                 error,
                 loading: false
