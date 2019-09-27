@@ -9,7 +9,8 @@ export default class AddToy extends Component {
     super(props);
     this.state = {
       modal: false,
-      newToy: {}
+      newToy: {},
+      fileName: false
     };
     this.toggle = this.toggle.bind(this);
   }
@@ -25,6 +26,10 @@ export default class AddToy extends Component {
     let value;
     if (e.target.type === "radio") {
       value = e.target.id;
+    }else if(e.target.type === "file"){
+      this.setState({
+        fileName:e.target.value
+      })
     } else {
       value = e.target.value;
     }
@@ -201,7 +206,7 @@ export default class AddToy extends Component {
                     name="url"
                   />
                   <label className="custom-file-label" htmlFor="customFile1">
-                    Choose file
+                   {this.state.fileName ? this.state.fileName.substring(12) : "Choose file"} 
                   </label>
                 </div>
               </div>
