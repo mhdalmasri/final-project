@@ -85,9 +85,9 @@ class ChatPage extends Component {
           <NotificationsConsumer>
             {({ sentNotifications, receivedNotifications, allNotifications, OnSendMessage, OnDeleteRequest }) => (
               <div className="card chat-room" >
-                <h1 className="text-center text-uppercase text-light chatFrame">chat</h1>
+                <h1 className="text-center text-uppercase my-5">Requests</h1>
                 <div className="d-flex justify-content-center">
-                  <div className="chatFrame z-depth-1 scrollbar-light-blue members-panel-1">
+                  <div className="z-depth-1 scrollbar-light-blue members-panel-1">
                     <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
                       {sentNotifications ? (
@@ -105,9 +105,11 @@ class ChatPage extends Component {
                               }
                             }).join("")} alt="avatar" className="avatar align-self-center rounded-circle mr-1 z-depth-1" />
                             <div className="text-small w-75">
+
                               <strong className="text-white" >{note.receiver}</strong>
                               <div className="d-flex justify-content-between align-items-center">
                                 <p className="last-message text-white text-muted">{note.messages[note.messages.length - 1].text}</p>
+
                                 <span className="float-right" >
                                   {(note.clicked && note.messages[note.messages.length - 1].sender === username) ? <>
                                     <i className="fas fa-check text-small"></i>
@@ -129,17 +131,21 @@ class ChatPage extends Component {
                         }).map(note => (
                           <a
                             key={note._id}
+
                             onClick={(e) => this.getID(e, note._id, "clicked")}
                             className="d-flex toHide position-relative justify-content-between align-items-center nav-link" id={`v-pills-${note._id}-tab`} data-toggle="pill" href={`#v-pills-${note._id}`} role="tab" aria-controls={`v-pills-${note._id}`} aria-selected="false">
+
                             <img src={toys.map(toy => {
                               if (toy._id === note.toyID) {
                                 return toy.url
                               }
                             }).join("")} alt="avatar" className="avatar rounded-circle d-flex align-self-center mr-1 z-depth-1" />
                             <div className="text-small w-75">
+
                               <strong className="text-white" >{note.sender}</strong>
                               <div className="d-flex justify-content-between align-items-center">
                                 <p className="last-message text-muted">{note.messages[note.messages.length - 1].text}</p>
+
                                 <span className="float-right" >{(note.clicked && note.messages[note.messages.length - 1].sender === username) ? <>
                                   <i className="fas fa-check text-small"></i>
                                   <i className="fas fa-check text-small"></i>
@@ -158,7 +164,9 @@ class ChatPage extends Component {
                   </div>
                   <div className="position-relative" style={{ padding: "0" }} >
                     <div className="tab-content chat-1 scrollbar-light-blue" id="v-pills-tabContent">
+
                       <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">animation</div>
+
                       {allNotifications ? (
                         allNotifications.map((note, index) => (
                           <div key={index} className="tab-pane fade mb-5" id={`v-pills-${note._id}`} role="tabpanel" aria-labelledby={`v-pills-${note._id}-tab`}>
@@ -205,17 +213,21 @@ class ChatPage extends Component {
                               {note.messages.map(message =>
                                 (message.sender === username) ?
                                   <div key={message._id} className="chat-body bg-white rounded border align-self-end w-75 white p-1 m-2 z-depth-1">
+
                                     <div className="header  mt-4">
                                       <strong className="primary-font ">Me</strong>
                                       <small className="pull-right  text-muted"><i className="far fa-clock"></i> {message.date} </small>
+
                                     </div>
                                     <hr className="w-100" />
                                     <p className="my-0">{message.text}</p>
                                   </div> :
-                                  <div key={message._id} className="chat-body bgReceivedMessage rounded align-self-start w-75 text-white p-1 m-2 z-depth-1">
+                                  <div key={message._id} className="chat-body bgReceivedMessage rounded align-self-start w-75 p-1 m-2 z-depth-1">
                                     <div className="header">
+
                                       <strong className="primary-font ">{message.sender}</strong>
                                       <small className="pull-right text-muted"><i className="far fa-clock"></i> {message.date} </small>
+
 
                                     </div>
                                     <hr className="w-100" />
@@ -226,13 +238,15 @@ class ChatPage extends Component {
 
                             <form className="messenger" name={username} onSubmit={(e) => this.sendMessage(e, OnSendMessage)} >
                               <div className="message-input">
-                                <div className="wrap">
+                                <div className="wrap rounded-border">
                                   <input
                                     value={this.state.message}
                                     onChange={this.handleOnChange}
-                                    type="text" placeholder="Write your message..." />
+                                    type="text" placeholder="Write your message..." 
+                                    autoFocus
+                                   />
 
-                                  <button type="submit"><i className="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                  <button type="submit" className="btn-outline-primary"><i className="fa fa-paper-plane"></i></button>
                                 </div>
                               </div>
                             </form>

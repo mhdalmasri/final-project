@@ -163,7 +163,7 @@ class MainPage extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="d-flex py-2 justify-content-between align-self-center">
+              <div className="d-flex py-2 justify-content-between align-self-center mb-2">
                 <form className="form-inline ">
                   <input
                     className="form-control mr-sm-2"
