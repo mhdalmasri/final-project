@@ -318,7 +318,9 @@ class ToysProvider extends React.Component {
                     })
                 })
             } else {
-                this.onFilter()
+                return this.setState({
+                    filterToys:this.state.toys
+                })
             }
         }
     }

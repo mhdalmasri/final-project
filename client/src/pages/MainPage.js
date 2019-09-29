@@ -25,6 +25,8 @@ class MainPage extends React.Component {
   }
 
   filter(onFilter) {
+    this.getCheck.current.checked = false
+    this.swapCheck.current.checked = false
     const selectedLocation = this.address.current.value;
     const selectedAge = this.age.current.value;
     const selectedCondition = this.condition.current.value;
