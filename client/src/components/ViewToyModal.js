@@ -41,7 +41,7 @@ export default class ViewToyModal extends React.Component {
         url: url,
         headers: {},
         data: data
-      }).then(resp => alert(resp.data) || window.location.reload());
+      }).then(resp => window.location.reload());
     } else {
       alert("message should be not empty!");
     }

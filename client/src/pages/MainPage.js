@@ -199,7 +199,7 @@ class MainPage extends React.Component {
                   </div>
                 ))
               ) : (
-                <div className="mt-5 bold">
+                <div className="mt-5 bold mx-5">
                   {" "}
                   No results are found, Sorry 😞{" "}
                 </div>
