@@ -8,7 +8,8 @@ export default class ManageToy extends Component {
       modal: false,
       deleteModal: false,
       updateModal: false,
-      updatedToy: {}
+      updatedToy: {},
+      fileName: ""
     };
     this.toggle = this.toggle.bind(this);
     this.deleteToggle = this.deleteToggle.bind(this);
@@ -48,6 +49,10 @@ export default class ManageToy extends Component {
     let value = e.target.value;
     if (e.target.type === "radio") {
       value = e.target.id;
+    } else if (e.target.type === "file") {
+      this.setState({
+        fileName: e.target.value
+      });
     } else {
       value = e.target.value;
     }
@@ -266,7 +271,9 @@ export default class ManageToy extends Component {
                             className="custom-file-label"
                             htmlFor="customFile"
                           >
-                            Choose file
+                            {this.state.fileName
+                              ? this.state.fileName.substring(12)
+                              : "Choose file"}
                           </label>
                         </div>
                       </div>
