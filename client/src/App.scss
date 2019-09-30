@@ -159,7 +159,7 @@ width: 70vw;
 
 .scrollbar-light-blue::-webkit-scrollbar-track {
 -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-background-color: rgb(219, 209, 209);
+background-color: #007bff;
 border-radius: 10px; }
 
 .scrollbar-light-blue::-webkit-scrollbar {
@@ -169,7 +169,7 @@ background-color: #F5F5F5; }
 .scrollbar-light-blue::-webkit-scrollbar-thumb {
 border-radius: 10px;
 -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-background-color: #435f7a }
+background-color: rgb(224, 221, 221) }
 
 .messenger{
   margin-bottom: 0;
@@ -214,8 +214,10 @@ background-color: #435f7a }
 }
 .avatar{
   width: 4rem;
-  border: 0.05rem solid black;
-  margin: 0.5rem; 
+  border: 0.1rem solid #007bff;
+  margin: 0.5rem;
+  padding: 0.1rem;
+  background: #007bff
 }
 
   .nav-pills .show > .nav-link{
