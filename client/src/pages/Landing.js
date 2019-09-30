@@ -5,7 +5,7 @@ import logo from "../img/swap.jpg";
 
 
 const Landing = props => (
-  <div className="d-flex align-items-center flex-column justify-content-center ">
+  <div className="d-flex align-items-center flex-column justify-content-center landing ">
     <div className="d-flex ">
       <div>
         <img src={logo} alt="logo" />
