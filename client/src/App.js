@@ -31,11 +31,15 @@ function App() {
                   <Route path="/requests" exact  >
                     <ChatPage users={users} />
                   </Route>
+                  <Route render={()=> <div className="text-center">this page is not found</div>} />
                 </Switch>
               </NotificationsProvider>
             </ToysProvider>
           ) : (
+            <>
               <Route path="/" exact component={Landing} />
+              <Route render={()=> <div className="text-center">this page is not found</div>} />
+              </>
             )}
         </Router>
       )}
