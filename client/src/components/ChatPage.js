@@ -86,7 +86,7 @@ class ChatPage extends Component {
             {({ sentNotifications, receivedNotifications, allNotifications, OnSendMessage, OnDeleteRequest }) => (
               <div className="card chat-room px-5" >
                 <h1 className="text-center text-uppercase my-5">Requests</h1>
-                <div className="d-flex justify-content-center">
+                <div className="d-flex justify-content-center rounded" style={{border:"0.1rem solid #007bff"}}>
                   <div className="z-depth-1 scrollbar-light-blue members-panel-1">
                     <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
@@ -97,7 +97,7 @@ class ChatPage extends Component {
                           <a
                             key={note._id}
                             onClick={(e) => this.getID(e, note._id, note.messages[note.messages.length - 1].sender, username)}
-                            className="d-flex toHide position-relative justify-content-between align-items-center nav-link" id={`v-pills-${note._id}-tab`} data-toggle="pill" href={`#v-pills-${note._id}`} role="tab" aria-controls={`v-pills-${note._id}`} aria-selected="false">
+                            className="d-flex toHide position-relative border-bottom  justify-content-between align-items-center nav-link" id={`v-pills-${note._id}-tab`} data-toggle="pill" href={`#v-pills-${note._id}`} role="tab" aria-controls={`v-pills-${note._id}`} aria-selected="false">
 
                             <img src={allToys.map(toy => {
                               if (toy._id === note.toyID) {
@@ -132,7 +132,7 @@ class ChatPage extends Component {
                             key={note._id}
 
                             onClick={(e) => this.getID(e, note._id, "clicked")}
-                            className="d-flex toHide position-relative justify-content-between align-items-center nav-link" id={`v-pills-${note._id}-tab`} data-toggle="pill" href={`#v-pills-${note._id}`} role="tab" aria-controls={`v-pills-${note._id}`} aria-selected="false">
+                            className="d-flex toHide border-bottom  position-relative justify-content-between align-items-center nav-link" id={`v-pills-${note._id}-tab`} data-toggle="pill" href={`#v-pills-${note._id}`} role="tab" aria-controls={`v-pills-${note._id}`} aria-selected="false" >
 
                             <img src={allToys.map(toy => {
                               if (toy._id === note.toyID) {
@@ -164,7 +164,7 @@ class ChatPage extends Component {
                   <div className="position-relative" style={{ padding: "0" }} >
                     <div className="tab-content chat-1 scrollbar-light-blue" id="v-pills-tabContent">
 
-                      <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"></div>
+                      <div className="tab-pane show active fade text-center text-uppercase" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" style={{fontSize:"15rem",opacity:"0.5", margin:"10% auto"}}><i className="far fa-comments"></i> <h1>Chat</h1> </div>
 
                       {allNotifications ? (
                         allNotifications.map((note, index) => (
