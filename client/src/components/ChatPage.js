@@ -84,7 +84,7 @@ class ChatPage extends Component {
         {({ toys }) => (
           <NotificationsConsumer>
             {({ sentNotifications, receivedNotifications, allNotifications, OnSendMessage, OnDeleteRequest }) => (
-              <div className="card chat-room" >
+              <div className="card chat-room px-5" >
                 <h1 className="text-center text-uppercase my-5">Requests</h1>
                 <div className="d-flex justify-content-center">
                   <div className="z-depth-1 scrollbar-light-blue members-panel-1">
@@ -165,7 +165,7 @@ class ChatPage extends Component {
                   <div className="position-relative" style={{ padding: "0" }} >
                     <div className="tab-content chat-1 scrollbar-light-blue" id="v-pills-tabContent">
 
-                      <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">animation</div>
+                      <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"></div>
 
                       {allNotifications ? (
                         allNotifications.map((note, index) => (
