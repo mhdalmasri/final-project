@@ -81,7 +81,7 @@ class ChatPage extends Component {
     }).join("")
     return (
       <ToysContext.Consumer>
-        {({ toys }) => (
+        {({ allToys }) => (
           <NotificationsConsumer>
             {({ sentNotifications, receivedNotifications, allNotifications, OnSendMessage, OnDeleteRequest }) => (
               <div className="card chat-room" >
@@ -99,7 +99,7 @@ class ChatPage extends Component {
                             onClick={(e) => this.getID(e, note._id, note.messages[note.messages.length - 1].sender, username)}
                             className="d-flex toHide position-relative justify-content-between align-items-center nav-link" id={`v-pills-${note._id}-tab`} data-toggle="pill" href={`#v-pills-${note._id}`} role="tab" aria-controls={`v-pills-${note._id}`} aria-selected="false">
 
-                            <img src={toys.map(toy => {
+                            <img src={allToys.map(toy => {
                               if (toy._id === note.toyID) {
                                 return toy.url
                               }
@@ -135,7 +135,7 @@ class ChatPage extends Component {
                             onClick={(e) => this.getID(e, note._id, "clicked")}
                             className="d-flex toHide position-relative justify-content-between align-items-center nav-link" id={`v-pills-${note._id}-tab`} data-toggle="pill" href={`#v-pills-${note._id}`} role="tab" aria-controls={`v-pills-${note._id}`} aria-selected="false">
 
-                            <img src={toys.map(toy => {
+                            <img src={allToys.map(toy => {
                               if (toy._id === note.toyID) {
                                 return toy.url
                               }
@@ -189,13 +189,13 @@ class ChatPage extends Component {
                   {note.sender === username ? note.receiver : note.sender}'s Toys
                   </ModalHeader>
                   <ModalBody className="modalUserToys" >
-                  {note.sender === username ? toys.map(toy => {
+                  {note.sender === username ? allToys.map(toy => {
                     if (toy.userID === note.receiverID ) {
-                      return <ToyThumb toy={toy} route="MainPage" />
+                      return <ToyThumb key={toy._id} toy={toy} route="MainPage" />
                     }
-                  }) : toys.map(toy => {
+                  }) : allToys.map(toy => {
                     if (toy.userID === note.senderID) {
-                      return <ToyThumb toy={toy} route="MainPage" />
+                      return <ToyThumb key={toy._id} toy={toy} route="MainPage" />
                     }
                   })}
                   </ModalBody>

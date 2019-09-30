@@ -10,6 +10,7 @@ class ToysProvider extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            allToys: [],
             toys: [],
             filterToys: [],
             currentUserToys: [],
@@ -33,6 +34,7 @@ class ToysProvider extends React.Component {
             axios(`http://localhost:5000/api/toys/all`, { headers: { token, userId } })
                 .then(resp => {
                     this.setState({
+                        allToys: resp.data,
                         toys: resp.data.filter(toy => {
                             if (toy.userID !== userId) {
                                 return toy

@@ -185,16 +185,16 @@ class MainPage extends React.Component {
                 </form>
               </div>
             </div>
-            <div className="d-flex flex-wrap justify-content-start px-5">
+            <div className="d-flex flex-wrap justify-content-start">
               {filterToys.length === 0 && !this.state.isFilterUsed ? (
                 toys.map((toy, index) => (
-                  <div key={index}>
+                  <div key={index} style={{margin: "0 auto"}} >
                     <ToyThumb toy={toy} route="MainPage" />
                   </div>
                 ))
               ) : filterToys.length !== 0 ? (
                 filterToys.map((toy, index) => (
-                  <div key={index}>
+                  <div key={index} style={{margin: "0 auto"}} >
                     <ToyThumb toy={toy} route="MainPage" />
                   </div>
                 ))
