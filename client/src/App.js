@@ -36,10 +36,10 @@ function App() {
               </NotificationsProvider>
             </ToysProvider>
           ) : (
-            <>
+            <Switch>
               <Route path="/" exact component={Landing} />
               <Route render={()=> <div className="text-center">this page is not found</div>} />
-              </>
+              </Switch>
             )}
         </Router>
       )}

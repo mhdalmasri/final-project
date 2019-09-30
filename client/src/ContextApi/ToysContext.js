@@ -17,7 +17,7 @@ class ToysProvider extends React.Component {
             error: null,
             loading: false,
             alertMessage: null,
-            interval: 10000
+            interval: 2000
         }
         this.onDeleteToy = this.onDeleteToy.bind(this)
         this.onUpdateToy = this.onUpdateToy.bind(this)
@@ -52,13 +52,13 @@ class ToysProvider extends React.Component {
                     error,
                     loading: false
                 }))
-        }, 2000)
+        }, this.state.interval)
 
     }
 
-    // componentWillUnmount() {
-    //     clearInterval(this.interval)
-    // }
+    componentWillUnmount() {
+        clearInterval(this.interval)
+    }
 
     onFilter(selectedLocation, selectedAge, selectedCondition, selectedCategory) {
         if (
