@@ -7,7 +7,7 @@ import Cookies from 'universal-cookie'
 import { ToysContext } from "../ContextApi/ToysContext";
 
 
-const cookies = new Cookies
+const cookies = new Cookies()
 const userId = cookies.get("myId")
 
 
@@ -37,19 +37,16 @@ class ChatPage extends Component {
 
   }
   async getID(e, id, sender, username) {
-    console.log("get id is called")
     this.setState({
       id: id
     })
-    console.log(this.state.id)
     const url = `http://localhost:5000/api/notifications/messages/clicked/${id}`
     if (sender !== username) {
       await axios({
         method: 'put',
         url: url,
         headers: {}
-      }).then(resp => console.log(resp.data))
-        .catch(error => console.log(error))
+      })
     }
   }
 
@@ -59,8 +56,6 @@ class ChatPage extends Component {
     const username = e.target.name
     const id = this.state.id
     const message = this.state.message
-    console.log(id, message, username)
-
     OnSendMessage(id, message, username)
     this.setState({
       message: ""

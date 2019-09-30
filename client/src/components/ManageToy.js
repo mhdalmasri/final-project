@@ -41,7 +41,6 @@ export default class ManageToy extends Component {
     const url = `http://localhost:5000/api/toys/update/${id}`;
     const data = this.state.updatedToy;
     onUpdateToy(url, data);
-    console.log(data);
     this.updateToggle();
   };
   handelOnChange = e => {
@@ -59,7 +58,6 @@ export default class ManageToy extends Component {
     this.setState(state => {
       const obj = state.updatedToy;
       obj[name] = value;
-      console.log(JSON.stringify(obj));
       return JSON.stringify(obj);
     });
   };

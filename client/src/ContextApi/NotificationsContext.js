@@ -44,8 +44,6 @@ class NotificationsProvider extends React.Component {
         }, 2000) 
     }
     async OnSendMessage(id, message, username){
-        const token = cookies.get("myToken")
-        const userId = cookies.get("myId")
         const url = `http://localhost:5000/api/notifications/messages/add/${id}`
         const data = {username, message}
         await axios({

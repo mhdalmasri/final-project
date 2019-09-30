@@ -46,7 +46,7 @@ export default class Navbar extends Component {
                 })
                 .join("");
               let num = 0;
-              const newNotifications = allNotifications.map(note => {
+              allNotifications.map(note => {
                 if (
                   note.clicked === false &&
                   note.messages[note.messages.length - 1].sender !== username
@@ -56,7 +56,6 @@ export default class Navbar extends Component {
                   return null;
                 }
               });
-              console.log(num);
               return (
                 <nav className="navbar  navbar-expand-lg navbar-light border-bottom">
                   {this.renderRedirect()}

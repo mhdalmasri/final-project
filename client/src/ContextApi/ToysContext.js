@@ -294,7 +294,6 @@ class ToysProvider extends React.Component {
     }
 
     onFilterStatus(getCheck, swapCheck) {
-        console.log(getCheck, swapCheck)
         if (getCheck && swapCheck) {
             return this.setState({
                 filterToys:this.state.toys
