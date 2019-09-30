@@ -58,7 +58,7 @@ export default class Navbar extends Component {
               });
               console.log(num);
               return (
-                <nav className="navbar  navbar-expand-lg navbar-light">
+                <nav className="navbar  navbar-expand-lg navbar-light border-bottom">
                   {this.renderRedirect()}
                   <Link className="navbar-brand" to="/ToySwap">
                     ToySwap
