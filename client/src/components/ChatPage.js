@@ -112,11 +112,10 @@ class ChatPage extends Component {
 
                                 <span className="float-right" >
                                   {(note.clicked && note.messages[note.messages.length - 1].sender === username) ? <>
-                                    <i className="fas fa-check text-small"></i>
-                                    <i className="fas fa-check text-small"></i>
+                                    <i className="far text-success fa-check-circle"></i>
                                   </>
-                                    : (note.clicked && note.messages[note.messages.length - 1].sender !== username) ? <i className="fas fa-eye"></i>
-                                      : (!note.clicked && note.messages[note.messages.length - 1].sender === username) ? <i className="fas fa-check text-small"></i> : <i className="fas fa-circle text-danger"></i>}
+                                    : (note.clicked && note.messages[note.messages.length - 1].sender !== username) ? ""
+                                      : (!note.clicked && note.messages[note.messages.length - 1].sender === username) ? <i className="far text-warning fa-check-circle"></i> : <i className="far fa-circle text-danger"></i>}
                                 </span>
                               </div>
                             </div>
@@ -147,11 +146,11 @@ class ChatPage extends Component {
                                 <p className="last-message text-muted">{note.messages[note.messages.length - 1].text}</p>
 
                                 <span className="float-right" >{(note.clicked && note.messages[note.messages.length - 1].sender === username) ? <>
-                                  <i className="fas fa-check text-small"></i>
-                                  <i className="fas fa-check text-small"></i>
+                                  <i className="far text-success fa-check-circle"></i>
+                                  
                                 </>
-                                  : (note.clicked && note.messages[note.messages.length - 1].sender !== username) ? <i className="fas fa-eye"></i>
-                                    : (!note.clicked && note.messages[note.messages.length - 1].sender === username) ? <i className="fas fa-check text-small"></i> : <i className="fas fa-circle text-danger"></i>}</span>
+                                  : (note.clicked && note.messages[note.messages.length - 1].sender !== username) ? ""
+                                    : (!note.clicked && note.messages[note.messages.length - 1].sender === username) ? <i className="far text-warning fa-check-circle"></i> : <i className="far fa-circle text-danger"></i>}</span>
                               </div>
 
                             </div>
