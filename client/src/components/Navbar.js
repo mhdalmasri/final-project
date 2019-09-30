@@ -85,7 +85,7 @@ export default class Navbar extends Component {
                         </Link>
                       </li>
                       <li className="nav-item">
-                        <Link className="nav-link" to="/notifications">
+                        <Link className="nav-link" to="/requests">
                           {num === 0 ? (
                             "Requests"
                           ) : (

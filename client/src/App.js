@@ -28,7 +28,7 @@ function App() {
                   </Route>
                   <Route path="/myToys" exact component={ToysList} />
                   <Route path="/contact" exact component={Contact} />
-                  <Route path="/notifications" exact  >
+                  <Route path="/requests" exact  >
                     <ChatPage users={users} />
                   </Route>
                 </Switch>
