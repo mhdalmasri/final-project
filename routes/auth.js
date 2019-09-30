@@ -29,7 +29,7 @@ router.post("/register", async (req, res) => {
   });
   try {
     const savedUser = await user.save();
-    res.send({ user: user._id });
+    res.redirect("http://localhost:3000");
     console.log(user.name + " created");
   } catch (err) {
     res.status(400).send(err);
