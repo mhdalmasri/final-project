@@ -106,9 +106,9 @@ class ChatPage extends Component {
                             }).join("")} alt="avatar" className="avatar align-self-center rounded-circle mr-1 z-depth-1" />
                             <div className="text-small w-75">
 
-                              <strong className="text-white" >{note.receiver}</strong>
+                              <strong>{note.receiver}</strong>
                               <div className="d-flex justify-content-between align-items-center">
-                                <p className="last-message text-white text-muted">{note.messages[note.messages.length - 1].text}</p>
+                                <p className="last-message">{note.messages[note.messages.length - 1].text}</p>
 
                                 <span className="float-right" >
                                   {(note.clicked && note.messages[note.messages.length - 1].sender === username) ? <>
@@ -142,9 +142,9 @@ class ChatPage extends Component {
                             }).join("")} alt="avatar" className="avatar rounded-circle d-flex align-self-center mr-1 z-depth-1" />
                             <div className="text-small w-75">
 
-                              <strong className="text-white" >{note.sender}</strong>
+                              <strong>{note.sender}</strong>
                               <div className="d-flex justify-content-between align-items-center">
-                                <p className="last-message text-muted">{note.messages[note.messages.length - 1].text}</p>
+                                <p className="last-message">{note.messages[note.messages.length - 1].text}</p>
 
                                 <span className="float-right" >{(note.clicked && note.messages[note.messages.length - 1].sender === username) ? <>
                                   <i className="fas fa-check text-small"></i>
