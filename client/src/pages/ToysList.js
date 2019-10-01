@@ -13,7 +13,13 @@ const imgStyle = {
 
 const ToysList = props => (
   <ToysContext.Consumer>
-    {({ currentUserToys }) => (
+    {({ currentUserToys,loading }) =>  loading === true ? (
+            <div class="d-flex justify-content-center m-5">
+              <div class="spinner-grow text-info m-5" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          ) :(
       <div className="d-flex flex-wrap justify-content-start mt-5 px-5">
         <div className="card m-2" style={divStyle}>
           <img src={add} className="card-img-top" alt="img" style={imgStyle} />

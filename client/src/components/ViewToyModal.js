@@ -95,7 +95,11 @@ export default class ViewToyModal extends React.Component {
                 </ModalHeader>
                 <ModalBody>
                   <div className="d-flex justify-content-around">
-                    <img className="m-2 w-100" src={this.props.toy.url} alt="..." />
+                    <img
+                      className="m-2 w-100"
+                      src={this.props.toy.url}
+                      alt="..."
+                    />
                   </div>
                   <table className="table table-striped">
                     <tbody>
