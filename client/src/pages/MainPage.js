@@ -152,7 +152,7 @@ class MainPage extends React.Component {
                     onChange={() => this.filter(onFilter)}
                   >
                     <option value="all" defaultValue>
-                      Status ..
+                      Condition ..
                     </option>
                     <option value="Great">Great</option>
                     <option value="Good">Good</option>
